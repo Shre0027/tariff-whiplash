@@ -26,11 +26,15 @@ jobs:
         env:
           CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
         run: python scripts/fetch_census.py
-      - name: Save the data
+      - name: Rerun the SQL analysis
+        run: |
+          pip install duckdb
+          python scripts/run_sql.py
+      - name: Save the data and analysis
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/raw
+          git add data/raw analysis
           git commit -m "Census data $(date -u +%Y-%m-%d)" || echo "Nothing changed"
           git pull --rebase
           git push

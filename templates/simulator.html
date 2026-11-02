@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sourcing cost simulator · Tariff Whiplash</title>
+<meta name="description" content="Compare what it costs to land the same $100 of goods in the US from each country, with today's tariffs and real shipping costs. From official Census trade data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2318222f'/%3E%3Cpath d='M5 22 L11 22 L14 9 L18 25 L21 14 L27 14' fill='none' stroke='%23f08c3a' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f5f2ea; --panel: #fffdf8; --ink: #17202c; --muted: #545d69; --faint: #6b727c; --line: #dcd5c8; --grid: #e7e1d6;
+  --tariff: #c4410c; --tariff-soft: #f6d9c8; --freight: #1f63b8; --goods: #b9b2a5; --accent: #c4410c; --up: #227a3a;
+  --serif: "Instrument Serif", Georgia, serif; --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f141b; --panel: #161d27; --ink: #ebe7df; --muted: #a7afb9; --faint: #7d8691; --line: #2b3441; --grid: #222b37;
+    --tariff: #ff8a4c; --tariff-soft: #4a2a1a; --freight: #6aa8ff; --goods: #4a5361; --accent: #ff8a4c; --up: #5cc97a;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.kicker { font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 400 clamp(40px, 6.5vw, 72px)/1 var(--serif); letter-spacing: -.015em; margin: 10px 0 14px; }
+h1 em { color: var(--tariff); }
+h2 { font: 400 28px/1.1 var(--serif); margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 48px; }
+.brand { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.brand svg { width: 20px; height: 20px; }
+.top nav a { text-decoration: none; color: var(--muted); font-size: 14px; }
+header.intro { padding: 44px 0 20px; }
+header.intro p { max-width: 700px; font-size: 18px; }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+.controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; margin-top: 18px; }
+.controls > div { padding: 18px 20px; }
+.controls > div + div { border-left: 1px solid var(--line); }
+@media (max-width: 760px) { .controls { grid-template-columns: 1fr; } .controls > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+label.f { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+select { font: inherit; font-size: 16px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); min-height: 44px; width: 100%; }
+select:focus-visible, input[type=range]:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chips button { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); border-radius: 99px; padding: 5px 11px; cursor: pointer; min-height: 32px; }
+.chips button[aria-pressed=true] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.slider-row { display: flex; align-items: center; gap: 14px; }
+input[type=range] { flex: 1; accent-color: var(--tariff); height: 28px; }
+.slider-val { font: 400 34px/1 var(--serif); min-width: 3.4em; text-align: right; color: var(--tariff); font-variant-numeric: tabular-nums; }
+.hint { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.reset { font: inherit; font-size: 13px; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; }
+
+.result { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 20px; margin-top: 20px; align-items: start; }
+@media (max-width: 900px) { .result { grid-template-columns: 1fr; } }
+.chartbox { padding: 18px 20px 14px; }
+.ftitle { font-weight: 600; font-size: 15px; }
+.fsub { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--sans); fill: var(--muted); font-size: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); margin-top: 10px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.verdict { padding: 20px; }
+.verdict .big { font: 400 44px/1 var(--serif); margin: 8px 0 6px; font-variant-numeric: tabular-nums; }
+.verdict .big.good { color: var(--up); }
+.verdict .big.bad { color: var(--tariff); }
+.verdict hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
+.verdict p { font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: right; padding: 8px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-weight: 600; font-size: 12px; color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+.notes { padding: 40px 0 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; font-size: 14px; color: var(--muted); }
+.notes h3 { font: 600 14px var(--sans); color: var(--ink); margin: 0 0 6px; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; box-shadow: 0 6px 24px rgb(0 0 0 / .12); z-index: 5; }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="currentColor"/><path d="M5 22 L11 22 L14 9 L18 25 L21 14 L27 14" fill="none" stroke="#f08c3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg>Tariff Whiplash</a>
+  <nav><a href="index.html">← The story</a></nav>
+</div></header>
+
+<main class="wrap">
+  <header class="intro">
+    <div class="kicker">Sourcing cost simulator · tariffs as of <span id="latestLong"></span></div>
+    <h1>Where would you <em>buy</em> from?</h1>
+    <p>Pick a product. Each bar is what it costs to get <b>the same $100 of goods</b> to a US port from that country: the goods, freight and insurance, and the tariff actually being charged today. All from US customs data.</p>
+  </header>
+
+  <div class="panel controls">
+    <div>
+      <label class="f">Product<select id="product"></select></label>
+      <div class="chips" id="chips" role="group" aria-label="Popular products"></div>
+    </div>
+    <div>
+      <label class="f" for="cnRate">What if China's tariff on this product were…</label>
+      <div class="slider-row"><input type="range" id="cnRate" min="0" max="150" step="1"><span class="slider-val num" id="cnRateVal">—</span></div>
+      <div class="hint">Today: <b id="cnToday">—</b>. <button class="reset" id="reset" type="button">Reset to today</button></div>
+    </div>
+  </div>
+
+  <div class="result">
+    <div class="panel chartbox">
+      <div class="ftitle">Cost to land $100 of <span id="pname"></span> in the US</div>
+      <div class="fsub">Countries with at least $20 million of US sales this year, cheapest first</div>
+      <div class="chart" id="chart" style="position:relative"></div>
+      <div class="legend"><span><i style="background:var(--goods)"></i>Goods ($100)</span><span><i style="background:var(--freight)"></i>Freight and insurance</span><span><i style="background:var(--tariff)"></i>Tariff</span></div>
+    </div>
+    <div class="panel verdict" aria-live="polite">
+      <label class="f">Compare China with<select id="vs"></select></label>
+      <div id="verdict"></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:20px;padding:18px 20px">
+    <h2>The numbers behind it</h2>
+    <p class="muted" style="font-size:14px">January–<span id="latestMonthName"></span> <span id="latestYear"></span>. "Average price" is total value ÷ units, so it mixes cheap and premium models: a country that ships high-end phones shows a higher average. That's why the chart compares the same $100 of goods instead.</p>
+    <div class="tablewrap"><table id="tbl"></table></div>
+  </div>
+
+  <section class="notes">
+    <div><h3>How it's calculated</h3><p>Landed cost of $100 of goods = $100 + freight and insurance + tariff. Freight is each country's actual freight and insurance charges as a share of the goods' value this year. The tariff is the effective rate charged in the latest month (duty ÷ value), which already reflects exemptions and trade-agreement treatment.</p></div>
+    <div><h3>What it leaves out</h3><p>Factory price differences, quality, lead times, minimum orders, supplier reliability, US inland shipping, and the cost of moving production. A real sourcing decision needs those too; this shows the part that customs data can answer.</p><p>Freight is a bigger share for cheap, bulky goods, so a country selling cheaper versions shows higher freight per $100. For Mexico and Canada, freight is counted only to the US border, so trucking costs look small.</p></div>
+    <div><h3>Data</h3><p>US Census Bureau international trade data (HTS 10-digit products, imports for consumption, calculated duty, charges), downloaded <span id="fetched"></span>. Code and method on <a href="https://github.com/Shre0027/tariff-whiplash">GitHub</a>.</p></div>
+  </section>
+</main>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const money = v => "$" + v.toFixed(2);
+const pct = (v, d = 1) => (+v).toFixed(d) + "%";
+function el(tag, a = {}, p) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+function text(p, x, y, s, a = {}) { const { fill, ...rest } = a; const t = el("text", { x, y, ...rest }, p); if (fill) t.style.fill = fill; t.textContent = s; return t; }
+
+const lm = D.latest_month;
+$("#latestLong").textContent = MONTHS[+lm.slice(5) - 1] + " " + lm.slice(0, 4);
+$("#latestMonthName").textContent = MONTHS[+lm.slice(5) - 1];
+$("#latestYear").textContent = lm.slice(0, 4);
+$("#fetched").textContent = D.fetched;
+
+const P = D.simulator;
+const sel = $("#product");
+P.forEach((p, i) => { const o = document.createElement("option"); o.value = i; o.textContent = `${p.name} · $${p.us_value_bn.toFixed(1)}B`; sel.appendChild(o); });
+const POPULAR = ["Laptops", "Smartphones", "Video game consoles", "Upholstered chairs and sofas", "Men's cotton T-shirts", "Toys (ages 3–12)", "Women's leather shoes"];
+POPULAR.forEach(n => { const i = P.findIndex(p => p.name === n); if (i < 0) return; const b = document.createElement("button"); b.type = "button"; b.textContent = n; b.dataset.i = i; b.addEventListener("click", () => { sel.value = i; choose(); }); $("#chips").appendChild(b); });
+
+let cur, cnOverride = null, vsCountry = null;
+const params = new URLSearchParams(location.hash.slice(1));
+const start = P.findIndex(p => p.name === (params.get("p") || "Upholstered chairs and sofas"));
+sel.value = start < 0 ? 0 : start;
+
+function landed(c, rateOverride) {
+  const fr = 100 * c.freight / c.price, tr = rateOverride != null ? rateOverride : c.rate;
+  return { goods: 100, freight: fr, tariff: tr, total: 100 + fr + tr };
+}
+function choose() {
+  cur = P[+sel.value];
+  [...$("#chips").children].forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === +sel.value));
+  cnOverride = null;
+  const cn = cur.countries.find(c => c.country === "China");
+  const r = $("#cnRate");
+  r.disabled = !cn; r.value = cn ? Math.round(cn.rate) : 0;
+  $("#cnToday").textContent = cn ? pct(cn.rate) : "China isn't a large supplier of this product";
+  const vs = $("#vs"); vs.replaceChildren();
+  cur.countries.filter(c => c.country !== "China").forEach(c => { const o = document.createElement("option"); o.value = c.country; o.textContent = c.country; vs.appendChild(o); });
+  vsCountry = (cur.countries.find(c => c.country !== "China") || {}).country;
+  vs.value = vsCountry;
+  $("#pname").textContent = cur.name.toLowerCase().replace(/^men's|^women's/, m => m);
+  history.replaceState(null, "", "#p=" + encodeURIComponent(cur.name));
+  render();
+}
+sel.addEventListener("change", choose);
+$("#cnRate").addEventListener("input", e => { cnOverride = +e.target.value; render(); });
+$("#reset").addEventListener("click", () => { cnOverride = null; const cn = cur.countries.find(c => c.country === "China"); if (cn) $("#cnRate").value = Math.round(cn.rate); render(); });
+$("#vs").addEventListener("change", e => { vsCountry = e.target.value; render(); });
+
+function render() {
+  const cn = cur.countries.find(c => c.country === "China");
+  $("#cnRateVal").textContent = cn ? pct(cnOverride != null ? cnOverride : cn.rate, cnOverride != null ? 0 : 1) : "—";
+  const rows = cur.countries.map(c => ({ c, l: landed(c, c.country === "China" ? cnOverride : null) })).sort((a, b) => a.l.total - b.l.total);
+  drawChart(rows);
+  drawVerdict(rows);
+  drawTable();
+}
+
+function drawChart(rows) {
+  const box = $("#chart"), W = Math.max(300, box.clientWidth), narrow = W < 520;
+  const rh = narrow ? 46 : 32, lab = narrow ? 0 : 118, H = rows.length * rh + 26;
+  box.querySelector("svg")?.remove();
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Landed cost of $100 of ${cur.name} by country` });
+  box.prepend(svg);
+  const max = Math.max(...rows.map(r => r.l.total)), lo = 0;
+  const sx = v => lab + (W - lab - 64) * (v - lo) / (max - lo);
+  [0, 25, 50, 75, 100].concat(max > 125 ? [125] : []).concat(max > 150 ? [150] : []).filter(v => v <= max).forEach(v => {
+    el("line", { x1: sx(v), x2: sx(v), y1: 14, y2: H, stroke: css("--grid") }, svg); text(svg, sx(v), 10, "$" + v, { "text-anchor": "middle" });
+  });
+  rows.forEach((r, i) => {
+    const y0 = 20 + i * rh + (narrow ? 18 : 0), bh = narrow ? 20 : rh - 10;
+    const isCn = r.c.country === "China";
+    const name = `${r.c.country}${narrow ? ` · ${pct(r.c.share, 0)} of US imports` : ""}`;
+    text(svg, 0, narrow ? y0 - 5 : y0 + bh / 2 + 4, name, { fill: css("--ink"), "font-weight": isCn ? 700 : 500 });
+    let x = sx(0);
+    [["goods", "--goods"], ["freight", "--freight"], ["tariff", "--tariff"]].forEach(([k, c]) => {
+      const w = sx(r.l[k] + (k === "goods" ? 0 : 0)) - sx(0);
+      const rect = el("rect", { x, y: y0, width: Math.max(0, k === "goods" ? sx(100) - sx(0) : (sx(100 + r.l[k]) - sx(100))), height: bh, fill: css(c) }, svg);
+      rect.style.transition = "width .45s cubic-bezier(.3,.7,.2,1), x .45s";
+      x += +rect.getAttribute("width");
+    });
+    text(svg, x + 6, y0 + bh / 2 + 4, money(r.l.total), { fill: css("--ink"), "font-weight": 600 });
+    const hit = el("rect", { x: 0, y: y0 - (narrow ? 18 : 0), width: W, height: rh, fill: "transparent" }, svg);
+    hit.addEventListener("pointermove", ev => {
+      const t = $("#tip");
+      t.innerHTML = `<b>${r.c.country}</b><br>Goods $100.00<br>Freight and insurance ${money(r.l.freight)}<br>Tariff ${money(r.l.tariff)} (${pct(r.l.tariff)}${isCn && cnOverride != null ? ", your setting" : ""})<br><b>Total ${money(r.l.total)}</b><br><span style="color:var(--muted)">${pct(r.c.share)} of US imports of this product</span>`;
+      t.hidden = false;
+      t.style.left = Math.min(ev.pageX + 14, scrollX + innerWidth - t.offsetWidth - 8) + "px"; t.style.top = ev.pageY - t.offsetHeight - 10 + "px";
+    });
+    hit.addEventListener("pointerleave", () => $("#tip").hidden = true);
+  });
+}
+
+function drawVerdict(rows) {
+  const out = $("#verdict"); out.replaceChildren();
+  const cnR = rows.find(r => r.c.country === "China"), vsR = rows.find(r => r.c.country === vsCountry);
+  const add = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; e.textContent = txt; out.appendChild(e); return e; };
+  if (!cnR || !vsR) { add("p", "", "China isn't one of the large suppliers of this product, so there's nothing to compare."); return; }
+  // how much more the other country's supplier can charge and still match China's landed cost
+  const room = 100 * (cnR.l.total / vsR.l.total - 1);
+  add("div", "kicker", `A ${vsCountry} supplier can charge`).style.marginTop = "14px";
+  add("div", "big " + (room >= 0 ? "good" : "bad"), (room >= 0 ? "up to " : "") + pct(Math.abs(room)) + (room >= 0 ? " more" : " less"));
+  add("p", "", room >= 0
+    ? `than your China supplier for the same goods and still cost you the same once they reach the US. Tariffs and freight add ${pct(cnR.l.total - 100)} to goods from China and ${pct(vsR.l.total - 100)} to goods from ${vsCountry}.`
+    : `than your China supplier just to break even, because goods from ${vsCountry} carry ${pct(vsR.l.total - 100)} in tariffs and freight, against ${pct(cnR.l.total - 100)} from China.`);
+  out.appendChild(document.createElement("hr"));
+  const cheapest = rows[0];
+  add("p", "", `Cheapest to land today: ${cheapest.c.country} (${money(cheapest.l.total)} per $100). Biggest US supplier: ${cur.countries[0].country}, with ${pct(cur.countries[0].share, 0)} of US imports.`);
+  const cn = cur.countries.find(c => c.country === "China");
+  // the China tariff at which China and the comparison country cost the same
+  const even = vsR.l.total - 100 - 100 * cn.freight / cn.price;
+  add("p", "muted", even >= 0
+    ? `China and ${vsCountry} cost the same to land when China's tariff on this product is ${pct(even)}. Today it's ${pct(cn.rate)}.`
+    : `Even at a 0% tariff, goods from China cost more to land than from ${vsCountry}, because of freight.`).style.fontSize = "14px";
+}
+
+function drawTable() {
+  const t = $("#tbl"); t.replaceChildren();
+  const head = t.createTHead().insertRow();
+  ["Country", "Share of US imports", "US imports", "Units", "Average price", "Freight per unit", "Tariff rate now"].forEach(h => { const th = document.createElement("th"); th.textContent = h; head.appendChild(th); });
+  const body = t.createTBody();
+  cur.countries.forEach(c => {
+    const r = body.insertRow();
+    [c.country, pct(c.share), "$" + c.value_bn.toFixed(2) + "B", c.units_m >= 1 ? c.units_m.toFixed(1) + "M" : Math.round(c.units_m * 1000) + "K", money(c.price) + " per " + cur.per, money(c.freight), pct(c.rate) + (c.rate_from === "year so far" ? "*" : "")]
+      .forEach(v => { r.insertCell().textContent = v; });
+  });
+  if (cur.countries.some(c => c.rate_from === "year so far")) { const r = body.insertRow(), cell = r.insertCell(); cell.colSpan = 7; cell.className = "muted"; cell.style.textAlign = "left"; cell.textContent = "* Too little trade in the latest month, so this rate is for the year so far."; }
+}
+
+choose();
+let lw = innerWidth;
+addEventListener("resize", () => { if (Math.abs(innerWidth - lw) > 24) { lw = innerWidth; render(); } });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+</script>
+</body>
+</html>
