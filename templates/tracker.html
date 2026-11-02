@@ -12,8 +12,8 @@
 <style>
 :root {
   --bg: #f3f1ec; --panel: #ffffff; --side: #17202c; --side-ink: #c9cfd6; --side-active: #ffffff;
-  --ink: #17202c; --muted: #555e6a; --faint: #6b727c; --line: #e2ddd3; --grid: #ece8e0; --hover: #f7f5f0;
-  --accent: #c4410c; --accent-soft: #fbe5d8; --ok: #1d7a4a; --ok-soft: #dcefe3; --warn: #a15c00; --warn-soft: #fbeccc; --bad: #b42318; --bad-soft: #fde4e1; --info: #1f63b8; --info-soft: #e1ecfa;
+  --ink: #17202c; --muted: #555e6a; --faint: #5c636d; --line: #e2ddd3; --grid: #ece8e0; --hover: #f7f5f0;
+  --accent: #c4410c; --accent-soft: #fbe5d8; --ok: #17673d; --ok-soft: #dcefe3; --warn: #864c00; --warn-soft: #fbeccc; --bad: #a01d13; --bad-soft: #fde4e1; --info: #1a559f; --info-soft: #e1ecfa;
   --p-base: #a59d90; --p-fen: #7a3e9d; --p-rec: #c4410c; --p-oil: #e08a3c; --p-122: #1f63b8; --p-301: #0f7a6c; --p-232: #5b6573; --p-whatif: #d6336c;
   --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace; --serif: "Instrument Serif", Georgia, serif;
   color-scheme: light;
@@ -411,7 +411,7 @@ function drawDeadlines() {
   const list = ENT.filter(e => e.daysLeft != null && e.daysLeft <= 30 && e.ieepa >= 50 && !["paid", "filed"].includes(e.status.k)).sort((a, b) => a.daysLeft - b.daysLeft);
   const box = $("#deadlines");
   if (!list.length) { box.innerHTML = `<p class="muted">No entries reach a deadline in the next 30 days.</p>`; return; }
-  box.innerHTML = `<div class="tablewrap" style="max-height:300px"><table><thead><tr><th>Entry</th><th>Deadline</th><th class="r">Days left</th><th class="r">IEEPA duty</th></tr></thead><tbody>${list.map(e =>
+  box.innerHTML = `<div class="tablewrap" style="max-height:300px" tabindex="0" role="region" aria-label="Upcoming deadlines"><table><thead><tr><th>Entry</th><th>Deadline</th><th class="r">Days left</th><th class="r">IEEPA duty</th></tr></thead><tbody>${list.map(e =>
     `<tr data-e="${esc(e.entry)}"><td class="mono">${esc(e.entry)}</td><td>${esc(e.deadline)}</td><td class="r"><span class="pill ${e.daysLeft <= 7 ? "bad" : e.daysLeft <= 14 ? "warn" : "mute"}">${e.daysLeft === 0 ? "Today" : e.daysLeft + (e.daysLeft === 1 ? " day" : " days")}</span></td><td class="r">${usd(e.ieepa)}</td></tr>`).join("")}</tbody></table></div>`;
   box.querySelectorAll("tr[data-e]").forEach(r => r.addEventListener("click", () => openEntry(r.dataset.e)));
 }

@@ -149,3 +149,24 @@ R1–R8 are listed in the [process maps](process-maps.md#2-getting-struck-down-t
 | T2 | Entry dated 10 Jun 2025, liquidated 120 days ago | Routes are assigned | Route = protest; 60 days left |
 | T3 | Entry dated 1 Mar 2026 | Routes are assigned | No IEEPA refund (outside 4 Feb 2025 – 23 Feb 2026) |
 | T4 | New rule: +12.5% Section 301 duty on goods from Vietnam from 24 Jul 2026, excluding Section 232 goods | Rule is saved | All Vietnam-origin SKUs not under Section 232 (e.g. cotton T-shirts, HTS 6109) recalculated; upholstered furniture (already under Section 232) unchanged; SKUs under margin threshold listed |
+
+### B10. Prototype and traceability
+
+Part B was built as a working prototype, **[Tariff Desk](https://shre0027.github.io/tariff-whiplash/tracker.html)**, on an invented sample company (41 SKUs, 185 entries) with the real tariff rules and real cost levels. Each requirement was accepted through the [UAT scripts](uat.md); latest run: [uat-results.md](uat-results.md).
+
+| Requirement | Where it's met in the prototype | Accepted by | Status |
+|---|---|---|---|
+| FR-1 Product master with HTS code, origin, supplier | Products view; `data/sample/company.json` | UAT-01 | Done |
+| FR-2 Tariff programs as dated rules with exclusions | `config/tariff_rules.json` (35 rules, each with a source), Tariff rules view | UAT-13; engine tests; [rule validation](rule-validation.md) | Done |
+| FR-3 Duty per SKU, all programs in order with stacking and exclusions | `templates/tariff_engine.js`; SKU duty breakdown | UAT-02; 15 engine tests | Done |
+| FR-4 Recalculate on a rule change; list SKUs below margin | What-if on the Tariff rules view; "Hit by what-if" filter | UAT-03, 04, 05 | Done |
+| FR-5 Entry data | Shipments & refunds view (sample entries in place of ACE reports) | UAT-06 | Done (sample data) |
+| FR-6 Refund route and days left per entry | `templates/refund_rules.js`; Refund status column | UAT-07; 20 rule tests | Done |
+| FR-7 Alerts 14 and 3 days before a deadline | Deadline list (30 days), menu badge (14 days), color at 7 and 14 days | UAT-08 | Partly: shown in the app; no email alerts |
+| FR-8 CAPE upload file | "Download CAPE file", one file per phase, max 9,999 per file | UAT-10 | Done |
+| FR-9 Track declarations | Refund status column, entry details | UAT-09 | Done (sample claims) |
+| FR-10 Compare countries | "Same product from other countries" in SKU details | UAT-11 | Done |
+| FR-11 Rate history | Rate chart in SKU details | UAT-12 | Done (history; announced future changes via what-if) |
+| FR-12 Audit log | Audit log view (kept in the browser) | UAT-14 | Partly: one user, one browser; a real system needs a server-side log |
+
+**Not built (would need a real deployment):** imports from ACE reports and the broker (FR-5), email alerts (FR-7), user accounts and a shared audit log (FR-12).

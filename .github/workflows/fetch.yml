@@ -26,15 +26,20 @@ jobs:
         env:
           CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
         run: python scripts/fetch_census.py
-      - name: Rerun the SQL analysis
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Rerun the SQL analysis, the rule check and the sample company
         run: |
           pip install duckdb
           python scripts/run_sql.py
+          node scripts/validate_rules.js
+          python scripts/make_sample_company.py
       - name: Save the data and analysis
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/raw analysis
+          git add data/raw data/derived data/sample analysis docs/rule-validation.md
           git commit -m "Census data $(date -u +%Y-%m-%d)" || echo "Nothing changed"
           git pull --rebase
           git push

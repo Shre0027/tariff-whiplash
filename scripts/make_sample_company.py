@@ -21,6 +21,7 @@ import csv
 import gzip
 import json
 import random
+import subprocess
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -130,10 +131,20 @@ def main():
             d += timedelta(days=rng.randint(21, 45))
     entries.sort(key=lambda x: x["date"])
 
+    # Which entries carried IEEPA tariff lines (from the rule engine), so claims only exist where a refund is possible
+    sku_of = {s["sku"]: s for s in skus}
+    args = [{"date": x["date"], "hs10": sku_of[l["sku"]]["hs10"], "country": x["country"], "usmca": sku_of[l["sku"]]["usmca"],
+             "baseRate": sku_of[l["sku"]]["base_rate"]} for x in entries for l in x["lines"]]
+    flags = json.loads(subprocess.run(["node", str(ROOT / "scripts/ieepa_lines.js")], input=json.dumps(args),
+                                      capture_output=True, text=True, check=True).stdout)
+    i = 0
+    for x in entries:
+        x["_ieepa"] = any(flags[i:i + len(x["lines"])]); i += len(x["lines"])
+
     # Refund claims already made, for some early entries (statuses as of the sample's "today")
     claims = []
     for x in entries:
-        if "2025-02-04" <= x["date"] <= "2026-02-23" and x["liquidated"] and rng.random() < 0.35:
+        if x.pop("_ieepa") and x["liquidated"] and rng.random() < 0.35:
             liq = date.fromisoformat(x["liquidation_date"])
             if (date(2026, 4, 20) - liq).days <= 80 or liq >= date(2026, 4, 20):   # was eligible when Phase 1 opened
                 filed = max(date(2026, 4, 20), liq) + timedelta(days=rng.randint(3, 40))
@@ -144,7 +155,7 @@ def main():
                 if status == "paid":
                     c["paid"] = min(TODAY, filed + timedelta(days=rng.randint(30, 85))).isoformat()
                 if status == "rejected":
-                    c["reason"] = rng.choice(["Entry not found for this importer of record", "No IEEPA tariff lines on entry"])
+                    c["reason"] = rng.choice(["Entry number not found for this importer of record", "Importer of record does not match the filer"])
                 claims.append(c)
 
     out = {"company": COMPANY, "as_of": TODAY.isoformat(), "skus": skus, "entries": entries, "claims": claims}

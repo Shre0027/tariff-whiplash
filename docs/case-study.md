@@ -21,6 +21,19 @@ In 2025 the US announced more tariff changes than in any year in decades: headli
 | Requirements | For the site (with traceability) and a full BRD for an internal tariff and refund tracker | Requirements writing |
 | Decision log, data dictionary, research notes | Every choice and source written down | Documentation |
 
+## Part two: building the tool the requirements describe
+
+A requirements document on its own shows planning, not delivery. So I built Part B of the [requirements](requirements.md) as **[Tariff Desk](https://shre0027.github.io/tariff-whiplash/tracker.html)**, a working prototype for an invented importer (41 products, 185 shipments). Everything that isn't about the company is real: product codes, countries, cost levels and every tariff rule.
+
+**How it was built, in order:**
+1. **Research:** each tariff program's rates, dates and exemptions, from legal and trade sources ([research notes](research-notes.md)).
+2. **Rules as data:** 35 dated rules, each with a source, in [`config/tariff_rules.json`](../config/tariff_rules.json). One engine applies them for the app, the tests and the validation.
+3. **Validate against reality:** for 19 products × countries × months, I compared the rate the rules predict with the rate Census shows was actually charged. The first run got 72% of checks within 2 points. The gaps pointed to missing rules: goods already shipped when a tariff started kept the old rate for weeks (in-transit exemptions), and the EU, Japan and Switzerland deals cap the total at 15%. After fixing them, **82% within 2 points, median error 0.3 points** ([rule validation](rule-validation.md)). What can't be modeled (the tariff on steel content) is written down, not hidden.
+4. **Build the app:** overview, products with landed cost and margin, a "what if a new tariff is announced?" tool, shipments with refund routes and deadlines, the CAPE upload file, and an audit log.
+5. **UAT:** 15 test scripts, one or more per requirement, with actions and expected results kept separate. They ran automated against expected values worked out from the data, not from the page: **15/15 passed** after fixing the defects UAT found ([uat.md](uat.md), [results](uat-results.md)).
+
+**The defect I'd talk about in an interview:** UAT flagged shipments shown as "No IEEPA duty" that the refund rules said should be refunded. It looked like an app bug. In fact, the test was missing a business rule: a shipment entered during the tariff period but made up only of exempt electronics never paid the tariff, so there's nothing to refund. Fixing the test exposed a real data defect: the sample data had refund claims on exactly those shipments, which customs would reject.
+
 ## Findings (January–August of each year unless stated)
 
 - **The real rate:** the effective US tariff rate went from 2.2% (January 2025) to a peak of 10.8% (October 2025), then 6.9% in August 2026. Goods from China peaked at 47.9% in May 2025, a third of the 145% headline.
@@ -50,5 +63,4 @@ The full list is in the [decision log](decision-log.md). The three that changed 
 
 - Add **district (port) data**, to show which US ports' traffic shifted.
 - Let users **enter their own supplier price** in the simulator.
-- Turn Part B of the requirements into a prototype with sample entry data.
 - Track **refunds by month** as CBP publishes more figures.

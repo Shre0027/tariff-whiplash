@@ -4014,162 +4014,116 @@
  ],
  "claims": [
   {
-   "entry": "HLB11720123",
+   "entry": "HLB05147351",
    "phase": 1,
-   "submitted": "2026-05-25",
-   "status": "accepted"
+   "submitted": "2026-05-23",
+   "status": "paid",
+   "paid": "2026-07-23"
   },
   {
-   "entry": "HLB01979759",
+   "entry": "HLB06889532",
    "phase": 1,
    "submitted": "2026-05-17",
    "status": "paid",
    "paid": "2026-06-20"
   },
   {
-   "entry": "HLB10057139",
-   "phase": 1,
-   "submitted": "2026-05-08",
+   "entry": "HLB03642741",
+   "phase": 2,
+   "submitted": "2026-04-29",
    "status": "paid",
-   "paid": "2026-07-22"
-  },
-  {
-   "entry": "HLB11799319",
-   "phase": 1,
-   "submitted": "2026-04-30",
-   "status": "accepted"
-  },
-  {
-   "entry": "HLB00395950",
-   "phase": 1,
-   "submitted": "2026-05-26",
-   "status": "paid",
-   "paid": "2026-06-30"
-  },
-  {
-   "entry": "HLB13462301",
-   "phase": 1,
-   "submitted": "2026-05-18",
-   "status": "paid",
-   "paid": "2026-06-17"
-  },
-  {
-   "entry": "HLB06889532",
-   "phase": 1,
-   "submitted": "2026-05-23",
-   "status": "paid",
-   "paid": "2026-07-19"
-  },
-  {
-   "entry": "HLB05305731",
-   "phase": 1,
-   "submitted": "2026-05-19",
-   "status": "paid",
-   "paid": "2026-08-09"
+   "paid": "2026-06-26"
   },
   {
    "entry": "HLB13541491",
    "phase": 1,
-   "submitted": "2026-05-30",
+   "submitted": "2026-05-20",
    "status": "accepted"
   },
   {
-   "entry": "HLB10294705",
+   "entry": "HLB00554330",
    "phase": 1,
-   "submitted": "2026-06-02",
-   "status": "accepted"
+   "submitted": "2026-06-16",
+   "status": "paid",
+   "paid": "2026-07-21"
+  },
+  {
+   "entry": "HLB05384929",
+   "phase": 1,
+   "submitted": "2026-06-27",
+   "status": "paid",
+   "paid": "2026-07-27"
   },
   {
    "entry": "HLB12036888",
    "phase": 1,
-   "submitted": "2026-06-29",
+   "submitted": "2026-07-16",
    "status": "paid",
-   "paid": "2026-08-14"
-  },
-  {
-   "entry": "HLB13620686",
-   "phase": 1,
-   "submitted": "2026-07-20",
-   "status": "accepted"
+   "paid": "2026-09-11"
   },
   {
    "entry": "HLB08790093",
    "phase": 1,
-   "submitted": "2026-07-31",
-   "status": "accepted"
-  },
-  {
-   "entry": "HLB05464113",
-   "phase": 1,
-   "submitted": "2026-08-16",
+   "submitted": "2026-07-20",
    "status": "paid",
-   "paid": "2026-09-26"
+   "paid": "2026-10-10"
   },
   {
    "entry": "HLB13699872",
    "phase": 1,
-   "submitted": "2026-08-25",
-   "status": "paid",
-   "paid": "2026-09-28"
-  },
-  {
-   "entry": "HLB00712711",
-   "phase": 1,
-   "submitted": "2026-07-29",
+   "submitted": "2026-08-07",
    "status": "accepted"
   },
   {
-   "entry": "HLB02375709",
+   "entry": "HLB07206296",
    "phase": 1,
-   "submitted": "2026-05-01",
-   "status": "rejected",
-   "reason": "Entry not found for this importer of record"
+   "submitted": "2026-08-13",
+   "status": "accepted"
   },
   {
    "entry": "HLB13779061",
    "phase": 1,
-   "submitted": "2026-09-21",
+   "submitted": "2026-09-08",
+   "status": "paid",
+   "paid": "2026-10-24"
+  },
+  {
+   "entry": "HLB03959505",
+   "phase": 1,
+   "submitted": "2026-10-02",
    "status": "accepted"
-  },
-  {
-   "entry": "HLB00791902",
-   "phase": 1,
-   "submitted": "2026-08-21",
-   "status": "paid",
-   "paid": "2026-10-21"
-  },
-  {
-   "entry": "HLB07285480",
-   "phase": 1,
-   "submitted": "2026-10-07",
-   "status": "paid",
-   "paid": "2026-11-02"
   },
   {
    "entry": "HLB05622499",
    "phase": 1,
-   "submitted": "2026-10-27",
+   "submitted": "2026-10-16",
+   "status": "accepted"
+  },
+  {
+   "entry": "HLB02454896",
+   "phase": 2,
+   "submitted": "2026-10-24",
    "status": "paid",
    "paid": "2026-11-02"
   },
   {
    "entry": "HLB13858257",
    "phase": 1,
-   "submitted": "2026-09-26",
-   "status": "accepted"
-  },
-  {
-   "entry": "HLB09027664",
-   "phase": 2,
-   "submitted": "2026-10-27",
-   "status": "accepted"
-  },
-  {
-   "entry": "HLB04117886",
-   "phase": 1,
-   "submitted": "2026-07-01",
+   "submitted": "2026-10-30",
    "status": "paid",
-   "paid": "2026-08-14"
+   "paid": "2026-11-02"
+  },
+  {
+   "entry": "HLB07364671",
+   "phase": 1,
+   "submitted": "2026-10-12",
+   "status": "accepted"
+  },
+  {
+   "entry": "HLB02613275",
+   "phase": 1,
+   "submitted": "2026-07-03",
+   "status": "accepted"
   }
  ]
 }
