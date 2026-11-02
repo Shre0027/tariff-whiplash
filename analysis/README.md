@@ -92,8 +92,8 @@ Query: [`sql/04_where_imports_moved.sql`](../sql/04_where_imports_moved.sql)
 | Japan | 99.8 | 96.3 | -3.5 | 4.7 | 4 | -0.67 |
 | Singapore | 29.1 | 22.2 | -23.7 | 1.4 | 0.9 | -0.44 |
 | Brazil | 28.3 | 24 | -15.2 | 1.3 | 1 | -0.33 |
-| Italy | 51.3 | 51 | -0.6 | 2.4 | 2.1 | -0.28 |
 | United Kingdom | 45 | 43.8 | -2.7 | 2.1 | 1.8 | -0.28 |
+| Italy | 51.3 | 51 | -0.6 | 2.4 | 2.1 | -0.28 |
 | Switzerland | 32.9 | 33.6 | 2.1 | 1.6 | 1.4 | -0.14 |
 | All countries | 2,121 | 2,383 | 12.4 | 100 | 100 | 0 |
 | Bangladesh | 5.4 | 6.5 | 19.3 | 0.3 | 0.3 | 0.02 |
@@ -124,22 +124,22 @@ Query: [`sql/05_china_share_by_chapter.sql`](../sql/05_china_share_by_chapter.sq
 | 84 | Machinery, computers | 336 | 15.6 | 4.5 | -25.9 | Taiwan | 88.3 |
 | 95 | Toys, games, sports equipment | 23.1 | 71.4 | 50.7 | -5.9 | Vietnam | 2.3 |
 | 94 | Furniture, lighting, bedding | 44.4 | 28.9 | 18.6 | -5.7 | Cambodia | 0.6 |
-| 39 | Plastics | 48.6 | 26.4 | 19.3 | -3.8 | Vietnam | 1 |
 | 87 | Vehicles and parts | 260 | 4.2 | 3.3 | -3.8 | Vietnam | 0.5 |
+| 39 | Plastics | 48.6 | 26.4 | 19.3 | -3.8 | Vietnam | 1 |
 | 73 | Iron and steel articles | 32.8 | 23.6 | 18.2 | -3.3 | Vietnam | 0.3 |
 | 64 | Footwear | 18 | 37.1 | 20.6 | -3 | Vietnam | 1 |
 | 61 | Clothing, knitted | 28.8 | 21.7 | 12.3 | -2.9 | Vietnam | 0.8 |
 | 62 | Clothing, not knitted | 23.7 | 20.8 | 11.7 | -2.3 | Bangladesh | 0.4 |
 | 63 | Other textile articles | 10.8 | 50.6 | 39.7 | -1.7 | Vietnam | 0.3 |
 | 90 | Medical, optical, measuring instruments | 80.1 | 9.4 | 7.6 | -1.4 | Ireland | 0.9 |
-| 48 | Paper and paperboard | 12.6 | 14 | 7 | -0.9 | Thailand | 0.2 |
 | 42 | Handbags, luggage, leather goods | 8.8 | 22.6 | 12.7 | -0.9 | Vietnam | 0.2 |
+| 48 | Paper and paperboard | 12.6 | 14 | 7 | -0.9 | Thailand | 0.2 |
 | 83 | Misc. metal articles | 10.1 | 33.9 | 27 | -0.8 | Vietnam | 0.2 |
 | 40 | Rubber | 22.6 | 7.5 | 4.4 | -0.7 | Cambodia | 0.5 |
-| 82 | Tools and cutlery | 7.4 | 27.2 | 19.2 | -0.6 | Vietnam | 0.3 |
 | 96 | Misc. manufactured articles | 5.8 | 53.8 | 44.6 | -0.6 | Vietnam | 0.2 |
+| 82 | Tools and cutlery | 7.4 | 27.2 | 19.2 | -0.6 | Vietnam | 0.3 |
 | 44 | Wood | 15.4 | 8.3 | 6 | -0.5 | Malaysia | 0.1 |
-| 38 | Other chemical products | 16.3 | 6.6 | 5 | -0.4 | Indonesia | 0.5 |
+| 70 | Glass | 6 | 28.9 | 22.5 | -0.4 | Vietnam | 0.2 |
 
 *Showing 20 of 46 rows; see the CSV for all.*
 
@@ -229,8 +229,8 @@ Query: [`sql/08_rate_by_chapter_latest.sql`](../sql/08_rate_by_chapter_latest.sq
 | 76 | Aluminum | Metals and building materials | 3.7 | 37.3 | 2.8 |
 | 72 | Iron and steel | Metals and building materials | 2.6 | 26.1 | 2.3 |
 | 61 | Clothing, knitted | Clothing and footwear | 14.9 | 23.1 | 4.3 |
-| 42 | Handbags, luggage, leather goods | Clothing and footwear | 13 | 22.2 | 1.2 |
 | 62 | Clothing, not knitted | Clothing and footwear | 14.3 | 22.2 | 3 |
+| 42 | Handbags, luggage, leather goods | Clothing and footwear | 13 | 22.2 | 1.2 |
 | 64 | Footwear | Clothing and footwear | 12.2 | 21.4 | 2.4 |
 | 63 | Other textile articles | Clothing and footwear | 8.7 | 17.5 | 1.4 |
 | 83 | Misc. metal articles | Metals and building materials | 6.8 | 16.7 | 1.3 |
