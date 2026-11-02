@@ -162,6 +162,8 @@ def main():
                 html = html.replace("/*__TRACKER__*/null", json.dumps(tracker, separators=(",", ":")))
             (site / out).write_text(html)
             print(f"Wrote site/{out}")
+    import shutil
+    shutil.copy(ROOT / "templates/og.png", site / "og.png")     # social preview image
     print(f"Data through {latest}; simulator products: {len(data['simulator'])}")
 
 

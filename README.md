@@ -2,7 +2,21 @@
 
 **What did US tariffs actually cost in 2025–26, and where did the buying go?**
 
-👉 **[Read the data story](https://shre0027.github.io/tariff-whiplash/)** · [Cost simulator](https://shre0027.github.io/tariff-whiplash/simulator.html) · **[Tariff Desk: tracker prototype](https://shre0027.github.io/tariff-whiplash/tracker.html)** · [Case study](docs/case-study.md) · [SQL analysis](analysis/README.md) · [Process maps](docs/process-maps.md) · [Requirements](docs/requirements.md) · [Decision log](docs/decision-log.md) · [Data dictionary](docs/data-dictionary.md) · [Research notes](docs/research-notes.md) · [UAT](docs/uat.md) · [Rule validation](docs/rule-validation.md)
+👉 **[Read the data story](https://shre0027.github.io/tariff-whiplash/)** · [Cost simulator](https://shre0027.github.io/tariff-whiplash/simulator.html) · **[Tariff Desk: tracker prototype](https://shre0027.github.io/tariff-whiplash/tracker.html)** · [Case study](docs/case-study.md) · [SQL analysis](analysis/README.md) · [Process maps](docs/process-maps.md) · [Requirements](docs/requirements.md) · [Decision log](docs/decision-log.md) · [Data dictionary](docs/data-dictionary.md) · [Research notes](docs/research-notes.md) · [UAT](docs/uat.md) · [Rule validation](docs/rule-validation.md) · [Stakeholder interviews](docs/stakeholder-interviews.md)
+
+![The data story: the effective US tariff rate went from 2.2% to 10.8% to 6.9%](docs/img/story.png)
+
+## The 2-minute tour
+1. **[The story](https://shre0027.github.io/tariff-whiplash/)** (60 seconds): scroll the first chart. It's the tariff rate importers actually paid each month, against the headlines.
+2. **[Product by product](https://shre0027.github.io/tariff-whiplash/#moved)**: laptops from China went from 67% of US imports to 7% in two years.
+3. **[Tariff Desk](https://shre0027.github.io/tariff-whiplash/tracker.html#rules)** (60 seconds): run the "what if a new tariff is announced?" tool, then open **Shipments & refunds** to see each shipment's refund deadline.
+4. **How it was checked:** [rule validation](docs/rule-validation.md) (the rules match the duty actually charged: median error 0.3 points) and [UAT results](docs/uat-results.md) (15/15).
+
+<table><tr>
+<td width="33%"><img src="docs/img/story-products.png" alt="China's share of US imports by product, 2024 to 2026"><br><sub>Which products left China</sub></td>
+<td width="33%"><img src="docs/img/simulator.png" alt="Cost to land $100 of upholstered chairs from each country"><br><sub>Sourcing cost simulator</sub></td>
+<td width="33%"><img src="docs/img/tracker.png" alt="Tariff Desk overview: refunds to recover, deadlines, duty by program"><br><sub>Tariff Desk tracker (sample company)</sub></td>
+</tr></table>
 
 In 2025 the tariff rate US importers actually paid more than quadrupled. In February 2026 the Supreme Court struck most of the new tariffs down, and in July 2026 new ones replaced part of them. This project uses the Census Bureau's own trade data to show what importers really paid, which countries and products gained and lost, and how the refunds work, plus a simulator to compare where to buy from today.
 
