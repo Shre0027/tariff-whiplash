@@ -8,7 +8,7 @@
 
 ## The 2-minute tour
 1. **[The story](https://shre0027.github.io/tariff-whiplash/)** (60 seconds): scroll the first chart. It's the tariff rate importers actually paid each month, against the headlines.
-2. **[Product by product](https://shre0027.github.io/tariff-whiplash/#moved)**: laptops from China went from 67% of US imports to 7% in two years.
+2. **[Product by product](https://shre0027.github.io/tariff-whiplash/#products)**: laptops from China went from 67% of US imports to 7% in two years.
 3. **[Tariff Desk](https://shre0027.github.io/tariff-whiplash/tracker.html#rules)** (60 seconds): run the "what if a new tariff is announced?" tool, then open **Shipments & refunds** to see each shipment's refund deadline.
 4. **How it was checked:** [rule validation](docs/rule-validation.md) (the rules match the duty actually charged: median error 0.3 points) and [UAT results](docs/uat-results.md) (15/15).
 
