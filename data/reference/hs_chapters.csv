@@ -1,0 +1,99 @@
+hs2,chapter,group
+01,Live animals,Food and farm
+02,Meat,Food and farm
+03,Fish and seafood,Food and farm
+04,"Dairy, eggs, honey",Food and farm
+05,Other animal products,Food and farm
+06,Live plants and flowers,Food and farm
+07,Vegetables,Food and farm
+08,Fruit and nuts,Food and farm
+09,"Coffee, tea, spices",Food and farm
+10,Cereals,Food and farm
+11,Milling products,Food and farm
+12,Oil seeds,Food and farm
+13,"Gums, resins",Food and farm
+14,Other vegetable products,Food and farm
+15,Fats and oils,Food and farm
+16,Prepared meat and fish,Food and farm
+17,Sugar and sweets,Food and farm
+18,Cocoa and chocolate,Food and farm
+19,"Bakery, pasta, cereal foods",Food and farm
+20,Prepared fruit and vegetables,Food and farm
+21,Other prepared foods,Food and farm
+22,Beverages and spirits,Food and farm
+23,Animal feed,Food and farm
+24,Tobacco,Food and farm
+25,"Salt, stone, cement",Minerals and fuels
+26,Ores,Minerals and fuels
+27,"Oil, gas, coal",Minerals and fuels
+28,Inorganic chemicals,Chemicals and plastics
+29,Organic chemicals,Chemicals and plastics
+30,Pharmaceuticals,Chemicals and plastics
+31,Fertilizers,Chemicals and plastics
+32,"Paints, dyes, inks",Chemicals and plastics
+33,"Cosmetics, perfume",Chemicals and plastics
+34,"Soap, detergents, wax",Chemicals and plastics
+35,"Proteins, glues, enzymes",Chemicals and plastics
+36,"Explosives, matches",Chemicals and plastics
+37,Photographic supplies,Chemicals and plastics
+38,Other chemical products,Chemicals and plastics
+39,Plastics,Chemicals and plastics
+40,Rubber,Chemicals and plastics
+41,Hides and leather,Clothing and footwear
+42,"Handbags, luggage, leather goods",Clothing and footwear
+43,Furs,Clothing and footwear
+44,Wood,Wood and paper
+45,Cork,Wood and paper
+46,"Basketwork, wickerwork",Wood and paper
+47,Wood pulp,Wood and paper
+48,Paper and paperboard,Wood and paper
+49,"Books, printed matter",Wood and paper
+50,Silk,Clothing and footwear
+51,Wool,Clothing and footwear
+52,Cotton,Clothing and footwear
+53,Other plant fibers,Clothing and footwear
+54,Man-made filaments,Clothing and footwear
+55,Man-made staple fibers,Clothing and footwear
+56,"Wadding, rope, nonwovens",Clothing and footwear
+57,Carpets,Clothing and footwear
+58,Special woven fabrics,Clothing and footwear
+59,Coated and technical fabrics,Clothing and footwear
+60,Knitted fabrics,Clothing and footwear
+61,"Clothing, knitted",Clothing and footwear
+62,"Clothing, not knitted",Clothing and footwear
+63,Other textile articles,Clothing and footwear
+64,Footwear,Clothing and footwear
+65,Headwear,Clothing and footwear
+66,Umbrellas,Clothing and footwear
+67,"Feathers, artificial flowers",Clothing and footwear
+68,"Stone, plaster, cement articles",Metals and building materials
+69,Ceramics,Metals and building materials
+70,Glass,Metals and building materials
+71,"Gold, jewelry, precious metals",Metals and building materials
+72,Iron and steel,Metals and building materials
+73,Iron and steel articles,Metals and building materials
+74,Copper,Metals and building materials
+75,Nickel,Metals and building materials
+76,Aluminum,Metals and building materials
+78,Lead,Metals and building materials
+79,Zinc,Metals and building materials
+80,Tin,Metals and building materials
+81,Other base metals,Metals and building materials
+82,Tools and cutlery,Metals and building materials
+83,Misc. metal articles,Metals and building materials
+84,"Machinery, computers",Machinery and electronics
+85,Electrical and electronics,Machinery and electronics
+86,Railway equipment,Vehicles and transport
+87,Vehicles and parts,Vehicles and transport
+88,Aircraft,Vehicles and transport
+89,Ships and boats,Vehicles and transport
+90,"Medical, optical, measuring instruments",Machinery and electronics
+91,Clocks and watches,Machinery and electronics
+92,Musical instruments,Other manufactured goods
+93,Arms and ammunition,Other manufactured goods
+94,"Furniture, lighting, bedding",Other manufactured goods
+95,"Toys, games, sports equipment",Other manufactured goods
+96,Misc. manufactured articles,Other manufactured goods
+97,Art and antiques,Other manufactured goods
+98,Special classification (returns etc.),Special
+99,Special import provisions,Special
