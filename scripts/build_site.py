@@ -86,6 +86,33 @@ def simulator(con, latest_year):
     return out
 
 
+def tracker_data(con, built):
+    """Everything the tracker prototype needs: the sample company, the tariff rules, and for each product the
+    other countries it could come from (normal duty from 2024, freight share from the latest year)."""
+    sample = ROOT / "data/sample/company.json"
+    if not sample.exists() or not (ROOT / "data/raw/hs10_monthly.csv.gz").exists():
+        print("::warning::No sample company data; skipping the tracker")
+        return None
+    t = json.loads(sample.read_text())
+    t["rules"] = json.loads((ROOT / "config/tariff_rules.json").read_text())
+    t["built"] = built
+    con.execute("""CREATE OR REPLACE VIEW hs10m AS SELECT * FROM read_csv('data/raw/hs10_monthly.csv.gz',
+                   types = {'hs10': 'VARCHAR', 'cty_code': 'VARCHAR', 'month': 'VARCHAR'})""")
+    alts = rows(con, """
+        WITH base AS (
+            SELECT hs10, cty_code, SUM(calculated_duty) / SUM(consumption_imports) AS r, SUM(consumption_imports) AS v
+            FROM hs10m WHERE month LIKE '2024%' GROUP BY ALL),
+        latest AS (
+            SELECT hs10, cty_code, ytd_value, ytd_charges FROM hs10 WHERE year = (SELECT MAX(year) FROM hs10))
+        SELECT l.hs10, f.name AS country, 100 * b.r AS base_rate, 100 * l.ytd_charges / l.ytd_value AS freight_pct
+        FROM latest l JOIN focus f USING (cty_code) JOIN base b USING (hs10, cty_code)
+        WHERE l.cty_code <> '-' AND l.ytd_value >= 20e6 AND b.v >= 5e6""")
+    t["alternatives"] = {}
+    for a in alts:
+        t["alternatives"].setdefault(a["hs10"], []).append({"country": a["country"], "base_rate": r2(a["base_rate"]), "freight_pct": r2(a["freight_pct"])})
+    return t
+
+
 def main():
     con = duckdb.connect()
     con.execute(f"SET file_search_path = '{ROOT}'")
@@ -118,15 +145,21 @@ def main():
         "refunds": json.loads((ROOT / "data/reference/refunds.json").read_text()),
         "simulator": simulator(con, latest_year),
     }
+    tracker = tracker_data(con, data["built"])
     site = ROOT / "site"
     site.mkdir(exist_ok=True)
     blob = json.dumps(data, separators=(",", ":"), default=float)
     (site / "data.json").write_text(json.dumps(data, indent=1, default=float))
-    for tpl, out in [("story.html", "index.html"), ("simulator.html", "simulator.html")]:
+    if tracker:
+        (site / "tracker.json").write_text(json.dumps(tracker, indent=1))
+    for tpl, out in [("story.html", "index.html"), ("simulator.html", "simulator.html"), ("tracker.html", "tracker.html")]:
         path = ROOT / "templates" / tpl
         if path.exists():
             html = path.read_text().replace("/*__DATA__*/null", blob)
             html = html.replace("/*__RULES__*/", (ROOT / "templates/refund_rules.js").read_text())
+            html = html.replace("/*__ENGINE__*/", (ROOT / "templates/tariff_engine.js").read_text())
+            if tracker:
+                html = html.replace("/*__TRACKER__*/null", json.dumps(tracker, separators=(",", ":")))
             (site / out).write_text(html)
             print(f"Wrote site/{out}")
     print(f"Data through {latest}; simulator products: {len(data['simulator'])}")

@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tariff Desk · tariff and refund tracker (prototype) · Tariff Whiplash</title>
+<meta name="description" content="A working prototype of a tariff exposure and refund tracker for an importer, built from a business requirements document. Sample company; real tariff rules and costs.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2318222f'/%3E%3Cpath d='M5 22 L11 22 L14 9 L18 25 L21 14 L27 14' fill='none' stroke='%23f08c3a' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f3f1ec; --panel: #ffffff; --side: #17202c; --side-ink: #c9cfd6; --side-active: #ffffff;
+  --ink: #17202c; --muted: #555e6a; --faint: #6b727c; --line: #e2ddd3; --grid: #ece8e0; --hover: #f7f5f0;
+  --accent: #c4410c; --accent-soft: #fbe5d8; --ok: #1d7a4a; --ok-soft: #dcefe3; --warn: #a15c00; --warn-soft: #fbeccc; --bad: #b42318; --bad-soft: #fde4e1; --info: #1f63b8; --info-soft: #e1ecfa;
+  --p-base: #a59d90; --p-fen: #7a3e9d; --p-rec: #c4410c; --p-oil: #e08a3c; --p-122: #1f63b8; --p-301: #0f7a6c; --p-232: #5b6573; --p-whatif: #d6336c;
+  --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace; --serif: "Instrument Serif", Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e131a; --panel: #161d27; --side: #0a0e13; --side-ink: #9aa3ad; --side-active: #ffffff;
+    --ink: #e9e6df; --muted: #a7afb9; --faint: #8b939d; --line: #29323e; --grid: #222a35; --hover: #1b2330;
+    --accent: #ff8a4c; --accent-soft: #3d2416; --ok: #5cc97a; --ok-soft: #173326; --warn: #f0b04a; --warn-soft: #3a2c12; --bad: #ff7a6b; --bad-soft: #3d1a17; --info: #6aa8ff; --info-soft: #172a45;
+    --p-base: #6d665c; --p-fen: #b07ad3; --p-rec: #ff8a4c; --p-oil: #f0b04a; --p-122: #6aa8ff; --p-301: #3fc1ad; --p-232: #9aa3ad; --p-whatif: #f06595;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 var(--sans); }
+a { color: inherit; }
+button { font: inherit; }
+.num { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--mono); font-size: 12px; }
+.muted { color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.app { display: grid; grid-template-columns: 232px minmax(0, 1fr); min-height: 100vh; }
+aside.side { background: var(--side); color: var(--side-ink); padding: 18px 14px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 18px; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--side-active); font-weight: 700; font-size: 16px; padding: 0 6px; }
+.logo svg { width: 26px; height: 26px; }
+.org { padding: 10px; border: 1px solid #2a3542; border-radius: 9px; font-size: 13px; }
+.org b { color: var(--side-active); display: block; font-weight: 600; }
+.sample-tag { display: inline-block; margin-top: 6px; font: 500 10.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; background: #3d2416; color: #ffb48a; padding: 4px 6px; border-radius: 4px; }
+nav.menu { display: grid; gap: 2px; }
+nav.menu button { all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 7px; color: var(--side-ink); font-size: 14px; }
+nav.menu button:hover { background: #1f2a37; color: var(--side-active); }
+nav.menu button[aria-current=page] { background: #243140; color: var(--side-active); font-weight: 600; }
+nav.menu button:focus-visible { outline: 2px solid var(--accent); }
+nav.menu svg { width: 17px; height: 17px; flex: none; }
+nav.menu .count { margin-left: auto; font: 600 11px/1 var(--sans); background: var(--accent); color: #fff; border-radius: 99px; padding: 3px 7px; }
+.side-foot { margin-top: auto; font-size: 12px; line-height: 1.45; }
+.side-foot a { color: var(--side-active); }
+
+main { padding: 22px 28px 60px; min-width: 0; }
+.topbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.topbar h1 { font: 400 34px/1.05 var(--serif); margin: 0; }
+.topbar .sub { color: var(--muted); margin-top: 4px; }
+.asof { font: 500 12px var(--mono); color: var(--muted); background: var(--panel); border: 1px solid var(--line); padding: 6px 10px; border-radius: 7px; white-space: nowrap; }
+.banner { background: var(--warn-soft); color: var(--ink); border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); border-radius: 9px; padding: 9px 12px; margin-bottom: 16px; font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
+.banner b { color: var(--warn); }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+@media (max-width: 1100px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 11px; padding: 14px 16px; position: relative; overflow: hidden; }
+.kpi .l { color: var(--muted); font-size: 12.5px; font-weight: 500; }
+.kpi .v { font: 600 28px/1.15 var(--sans); letter-spacing: -.01em; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+.kpi .s { font-size: 12.5px; color: var(--muted); }
+.kpi.alert .v { color: var(--bad); }
+.kpi.good .v { color: var(--ok); }
+.kpi button.link { all: unset; cursor: pointer; color: var(--accent); font-size: 12.5px; font-weight: 600; }
+.kpi button.link:focus-visible { outline: 2px solid var(--accent); }
+
+.grid2 { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 14px; }
+@media (max-width: 1100px) { .grid2 { grid-template-columns: 1fr; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 11px; padding: 16px; min-width: 0; }
+.card h2 { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+.card .h2sub { color: var(--muted); font-size: 12.5px; margin-bottom: 12px; }
+.card + .card { margin-top: 14px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--sans); font-size: 11.5px; fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+.toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.toolbar .grow { flex: 1; }
+input[type=search], input[type=number], input[type=date], input[type=text], select { font: inherit; font-size: 13.5px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel); color: var(--ink); min-height: 36px; }
+input[type=search] { min-width: 220px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.seg button { border: 0; background: none; color: var(--muted); padding: 7px 11px; cursor: pointer; font-size: 13px; min-height: 34px; white-space: nowrap; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed=true] { background: var(--ink); color: var(--panel); }
+.btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 7px 13px; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 13.5px; min-height: 36px; display: inline-flex; align-items: center; gap: 7px; }
+.btn:hover { background: var(--hover); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+@media (prefers-color-scheme: dark) { .btn.primary { color: #17202c; } }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.tablewrap { overflow: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); max-height: calc(100vh - 230px); }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 13px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { position: sticky; top: 0; background: var(--panel); z-index: 1; font-weight: 600; font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); cursor: pointer; user-select: none; }
+th.r, td.r { text-align: right; font-variant-numeric: tabular-nums; }
+th[aria-sort=ascending]::after { content: " ▲"; font-size: 9px; }
+th[aria-sort=descending]::after { content: " ▼"; font-size: 9px; }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: var(--hover); }
+tbody tr.sel td { background: var(--info-soft); }
+td .sku { font: 500 12px var(--mono); color: var(--muted); }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 99px; white-space: nowrap; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.info { background: var(--info-soft); color: var(--info); }
+.pill.mute { background: var(--grid); color: var(--muted); }
+.bar { height: 8px; border-radius: 99px; background: var(--grid); overflow: hidden; width: 90px; display: inline-block; vertical-align: middle; }
+.bar i { display: block; height: 100%; }
+.delta-up { color: var(--bad); font-weight: 600; }
+.delta-down { color: var(--ok); font-weight: 600; }
+
+.drawer { position: fixed; top: 0; right: 0; width: min(520px, 100vw); height: 100vh; background: var(--panel); border-left: 1px solid var(--line); box-shadow: -12px 0 40px rgb(0 0 0 / .12); z-index: 30; overflow-y: auto; transform: translateX(100%); transition: transform .28s cubic-bezier(.3,.7,.2,1); padding: 20px 22px 40px; }
+.drawer.open { transform: none; }
+.scrim { position: fixed; inset: 0; background: rgb(0 0 0 / .25); z-index: 29; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+.drawer h3 { font: 400 28px/1.1 var(--serif); margin: 4px 0 4px; }
+.drawer .close { position: absolute; top: 14px; right: 14px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 13px; margin: 12px 0; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.breakdown { display: grid; gap: 6px; margin: 8px 0 14px; }
+.breakdown .row { display: grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; font-size: 13px; }
+.breakdown .row i { width: 10px; height: 10px; border-radius: 2px; }
+.breakdown .tot { border-top: 1px solid var(--line); padding-top: 6px; font-weight: 700; }
+.sect { font: 600 12px var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin: 18px 0 8px; }
+
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px 12px; align-items: end; }
+.form label { display: grid; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.impact { margin-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 900px) { .impact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.impact .kpi .v { font-size: 22px; }
+.err { color: var(--bad); font-size: 13px; margin-top: 8px; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--panel); padding: 10px 16px; border-radius: 9px; font-size: 13.5px; opacity: 0; transition: opacity .2s, transform .2s; z-index: 40; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%); }
+.tip { position: fixed; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; box-shadow: 0 6px 24px rgb(0 0 0 / .14); z-index: 50; }
+.audit li { padding: 9px 0; border-bottom: 1px solid var(--grid); list-style: none; display: grid; grid-template-columns: 150px 1fr; gap: 12px; }
+.audit { padding: 0; margin: 0; }
+.fr { font: 500 10.5px var(--mono); color: var(--faint); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; margin-left: 6px; white-space: nowrap; vertical-align: middle; }
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  aside.side { position: sticky; top: 0; height: auto; z-index: 20; padding: 10px 12px; flex-direction: row; align-items: center; gap: 10px; overflow-x: auto; }
+  .org, .side-foot { display: none; }
+  .logo span { display: none; }
+  nav.menu { display: flex; gap: 2px; }
+  nav.menu button { padding: 8px 10px; white-space: nowrap; font-size: 13px; }
+  nav.menu svg { display: none; }
+  main { padding: 16px 14px 60px; }
+  .tablewrap { max-height: none; }
+  input[type=search] { min-width: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition-duration: 0s !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#243140"/><path d="M5 22 L11 22 L14 9 L18 25 L21 14 L27 14" fill="none" stroke="#f08c3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Tariff Desk</span></div>
+    <div class="org"><b id="orgName"></b><span id="orgIor"></span><br><span class="sample-tag">Sample company</span></div>
+    <nav class="menu" aria-label="Tracker sections">
+      <button data-view="overview" aria-current="page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>Overview</button>
+      <button data-view="products"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6.5 10 3l7 3.5v7L10 17l-7-3.5z"/><path d="M3 6.5 10 10l7-3.5M10 10v7"/></svg>Products<span class="count" id="cntMargin" hidden></span></button>
+      <button data-view="entries"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h6M7 14h3"/></svg>Shipments &amp; refunds<span class="count" id="cntRisk" hidden></span></button>
+      <button data-view="rules"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h12M4 10h12M4 15h7"/><circle cx="15" cy="15" r="2"/></svg>Tariff rules</button>
+      <button data-view="audit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>Audit log</button>
+    </nav>
+    <div class="side-foot">A prototype built from a <a href="https://github.com/Shre0027/tariff-whiplash/blob/main/docs/requirements.md#part-b-tariff-exposure-and-refund-tracker-business-requirements">requirements document</a>. Tariff rules and cost levels are real; the company is invented.<br><br><a href="index.html">← Tariff Whiplash</a></div>
+  </aside>
+
+  <main id="main">
+    <div class="banner" role="note"><span>⚠</span><span><b>Sample data.</b> <span id="bannerText"></span></span></div>
+
+    <section data-panel="overview">
+      <div class="topbar"><div><h1>Overview</h1><div class="sub">Tariff costs and refunds for <span class="orgName2"></span></div></div><div class="asof">As of <span class="asOf"></span></div></div>
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="card">
+          <h2>Duty paid by month, by tariff program</h2>
+          <div class="h2sub">What each tariff cost this company, from its own shipments</div>
+          <div class="chart" id="dutyChart"></div>
+          <div class="legend" id="dutyLegend"></div>
+        </div>
+        <div class="card">
+          <h2>Deadlines in the next 30 days <span class="fr">FR-7</span></h2>
+          <div class="h2sub">Entries that will pass the 80-day CAPE limit or the 180-day protest window</div>
+          <div id="deadlines"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Refund pipeline <span class="fr">FR-6 · FR-9</span></h2>
+        <div class="h2sub">IEEPA duty paid on this company's entries, by where it stands</div>
+        <div class="chart" id="pipeline"></div>
+      </div>
+    </section>
+
+    <section data-panel="products" hidden>
+      <div class="topbar"><div><h1>Products</h1><div class="sub">Landed cost and margin per SKU with tariffs in force today <span class="fr">FR-1 · FR-3 · FR-4</span></div></div><div class="asof">Margin alert below <b id="mThr"></b></div></div>
+      <div class="toolbar">
+        <input type="search" id="pSearch" placeholder="Search SKU, product, country, HTS code" aria-label="Search products">
+        <div class="seg" role="group" aria-label="Filter products" id="pFilter">
+          <button data-v="all" aria-pressed="true">All</button><button data-v="below" aria-pressed="false">Below margin</button><button data-v="whatif" aria-pressed="false">Hit by what-if</button>
+        </div>
+        <span class="grow"></span><span class="muted" id="pCount"></span>
+      </div>
+      <div class="tablewrap"><table id="pTable"></table></div>
+    </section>
+
+    <section data-panel="entries" hidden>
+      <div class="topbar"><div><h1>Shipments &amp; refunds</h1><div class="sub">Every import entry, its IEEPA duty and its refund route today <span class="fr">FR-5 · FR-6 · FR-8 · FR-9</span></div></div><div class="asof">As of <span class="asOf"></span></div></div>
+      <div class="toolbar">
+        <input type="search" id="eSearch" placeholder="Search entry, country, SKU" aria-label="Search entries">
+        <div class="seg" role="group" aria-label="Filter by route" id="eFilter"></div>
+        <span class="grow"></span>
+        <button class="btn primary" id="capeBtn" disabled>Download CAPE file</button>
+      </div>
+      <div class="muted" id="eSummary" style="margin:-2px 0 8px;font-size:12.5px"></div>
+      <div class="tablewrap"><table id="eTable"></table></div>
+    </section>
+
+    <section data-panel="rules" hidden>
+      <div class="topbar"><div><h1>Tariff rules</h1><div class="sub">Every additional tariff as a rule with dates, exemptions and a source <span class="fr">FR-2 · FR-4 · FR-11</span></div></div></div>
+      <div class="card">
+        <h2>What if a new tariff is announced? <span class="fr">FR-4</span></h2>
+        <div class="h2sub">Add a rule; every affected SKU's landed cost and margin is recalculated at once. Nothing is saved to the real rules.</div>
+        <form class="form" id="wiForm" onsubmit="return false">
+          <label>Countries<select id="wiCountry"></select></label>
+          <label>HTS code starts with (blank = all)<input type="text" id="wiHs" inputmode="numeric" placeholder="e.g. 6109" maxlength="10"></label>
+          <label>Additional rate (%)<input type="number" id="wiRate" value="15" min="0" max="200" step="0.5"></label>
+          <label>Starts<input type="date" id="wiDate"></label>
+          <label>Exempt goods under Section 232<select id="wiS232"><option value="yes">Yes</option><option value="no">No</option></select></label>
+          <div style="display:flex;gap:8px"><button class="btn primary" id="wiApply" type="submit">Run what-if</button><button class="btn" id="wiClear" type="button" disabled>Clear</button></div>
+        </form>
+        <div class="err" id="wiErr" role="alert"></div>
+        <div id="wiImpact"></div>
+      </div>
+      <div class="card">
+        <h2>Rules in force and past</h2>
+        <div class="h2sub">From <span class="mono">config/tariff_rules.json</span>. Checked against the duty Census recorded: <a href="https://github.com/Shre0027/tariff-whiplash/blob/main/docs/rule-validation.md">rule validation</a></div>
+        <div class="tablewrap" style="max-height:none"><table id="rTable"></table></div>
+      </div>
+    </section>
+
+    <section data-panel="audit" hidden>
+      <div class="topbar"><div><h1>Audit log</h1><div class="sub">Who changed what, and when <span class="fr">FR-12</span></div></div></div>
+      <div class="card"><ul class="audit" id="audit"></ul></div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-modal="true" role="dialog" aria-labelledby="dTitle"><button class="btn close" id="dClose" aria-label="Close">✕</button><div id="dBody"></div></aside>
+<div class="toast" id="toast" role="status"></div>
+<div class="tip" id="tip" hidden></div>
+
+<script>/*__RULES__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>
+const T = /*__TRACKER__*/null;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const NS = "http://www.w3.org/2000/svg";
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const usd = (v, d = 0) => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const usdK = v => Math.abs(v) >= 1e6 ? usd(v / 1e6, 2) + "M" : Math.abs(v) >= 1e4 ? usd(v / 1e3, 0) + "K" : usd(v, 0);
+const pct = (v, d = 1) => v == null || isNaN(v) ? "—" : (+v).toFixed(d) + "%";
+const fmtDate = s => s ? new Date(s + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }) : "—";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function el(t, a = {}, p) { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+function txt(p, x, y, s, a = {}) { const { fill, ...r } = a; const t = el("text", { x, y, ...r }, p); if (fill) t.style.fill = fill; t.textContent = s; return t; }
+
+const C = T.company, TODAY = T.as_of;
+const engine = TariffEngine.create(T.rules);
+const SKU = Object.fromEntries(T.skus.map(s => [s.sku, s]));
+const CLAIM = Object.fromEntries(T.claims.map(c => [c.entry, c]));
+const IEEPA = p => p.startsWith("IEEPA");
+const PROG = [["Normal duty", "--p-base"], ["IEEPA fentanyl", "--p-fen"], ["IEEPA reciprocal", "--p-rec"], ["IEEPA Russian oil (India)", "--p-oil"], ["Section 122 surcharge", "--p-122"], ["Section 301 (2026)", "--p-301"], ["Section 232 (upholstered wood furniture)", "--p-232"], ["What-if", "--p-whatif"]];
+const progColor = p => css((PROG.find(x => x[0] === p) || PROG[PROG.length - 1])[1]);
+const progShort = p => p.replace("Section 232 (upholstered wood furniture)", "Section 232 (furniture)").replace("IEEPA Russian oil (India)", "IEEPA India oil");
+
+$("#orgName").textContent = C.name; $("#orgIor").textContent = "Importer of record " + C.importer_of_record;
+$$(".orgName2").forEach(e => e.textContent = C.name);
+$$(".asOf").forEach(e => e.textContent = fmtDate(TODAY));
+$("#bannerText").textContent = C.note;
+$("#mThr").textContent = C.margin_threshold_pct + "%";
+
+/* ---------- audit log (FR-12): kept in this browser only ---------- */
+let audit = [];
+try { audit = JSON.parse(localStorage.getItem("td-audit") || "[]"); } catch (e) { audit = []; }
+if (!audit.length) audit = [{ at: T.built + "T09:00:00Z", who: "System", what: `Rules loaded: ${T.rules.rules.length} tariff rules from config/tariff_rules.json; sample data for ${C.name} (${T.skus.length} SKUs, ${T.entries.length} entries).` }];
+function log(what) {
+  audit.unshift({ at: new Date().toISOString(), who: "You (this browser)", what });
+  try { localStorage.setItem("td-audit", JSON.stringify(audit.slice(0, 200))); } catch (e) {}
+  drawAudit();
+}
+function drawAudit() {
+  const ul = $("#audit"); ul.replaceChildren();
+  audit.forEach(a => { const li = document.createElement("li"); li.innerHTML = `<span class="mono muted">${esc(new Date(a.at).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }))}</span><span><b>${esc(a.who)}</b> · ${esc(a.what)}</span>`; ul.appendChild(li); });
+}
+
+/* ---------- calculations ---------- */
+let whatIf = null;     // an extra rule from the what-if form
+function skuDuty(s, date, extra) {
+  return engine.duty({ date, hs10: s.hs10, country: s.country, usmca: s.usmca, baseRate: s.base_rate, extraRules: extra ? [extra] : null });
+}
+function skuEcon(s, extra) {
+  const d = skuDuty(s, extra ? (extra.from > TODAY ? extra.from : TODAY) : TODAY, extra);
+  const landed = s.unit_cost * (1 + d.total / 100) + s.freight_per_unit;
+  const margin = 100 * (s.price - landed) / s.price;
+  return { duty: d, landed, margin };
+}
+// Each entry: lines with duty by program at the entry date
+const ENT = T.entries.map(e => {
+  const lines = e.lines.map(l => {
+    const s = SKU[l.sku], value = s.unit_cost * l.units, d = skuDuty(s, e.date);
+    const byProg = { "Normal duty": value * d.base / 100 };
+    d.lines.forEach(x => byProg[x.program] = (byProg[x.program] || 0) + value * x.rate / 100);
+    return { ...l, s, value, byProg };
+  });
+  const byProg = {};
+  lines.forEach(l => Object.entries(l.byProg).forEach(([k, v]) => byProg[k] = (byProg[k] || 0) + v));
+  const value = lines.reduce((a, l) => a + l.value, 0);
+  const ieepa = Object.entries(byProg).filter(([k]) => IEEPA(k)).reduce((a, [, v]) => a + v, 0);
+  const total = Object.values(byProg).reduce((a, v) => a + v, 0);
+  const route = RefundRules.refundRoute({ entryDate: e.date, entryType: e.type, liquidated: e.liquidated, liquidationDate: e.liquidation_date, courtOrder: false, achEnrolled: true, today: TODAY });
+  const claim = CLAIM[e.entry] || null;
+  let daysLeft = null, deadline = null;
+  if (ieepa > 0 && e.liquidated) {
+    const since = RefundRules.days(e.liquidation_date, TODAY);
+    if (since <= 80) { daysLeft = 80 - since; deadline = "CAPE 80-day limit"; }
+    else if (since <= 180) { daysLeft = 180 - since; deadline = "Protest window"; }
+  }
+  let status;
+  if (ieepa <= 0) status = { k: "none", label: "No IEEPA duty", cls: "mute" };
+  else if (claim && claim.status === "paid") status = { k: "paid", label: "Refund paid", cls: "ok" };
+  else if (claim && claim.status === "accepted") status = { k: "filed", label: "Filed · accepted", cls: "info" };
+  else if (claim && claim.status === "rejected") status = { k: "rejected", label: "Rejected · fix and refile", cls: "bad" };
+  else if (route.route === "cape") status = { k: "tofile", label: "To file · Phase " + route.phase, cls: "warn" };
+  else if (route.route === "protest") status = { k: "protest", label: "Protest needed", cls: "bad" };
+  else status = { k: "court", label: "Court action only", cls: "bad" };
+  return { ...e, lines, byProg, value, ieepa, total, route, claim, daysLeft, deadline, status };
+});
+const RISK = ENT.filter(e => e.daysLeft != null && e.daysLeft <= 14 && !["paid", "filed"].includes(e.status.k));
+
+/* ---------- navigation ---------- */
+function show(view) {
+  $$("nav.menu button").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  $$("[data-panel]").forEach(p => p.hidden = p.dataset.panel !== view);
+  history.replaceState(null, "", "#" + view);
+  ({ overview: drawOverview, products: drawProducts, entries: drawEntries, rules: drawRules, audit: drawAudit })[view]();
+  window.scrollTo(0, 0);
+}
+$$("nav.menu button").forEach(b => b.addEventListener("click", () => show(b.dataset.view)));
+
+/* ---------- overview ---------- */
+function drawOverview() {
+  const open = ENT.filter(e => e.ieepa > 0 && !["paid", "none"].includes(e.status.k));
+  const paid = ENT.filter(e => e.status.k === "paid");
+  const lost = ENT.filter(e => ["court"].includes(e.status.k));
+  const below = T.skus.filter(s => skuEcon(s).margin < C.margin_threshold_pct);
+  const sum = (a, f) => a.reduce((x, e) => x + f(e), 0);
+  const k = $("#kpis");
+  k.innerHTML = `
+    <div class="kpi"><div class="l">IEEPA duty still to recover</div><div class="v num">${usdK(sum(open, e => e.ieepa))}</div><div class="s">${open.length} entries open · <button class="link" data-go="entries">View</button></div></div>
+    <div class="kpi alert"><div class="l">At risk in the next 14 days</div><div class="v num">${usdK(sum(RISK, e => e.ieepa))}</div><div class="s">${RISK.length} entries near a deadline</div></div>
+    <div class="kpi good"><div class="l">Refunds paid</div><div class="v num">${usdK(sum(paid, e => e.ieepa))}</div><div class="s">${paid.length} entries</div></div>
+    <div class="kpi ${below.length ? "alert" : ""}"><div class="l">SKUs below ${C.margin_threshold_pct}% margin today</div><div class="v num">${below.length} of ${T.skus.length}</div><div class="s"><button class="link" data-go="products" data-f="below">Review</button></div></div>`;
+  k.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => { show(b.dataset.go); if (b.dataset.f) setPFilter(b.dataset.f); }));
+  drawDutyChart(); drawDeadlines(); drawPipeline();
+}
+function drawDutyChart() {
+  const box = $("#dutyChart"), W = Math.max(320, box.clientWidth), H = 250, m = { t: 10, r: 6, b: 24, l: 46 };
+  const months = []; for (let d = new Date(Date.UTC(2025, 0, 1)); d.toISOString().slice(0, 7) <= TODAY.slice(0, 7); d.setUTCMonth(d.getUTCMonth() + 1)) months.push(d.toISOString().slice(0, 7));
+  const progs = PROG.map(p => p[0]).filter(p => p !== "What-if");
+  const data = months.map(mm => { const o = {}; progs.forEach(p => o[p] = 0); ENT.filter(e => e.date.startsWith(mm)).forEach(e => Object.entries(e.byProg).forEach(([k, v]) => o[k] = (o[k] || 0) + v)); return o; });
+  const max = Math.max(...data.map(o => Object.values(o).reduce((a, b) => a + b, 0))) * 1.08;
+  box.replaceChildren();
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Stacked bar chart of duty paid by month and tariff program" }, box);
+  const sy = v => H - m.b - (H - m.t - m.b) * v / max, bw = (W - m.l - m.r) / months.length;
+  const step = max > 4e5 ? 1e5 : max > 2e5 ? 5e4 : 2.5e4;
+  for (let v = 0; v <= max; v += step) { el("line", { x1: m.l, x2: W - m.r, y1: sy(v), y2: sy(v), stroke: css("--grid") }, svg); txt(svg, m.l - 6, sy(v) + 4, usdK(v), { "text-anchor": "end" }); }
+  const tip = $("#tip");
+  data.forEach((o, i) => {
+    let acc = 0; const x = m.l + i * bw + bw * .15, w = bw * .7;
+    progs.forEach(p => { const v = o[p] || 0; if (!v) return; el("rect", { x, y: sy(acc + v), width: w, height: sy(acc) - sy(acc + v), fill: progColor(p) }, svg); acc += v; });
+    if (months[i].endsWith("-01") || i === 0) txt(svg, x + w / 2, H - 6, months[i].slice(0, 4), { "text-anchor": "middle" });
+    const hit = el("rect", { x: m.l + i * bw, y: m.t, width: bw, height: H - m.t - m.b, fill: "transparent" }, svg);
+    hit.addEventListener("pointermove", ev => {
+      const tot = Object.values(o).reduce((a, b) => a + b, 0);
+      tip.innerHTML = `<b>${new Date(months[i] + "-01T00:00:00Z").toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" })}</b><br>` + progs.filter(p => o[p] > 0).map(p => `<span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${progColor(p)}"></span> ${esc(progShort(p))}: ${usd(o[p])}`).join("<br>") + `<br><b>Total ${usd(tot)}</b>`;
+      tip.hidden = false; tip.style.left = Math.min(ev.clientX + 14, innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = Math.max(8, ev.clientY - tip.offsetHeight - 10) + "px";
+    });
+    hit.addEventListener("pointerleave", () => tip.hidden = true);
+  });
+  $("#dutyLegend").innerHTML = progs.filter(p => data.some(o => o[p] > 0)).map(p => `<span><i style="background:${progColor(p)}"></i>${esc(progShort(p))}</span>`).join("");
+}
+function drawDeadlines() {
+  const list = ENT.filter(e => e.daysLeft != null && e.daysLeft <= 30 && !["paid", "filed"].includes(e.status.k)).sort((a, b) => a.daysLeft - b.daysLeft);
+  const box = $("#deadlines");
+  if (!list.length) { box.innerHTML = `<p class="muted">No entries reach a deadline in the next 30 days.</p>`; return; }
+  box.innerHTML = `<div class="tablewrap" style="max-height:300px"><table><thead><tr><th>Entry</th><th>Deadline</th><th class="r">Days left</th><th class="r">IEEPA duty</th></tr></thead><tbody>${list.map(e =>
+    `<tr data-e="${esc(e.entry)}"><td class="mono">${esc(e.entry)}</td><td>${esc(e.deadline)}</td><td class="r"><span class="pill ${e.daysLeft <= 7 ? "bad" : e.daysLeft <= 14 ? "warn" : "mute"}">${e.daysLeft} days</span></td><td class="r">${usd(e.ieepa)}</td></tr>`).join("")}</tbody></table></div>`;
+  box.querySelectorAll("tr[data-e]").forEach(r => r.addEventListener("click", () => openEntry(r.dataset.e)));
+}
+function drawPipeline() {
+  const groups = [["paid", "Refund paid", "--ok"], ["filed", "Filed, awaiting payment", "--info"], ["tofile", "Eligible, not filed yet", "--warn"], ["rejected", "Rejected, needs fixing", "--bad"], ["protest", "Needs a protest", "--p-oil"], ["court", "Court action only", "--p-232"]];
+  const tot = ENT.reduce((a, e) => a + e.ieepa, 0);
+  const box = $("#pipeline"), W = Math.max(320, box.clientWidth), H = 76;
+  box.replaceChildren();
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Refund pipeline" }, box);
+  let x = 0;
+  groups.forEach(([k, label, c]) => {
+    const list = ENT.filter(e => e.status.k === k), v = list.reduce((a, e) => a + e.ieepa, 0); if (!v) return;
+    const w = (W - 2) * v / tot;
+    el("rect", { x, y: 0, width: Math.max(1, w - 2), height: 30, rx: 4, fill: css(c) }, svg);
+    if (w > 110) { txt(svg, x + 8, 50, label, { fill: css("--ink"), "font-weight": 600 }); txt(svg, x + 8, 66, `${usdK(v)} · ${list.length} entries`); }
+    else if (w > 44) txt(svg, x + 4, 50, usdK(v), { fill: css("--ink"), "font-weight": 600 });
+    x += w;
+  });
+}
+
+/* ---------- products ---------- */
+let pSort = { k: "margin", dir: 1 }, pFilt = "all";
+function setPFilter(v) { pFilt = v; $$("#pFilter button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === v)); drawProducts(); }
+$$("#pFilter button").forEach(b => b.addEventListener("click", () => setPFilter(b.dataset.v)));
+$("#pSearch").addEventListener("input", drawProducts);
+function drawProducts() {
+  const q = $("#pSearch").value.trim().toLowerCase();
+  let rows = T.skus.map(s => { const now = skuEcon(s), wi = whatIf ? skuEcon(s, whatIf) : null; return { s, now, wi, hit: wi && Math.abs(wi.landed - now.landed) > .005 }; });
+  if (q) rows = rows.filter(r => [r.s.sku, r.s.name, r.s.product, r.s.country, r.s.hs10, r.s.supplier].join(" ").toLowerCase().includes(q));
+  if (pFilt === "below") rows = rows.filter(r => (r.wi || r.now).margin < C.margin_threshold_pct);
+  if (pFilt === "whatif") rows = rows.filter(r => r.hit);
+  const key = { sku: r => r.s.sku, name: r => r.s.name, country: r => r.s.country, hs: r => r.s.hs10, cost: r => r.s.unit_cost, rate: r => (r.wi || r.now).duty.total, landed: r => (r.wi || r.now).landed, price: r => r.s.price, margin: r => (r.wi || r.now).margin };
+  rows.sort((a, b) => { const x = key[pSort.k](a), y = key[pSort.k](b); return (x > y ? 1 : x < y ? -1 : 0) * pSort.dir; });
+  $("#pCount").textContent = `${rows.length} SKUs`;
+  const cols = [["sku", "SKU"], ["name", "Product"], ["country", "Origin"], ["hs", "HTS code"], ["cost", "Unit cost", 1], ["rate", "Duty rate now", 1], ["landed", "Landed cost", 1], ["price", "Selling price", 1], ["margin", "Margin", 1]];
+  const t = $("#pTable");
+  t.innerHTML = `<thead><tr>${cols.map(([k, l, r]) => `<th class="${r ? "r" : ""}" data-k="${k}" ${pSort.k === k ? `aria-sort="${pSort.dir > 0 ? "ascending" : "descending"}"` : ""} tabindex="0">${l}</th>`).join("")}</tr></thead><tbody>${rows.map(r => {
+    const e = r.wi || r.now, low = e.margin < C.margin_threshold_pct;
+    const dl = r.hit ? ` <span class="delta-up">+${(r.wi.duty.total - r.now.duty.total).toFixed(1)}</span>` : "";
+    return `<tr data-s="${r.s.sku}"><td><span class="sku">${r.s.sku}</span></td><td>${esc(r.s.name)}</td><td>${esc(r.s.country)}${r.s.usmca ? ' <span class="pill info" title="Qualifies for USMCA">USMCA</span>' : ""}</td><td class="mono">${r.s.hs10.replace(/(\d{4})(\d{2})(\d{4})/, "$1.$2.$3")}</td><td class="r">${usd(r.s.unit_cost, 2)}</td><td class="r">${pct(e.duty.total)}${dl}</td><td class="r">${usd(e.landed, 2)}</td><td class="r">${usd(r.s.price, 2)}</td><td class="r"><span class="pill ${low ? "bad" : "ok"}">${pct(e.margin, 0)}</span></td></tr>`;
+  }).join("")}</tbody>`;
+  t.querySelectorAll("th").forEach(th => { const go = () => { pSort = { k: th.dataset.k, dir: pSort.k === th.dataset.k ? -pSort.dir : 1 }; drawProducts(); }; th.addEventListener("click", go); th.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } }); });
+  t.querySelectorAll("tbody tr").forEach(r => r.addEventListener("click", () => openSku(r.dataset.s)));
+  const n = T.skus.filter(s => (whatIf ? skuEcon(s, whatIf) : skuEcon(s)).margin < C.margin_threshold_pct).length;
+  $("#cntMargin").textContent = n; $("#cntMargin").hidden = !n;
+}
+
+/* ---------- SKU drawer: breakdown, history (FR-11), compare origins (FR-10) ---------- */
+function openDrawer(html) { $("#dBody").innerHTML = html; $("#drawer").classList.add("open"); $("#scrim").classList.add("open"); $("#dClose").focus(); }
+function closeDrawer() { $("#drawer").classList.remove("open"); $("#scrim").classList.remove("open"); }
+$("#dClose").addEventListener("click", closeDrawer); $("#scrim").addEventListener("click", closeDrawer);
+addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+function breakdownHTML(s, d) {
+  const v = s.unit_cost;
+  const rows = [["Normal duty", d.base], ...d.lines.map(l => [l.whatIf ? "What-if" : l.program, l.rate])];
+  return `<div class="breakdown">${rows.map(([p, r]) => `<div class="row"><i style="background:${progColor(p)}"></i><span>${esc(progShort(p))}</span><span class="num">${pct(r)} · ${usd(v * r / 100, 2)}</span></div>`).join("")}
+    <div class="row tot"><span></span><span>Total duty per ${esc(s.per)}</span><span class="num">${pct(d.total)} · ${usd(v * d.total / 100, 2)}</span></div></div>
+    ${d.exemptions.length ? `<div class="muted" style="font-size:12.5px">Not applied: ${d.exemptions.map(esc).join("; ")}</div>` : ""}`;
+}
+function openSku(id) {
+  const s = SKU[id], e = whatIf ? skuEcon(s, whatIf) : skuEcon(s);
+  // rate history: one point per week from Jan 2025 to today (and the what-if start if later)
+  const pts = []; for (let d = new Date(Date.UTC(2025, 0, 1)); d.toISOString().slice(0, 10) <= TODAY; d.setUTCDate(d.getUTCDate() + 7)) { const ds = d.toISOString().slice(0, 10); pts.push([ds, skuDuty(s, ds).total]); }
+  const alts = (T.alternatives[s.hs10] || []).map(a => { const sim = { ...s, country: a.country, base_rate: a.base_rate, usmca: a.country === "Mexico" || a.country === "Canada" ? true : false }; const d = skuDuty(sim, TODAY, whatIf); return { ...a, rate: d.total, perHundred: 100 + a.freight_pct + d.total }; }).sort((a, b) => a.perHundred - b.perHundred);
+  openDrawer(`<div class="mono muted">${s.sku} · ${s.hs10.replace(/(\d{4})(\d{2})(\d{4})/, "$1.$2.$3")}</div><h3 id="dTitle">${esc(s.name)}</h3><div class="muted">${esc(s.supplier)} · ${esc(s.country)}${s.usmca ? " · qualifies for USMCA" : ""}</div>
+    <dl class="kv"><dt>Unit cost (customs value)</dt><dd>${usd(s.unit_cost, 2)}</dd><dt>Freight and insurance</dt><dd>${usd(s.freight_per_unit, 2)}</dd><dt>Duty${whatIf ? " (with what-if)" : " today"}</dt><dd>${usd(s.unit_cost * e.duty.total / 100, 2)}</dd><dt><b>Landed cost</b></dt><dd><b>${usd(e.landed, 2)}</b></dd><dt>Selling price</dt><dd>${usd(s.price, 2)}</dd><dt>Margin</dt><dd><span class="pill ${e.margin < C.margin_threshold_pct ? "bad" : "ok"}">${pct(e.margin, 1)}</span></dd></dl>
+    <div class="sect">Duty breakdown <span class="fr">FR-3</span></div>${breakdownHTML(s, e.duty)}
+    <div class="sect">Duty rate since January 2025 <span class="fr">FR-11</span></div><div class="chart" id="hist"></div>
+    <div class="sect">Same product from other countries, today <span class="fr">FR-10</span></div>
+    <div class="muted" style="font-size:12.5px;margin-bottom:6px">Cost to land $100 of goods: freight share from Census for that country, duty from the rules${whatIf ? " (with your what-if)" : ""}.</div>
+    <table><thead><tr><th>Country</th><th class="r">Freight</th><th class="r">Duty</th><th class="r">Per $100</th></tr></thead><tbody>${alts.map(a => `<tr${a.country === s.country ? ' class="sel"' : ""}><td>${esc(a.country)}${a.country === s.country ? " (current)" : ""}</td><td class="r">${pct(a.freight_pct)}</td><td class="r">${pct(a.rate)}</td><td class="r"><b>${usd(a.perHundred, 2)}</b></td></tr>`).join("")}</tbody></table>`);
+  const box = $("#hist"), W = box.clientWidth || 460, H = 140, m = { t: 8, r: 8, b: 20, l: 34 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Duty rate over time" }, box);
+  const max = Math.max(10, ...pts.map(p => p[1])) * 1.1, sx = i => m.l + (W - m.l - m.r) * i / (pts.length - 1), sy = v => H - m.b - (H - m.t - m.b) * v / max;
+  [0, max / 2, max].forEach(v => { el("line", { x1: m.l, x2: W - m.r, y1: sy(v), y2: sy(v), stroke: css("--grid") }, svg); txt(svg, m.l - 5, sy(v) + 4, Math.round(v) + "%", { "text-anchor": "end" }); });
+  const d = pts.map((p, i) => (i ? (`H${sx(i).toFixed(1)}V${sy(p[1]).toFixed(1)}`) : `M${sx(0)} ${sy(p[1])}`)).join("");
+  el("path", { d, fill: "none", stroke: css("--accent"), "stroke-width": 2 }, svg);
+  ["2025", "2026"].forEach(y => { const i = pts.findIndex(p => p[0].startsWith(y)); if (i >= 0) txt(svg, sx(i), H - 4, y, { "text-anchor": "start" }); });
+}
+
+/* ---------- entries ---------- */
+const ROUTES = [["all", "All"], ["tofile", "To file"], ["risk", "Deadline ≤14 days"], ["rejected", "Rejected"], ["protest", "Protest"], ["court", "Court"], ["done", "Filed or paid"]];
+let eFilt = "all", eSort = { k: "date", dir: -1 }, selected = new Set();
+$("#eFilter").innerHTML = ROUTES.map(([k, l]) => `<button data-v="${k}" aria-pressed="${k === "all"}">${l}</button>`).join("");
+$$("#eFilter button").forEach(b => b.addEventListener("click", () => { eFilt = b.dataset.v; $$("#eFilter button").forEach(x => x.setAttribute("aria-pressed", x === b)); drawEntries(); }));
+$("#eSearch").addEventListener("input", drawEntries);
+function drawEntries() {
+  const q = $("#eSearch").value.trim().toLowerCase();
+  let rows = ENT.slice();
+  if (q) rows = rows.filter(e => [e.entry, e.country, e.type, ...e.lines.map(l => l.sku + " " + l.s.name)].join(" ").toLowerCase().includes(q));
+  const f = { tofile: e => e.status.k === "tofile", risk: e => RISK.includes(e), rejected: e => e.status.k === "rejected", protest: e => e.status.k === "protest", court: e => e.status.k === "court", done: e => ["paid", "filed"].includes(e.status.k) }[eFilt];
+  if (f) rows = rows.filter(f);
+  const key = { entry: e => e.entry, date: e => e.date, country: e => e.country, value: e => e.value, ieepa: e => e.ieepa, liq: e => e.liquidation_date || "9", days: e => e.daysLeft ?? 9999, status: e => e.status.label };
+  rows.sort((a, b) => { const x = key[eSort.k](a), y = key[eSort.k](b); return (x > y ? 1 : x < y ? -1 : 0) * eSort.dir; });
+  const sum = rows.reduce((a, e) => a + e.ieepa, 0);
+  $("#eSummary").textContent = `${rows.length} entries · IEEPA duty ${usd(sum)} · select entries routed to CAPE to build an upload file`;
+  const cols = [["sel", ""], ["entry", "Entry"], ["date", "Entered"], ["country", "Origin"], ["value", "Goods value", 1], ["ieepa", "IEEPA duty", 1], ["liq", "Liquidated"], ["days", "Days to deadline", 1], ["status", "Refund status"]];
+  const t = $("#eTable");
+  t.innerHTML = `<thead><tr>${cols.map(([k, l, r]) => k === "sel" ? `<th style="width:34px"><input type="checkbox" id="selAll" aria-label="Select all entries that can be filed in CAPE"></th>` : `<th class="${r ? "r" : ""}" data-k="${k}" ${eSort.k === k ? `aria-sort="${eSort.dir > 0 ? "ascending" : "descending"}"` : ""} tabindex="0">${l}</th>`).join("")}</tr></thead><tbody>${rows.map(e => {
+    const can = e.status.k === "tofile" || e.status.k === "rejected";
+    return `<tr data-e="${esc(e.entry)}"><td>${can ? `<input type="checkbox" class="pick" data-e="${esc(e.entry)}" ${selected.has(e.entry) ? "checked" : ""} aria-label="Select ${esc(e.entry)}">` : ""}</td><td class="mono">${esc(e.entry)}${e.type !== "regular" ? ' <span class="pill mute">Type 09</span>' : ""}</td><td>${fmtDate(e.date)}</td><td>${esc(e.country)}</td><td class="r">${usd(e.value)}</td><td class="r">${e.ieepa > 0 ? usd(e.ieepa) : "—"}</td><td>${e.liquidated ? fmtDate(e.liquidation_date) : '<span class="muted">Not yet</span>'}</td><td class="r">${e.daysLeft != null && !["paid", "filed"].includes(e.status.k) ? `<span class="pill ${e.daysLeft <= 7 ? "bad" : e.daysLeft <= 14 ? "warn" : "mute"}">${e.daysLeft} · ${e.deadline === "Protest window" ? "protest" : "CAPE"}</span>` : "—"}</td><td><span class="pill ${e.status.cls}">${esc(e.status.label)}</span></td></tr>`;
+  }).join("")}</tbody>`;
+  t.querySelectorAll("th[data-k]").forEach(th => { const go = () => { eSort = { k: th.dataset.k, dir: eSort.k === th.dataset.k ? -eSort.dir : 1 }; drawEntries(); }; th.addEventListener("click", go); th.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } }); });
+  t.querySelectorAll("tbody tr").forEach(r => r.addEventListener("click", ev => { if (ev.target.matches("input")) return; openEntry(r.dataset.e); }));
+  t.querySelectorAll(".pick").forEach(c => c.addEventListener("change", () => { c.checked ? selected.add(c.dataset.e) : selected.delete(c.dataset.e); capeState(); }));
+  $("#selAll").addEventListener("change", ev => { t.querySelectorAll(".pick").forEach(c => { c.checked = ev.target.checked; c.checked ? selected.add(c.dataset.e) : selected.delete(c.dataset.e); }); capeState(); });
+  capeState();
+  $("#cntRisk").textContent = RISK.length; $("#cntRisk").hidden = !RISK.length;
+}
+function capeState() { const b = $("#capeBtn"); b.disabled = !selected.size; b.textContent = selected.size ? `Download CAPE file (${selected.size})` : "Download CAPE file"; }
+/* FR-8: one column of entry numbers, at most 9,999 per file, one file per phase */
+$("#capeBtn").addEventListener("click", () => {
+  const picked = ENT.filter(e => selected.has(e.entry));
+  const byPhase = {}; picked.forEach(e => (byPhase[e.route.phase] = byPhase[e.route.phase] || []).push(e.entry));
+  Object.entries(byPhase).forEach(([ph, list]) => {
+    for (let i = 0; i < list.length; i += 9999) {
+      const csv = list.slice(i, i + 9999).join("\r\n") + "\r\n";
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+      a.download = `CAPE_phase${ph}_${TODAY}${list.length > 9999 ? "_" + (i / 9999 + 1) : ""}.csv`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    }
+  });
+  const total = picked.reduce((a, e) => a + e.ieepa, 0);
+  log(`Built CAPE upload file(s) for ${picked.length} entries (${Object.keys(byPhase).map(p => "Phase " + p).join(", ")}), IEEPA duty ${usd(total)}.`);
+  toast(`CAPE file ready: ${picked.length} entries, ${usd(total)} of IEEPA duty`);
+});
+function openEntry(id) {
+  const e = ENT.find(x => x.entry === id);
+  openDrawer(`<div class="mono muted">Entry ${esc(e.entry)} · ${e.type === "regular" ? "regular entry" : "reconciliation (type 09)"}</div><h3 id="dTitle">${esc(e.country)}, ${fmtDate(e.date)}</h3>
+    <div><span class="pill ${e.status.cls}">${esc(e.status.label)}</span></div>
+    <dl class="kv"><dt>Goods value</dt><dd>${usd(e.value)}</dd><dt>Total duty</dt><dd>${usd(e.total)}</dd><dt>of which IEEPA (refundable)</dt><dd><b>${usd(e.ieepa)}</b></dd><dt>Liquidated</dt><dd>${e.liquidated ? fmtDate(e.liquidation_date) + ` (${RefundRules.days(e.liquidation_date, TODAY)} days ago)` : "Not yet"}</dd>${e.claim ? `<dt>CAPE declaration</dt><dd>Phase ${e.claim.phase}, filed ${fmtDate(e.claim.submitted)}${e.claim.paid ? ", paid " + fmtDate(e.claim.paid) : ""}${e.claim.reason ? `<br><span style="color:var(--bad)">${esc(e.claim.reason)}</span>` : ""}</dd>` : ""}</dl>
+    <div class="sect">Refund route today <span class="fr">FR-6</span></div>
+    <div style="font-weight:600;margin-bottom:6px">${esc(e.route.title)}</div><ol style="margin:0 0 8px;padding-left:18px">${e.route.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>${e.route.warnings.map(w => `<div class="pill warn" style="white-space:normal">${esc(w)}</div>`).join("")}<div class="mono muted">Rule ${esc(e.route.rule)}</div>
+    <div class="sect">Duty by program</div><div class="breakdown">${Object.entries(e.byProg).filter(([, v]) => v > 0).map(([p, v]) => `<div class="row"><i style="background:${progColor(p)}"></i><span>${esc(progShort(p))}</span><span class="num">${usd(v)}</span></div>`).join("")}</div>
+    <div class="sect">Lines</div><table><thead><tr><th>SKU</th><th class="r">Units</th><th class="r">Value</th></tr></thead><tbody>${e.lines.map(l => `<tr><td><span class="sku">${l.sku}</span> ${esc(l.s.name)}</td><td class="r">${l.units.toLocaleString()}</td><td class="r">${usd(l.value)}</td></tr>`).join("")}</tbody></table>`);
+}
+
+/* ---------- rules + what-if (FR-2, FR-4) ---------- */
+(function () {
+  const countries = [...new Set(T.skus.map(s => s.country))].sort();
+  $("#wiCountry").innerHTML = `<option value="*">All countries</option>` + countries.map(c => `<option>${esc(c)}</option>`).join("");
+  $("#wiDate").value = TODAY;
+})();
+$("#wiApply").addEventListener("click", () => {
+  const err = $("#wiErr"); err.textContent = "";
+  const rate = parseFloat($("#wiRate").value), hs = $("#wiHs").value.trim(), from = $("#wiDate").value, c = $("#wiCountry").value;
+  if (isNaN(rate) || rate <= 0 || rate > 200) { err.textContent = "Enter a rate between 0.5% and 200%."; return; }
+  if (hs && !/^\d{2,10}$/.test(hs)) { err.textContent = "The HTS code must be 2 to 10 digits, or blank for all products."; return; }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(from)) { err.textContent = "Enter a start date."; return; }
+  whatIf = { id: "WHAT-IF", program: "What-if", whatIf: true, countries: [c], hs: hs ? [hs] : null, rate, from, to: null, exempt: $("#wiS232").value === "yes" ? ["s232"] : [] };
+  const res = T.skus.map(s => ({ s, a: skuEcon(s), b: skuEcon(s, whatIf) })).filter(r => Math.abs(r.b.landed - r.a.landed) > .005);
+  const newlyBelow = res.filter(r => r.a.margin >= C.margin_threshold_pct && r.b.margin < C.margin_threshold_pct);
+  const yearly = res.reduce((a, r) => a + (r.b.landed - r.a.landed) * r.s.units_per_month * 12, 0);
+  const avg = res.length ? res.reduce((a, r) => a + 100 * (r.b.landed / r.a.landed - 1), 0) / res.length : 0;
+  $("#wiImpact").innerHTML = `<div class="impact">
+    <div class="kpi"><div class="l">SKUs affected</div><div class="v num">${res.length} of ${T.skus.length}</div></div>
+    <div class="kpi"><div class="l">Average landed cost change</div><div class="v num">${res.length ? "+" + pct(avg) : "—"}</div></div>
+    <div class="kpi alert"><div class="l">Newly below ${C.margin_threshold_pct}% margin</div><div class="v num">${newlyBelow.length}</div></div>
+    <div class="kpi"><div class="l">Extra duty a year, at current volumes</div><div class="v num">${usdK(yearly)}</div></div></div>
+    ${res.length ? `<p style="margin:12px 0 0"><button class="btn" id="wiSee">See affected SKUs</button> ${newlyBelow.length ? `<span class="muted">Newly below margin: ${newlyBelow.map(r => esc(r.s.name) + " (" + esc(r.s.country) + ")").join(", ")}</span>` : ""}</p>` : `<p class="muted" style="margin-top:12px">No SKU in the catalog matches this rule${$("#wiS232").value === "yes" ? ", or every match is under Section 232" : ""}.</p>`}`;
+  const sb = $("#wiSee"); if (sb) sb.addEventListener("click", () => { show("products"); setPFilter("whatif"); });
+  $("#wiClear").disabled = false;
+  log(`Ran what-if: +${rate}% on ${c === "*" ? "all countries" : c}${hs ? ", HTS " + hs + "*" : ""} from ${from}${$("#wiS232").value === "yes" ? " (Section 232 goods exempt)" : ""}. ${res.length} SKUs affected, ${newlyBelow.length} newly below margin.`);
+});
+$("#wiClear").addEventListener("click", () => { whatIf = null; $("#wiImpact").innerHTML = ""; $("#wiClear").disabled = true; log("Cleared the what-if rule."); toast("What-if cleared"); });
+function drawRules() {
+  const r = T.rules.rules.slice().sort((a, b) => a.from.localeCompare(b.from));
+  $("#rTable").innerHTML = `<thead><tr><th>Rule</th><th>Program</th><th>Countries</th><th>Products</th><th class="r">Rate</th><th>From</th><th>To</th><th>Not applied to</th><th>Source</th></tr></thead><tbody>${r.map(x => `<tr style="cursor:default"><td class="mono">${esc(x.id)}</td><td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${progColor(x.program)}"></span> ${esc(progShort(x.program))}</td><td>${x.countries[0] === "*" ? "All" + (x.not_countries ? " except " + x.not_countries.join(", ") : "") : esc(x.countries.join(", "))}</td><td class="mono">${x.hs ? esc(x.hs.join(", ")) : "All"}</td><td class="r">${pct(x.rate)}</td><td>${fmtDate(x.from)}</td><td>${x.to ? fmtDate(x.to) : "In force"}</td><td>${esc((x.exempt || []).map(e => ({ usmca: "USMCA goods", s232: "Section 232 goods", electronics: "listed electronics" }[e])).join(", ") || "—")}</td><td><a href="${esc(x.source)}" target="_blank" rel="noopener">Source</a></td></tr>`).join("")}</tbody>`;
+}
+
+function toast(s) { const t = $("#toast"); t.textContent = s; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2600); }
+
+drawAudit();
+drawProducts(); drawEntries();
+show((["overview", "products", "entries", "rules", "audit"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "overview"));
+let lw = innerWidth; addEventListener("resize", () => { if (Math.abs(innerWidth - lw) > 30) { lw = innerWidth; if (!$("[data-panel=overview]").hidden) drawOverview(); } });
+</script>
+</body>
+</html>
