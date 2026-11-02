@@ -1,6 +1,6 @@
 # UAT results: Tariff Desk tracker
 
-> Run on 2026-11-02 17:23 UTC by `tests/uat_tracker.js`, against the scripts in [uat.md](uat.md). Expected results are worked out independently from the data and rules, not read back from the page.
+> Run on 2026-11-02 18:06 UTC by `tests/uat_tracker.js`, against the scripts in [uat.md](uat.md). Expected results are worked out independently from the data and rules, not read back from the page.
 
 **15 of 15 passed.**
 
@@ -18,6 +18,6 @@
 | UAT-10 | FR-8 | CAPE file: one column of 11-character entry numbers, one file per phase | ✅ Pass | CAPE_phase1_2026-11-02.csv: HLB03880312, HLB12195265, HLB05543303 |
 | UAT-11 | FR-10 | A SKU can be compared with other countries, cheapest first | ✅ Pass | 8 countries compared, sorted: 100.46, 111.35, 111.98, 112.42, 114.03, 115.87, 117.1, 133.61 |
 | UAT-12 | FR-11 | A SKU shows its duty rate history since January 2025 | ✅ Pass | Rate history chart shown |
-| UAT-13 | FR-2 | Every tariff rule is listed with its dates and a source | ✅ Pass | 35 rules, each with a source link |
+| UAT-13 | FR-2 | Every tariff rule is listed with its dates and a source | ✅ Pass | 34 rules, each with at least one source link; 30 linked to the official legal text |
 | UAT-14 | FR-12 | Actions are recorded in the audit log | ✅ Pass | 4 entries, including the what-if, the clear and the CAPE file |
 | UAT-15 | NFR | Works on a phone: no horizontal page scroll; no script errors | ✅ Pass | 5 views at 390 px wide, no sideways scroll, no errors |

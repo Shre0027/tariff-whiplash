@@ -15,8 +15,8 @@
 |---|---:|---:|---:|---:|---:|
 | 1. Jan–Mar 2025 (fentanyl tariffs) | 269 | 0.0 | 89% | 92% | -0.6 |
 | 2. Apr–Jul 2025 (baseline 10%, China 125% then 10%) | 399 | 0.5 | 78% | 89% | -1.1 |
-| 3. Aug 2025–Jan 2026 (country rates) | 617 | 0.4 | 79% | 90% | -0.2 |
-| 4. Feb 2026 (ruling, mixed month) | 96 | 1.0 | 68% | 89% | +0.3 |
+| 3. Aug 2025–Jan 2026 (country rates) | 617 | 0.4 | 80% | 91% | -0.1 |
+| 4. Feb 2026 (ruling, mixed month) | 96 | 0.9 | 71% | 91% | -0.1 |
 | 5. Mar–Jun 2026 (Section 122) | 414 | 0.2 | 85% | 93% | +0.3 |
 | 6. Jul 2026 (mixed month) | 102 | 0.5 | 86% | 93% | +0.8 |
 | 7. Aug 2026 on (Section 301, 2026) | 104 | 0.3 | 86% | 93% | +0.5 |
@@ -30,7 +30,7 @@
 | China | 340 | 1.0 | 63% | 78% | -0.9 |
 | France | 20 | 0.2 | 90% | 95% | -0.4 |
 | Germany | 71 | 0.0 | 93% | 97% | +0.2 |
-| India | 128 | 0.2 | 84% | 88% | -1.1 |
+| India | 128 | 0.2 | 89% | 95% | -0.8 |
 | Indonesia | 177 | 0.2 | 78% | 89% | +0.6 |
 | Italy | 105 | 0.1 | 84% | 88% | -0.8 |
 | Japan | 61 | 0.0 | 82% | 87% | +1.1 |
@@ -46,22 +46,22 @@
 | Product | Product-country-months | Median error (points) | Within 2 points | Within 5 points | Average bias |
 |---|---:|---:|---:|---:|---:|
 | Backpacks | 100 | 4.8 | 38% | 53% | +4.2 |
-| Christmas ornaments | 46 | 0.5 | 76% | 89% | -1.8 |
+| Christmas ornaments | 46 | 0.5 | 76% | 91% | -1.5 |
 | Coffee makers | 94 | 0.3 | 83% | 94% | -1.3 |
 | Computer monitors | 155 | 0.1 | 98% | 99% | +0.1 |
 | Exercise equipment | 80 | 2.4 | 49% | 78% | +1.2 |
 | Headphones and earbuds | 111 | 0.4 | 85% | 96% | -0.7 |
 | Laptops | 146 | 0.1 | 89% | 92% | +0.4 |
-| Men's cotton T-shirts | 92 | 0.4 | 76% | 93% | -1.2 |
-| Plastic kitchenware | 106 | 0.6 | 79% | 95% | -0.9 |
+| Men's cotton T-shirts | 92 | 0.4 | 77% | 93% | -1.1 |
+| Plastic kitchenware | 106 | 0.6 | 79% | 96% | -0.8 |
 | Smartphones | 129 | 0.0 | 98% | 99% | +0.1 |
 | Speakers | 144 | 0.3 | 91% | 97% | -0.4 |
-| Toys (ages 3–12) | 141 | 0.2 | 91% | 96% | -0.7 |
+| Toys (ages 3–12) | 141 | 0.2 | 92% | 98% | -0.6 |
 | Upholstered chairs and sofas | 133 | 0.4 | 68% | 83% | -2.7 |
 | Vacuum cleaners | 140 | 0.2 | 80% | 85% | +0.5 |
 | Video game consoles | 113 | 0.0 | 92% | 96% | +0.5 |
-| Women's denim jeans | 105 | 0.3 | 91% | 97% | -0.2 |
-| Women's leather shoes | 166 | 0.8 | 78% | 92% | -0.9 |
+| Women's denim jeans | 105 | 0.3 | 92% | 98% | -0.3 |
+| Women's leather shoes | 166 | 0.8 | 79% | 93% | -0.9 |
 
 ### Mexico and Canada
 Census doesn't say which shipments qualified for USMCA (exempt from most of the new tariffs), so the rules give a range: all qualifying vs none qualifying. **90% of 334 product-country-months fall inside that range (±1 point).**

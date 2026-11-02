@@ -194,9 +194,10 @@ function expect(cond, msg) { if (!cond) throw new Error(msg); }
   await uat("UAT-13", "FR-2", "Every tariff rule is listed with its dates and a source", async () => {
     await go("rules");
     const n = await page.$$eval("#rTable tbody tr", t => t.length);
-    const links = await page.$$eval("#rTable tbody a", a => a.filter(x => /^https?:/.test(x.href)).length);
-    expect(n === T.rules.rules.length && links === n, `${n} rows, ${links} source links, ${T.rules.rules.length} rules`);
-    return `${n} rules, each with a source link`;
+    const rows = await page.$$eval("#rTable tbody tr", t => t.map(r => [...r.querySelectorAll("a")].filter(x => /^https?:/.test(x.href)).length));
+    const official = T.rules.rules.filter(r => (r.official || []).length).length;
+    expect(n === T.rules.rules.length && rows.every(k => k >= 1), `${n} rows, ${T.rules.rules.length} rules; some rows have no link`);
+    return `${n} rules, each with at least one source link; ${official} linked to the official legal text`;
   });
 
   await uat("UAT-14", "FR-12", "Actions are recorded in the audit log", async () => {

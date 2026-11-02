@@ -16,7 +16,7 @@ Facts only: no view on whether the tariffs are good policy.
 - **Where it went:** China's share of US imports fell from 12.9% to 7.4%. Taiwan, Vietnam, Thailand and Mexico gained the most.
 - **Fastest moves:** laptops from China went from 67% to 7% of US imports; India now supplies 49% of US smartphones (17% in early 2024).
 - **Today:** steel products pay 43%, clothing about 23%; phones and laptops under 1%.
-- **Rules check:** the tracker's 35 tariff rules reproduce the duty Census recorded to a median of 0.3 points (82% of 2,000 checks within 2 points).
+- **Rules check:** the tracker's 34 tariff rules reproduce the duty Census recorded to a median of 0.3 points (82% of 2,000 checks within 2 points).
 - **Method check:** extra duty in goods mainly hit by the struck-down tariffs is $150B in the data, against CBP's reported $166B collected.
 
 ## What's in it
@@ -26,7 +26,7 @@ Facts only: no view on whether the tariffs are good policy.
 4. **Refund route checker:** IEEPA refund rules R1–R8 as code, with 20 tests
 5. **Sourcing cost simulator:** cost to land $100 of goods from each country, with a "what if" on China's tariff
 6. **Tariff Desk, a working tracker prototype:** the internal tool the business requirements describe, for an invented importer: landed cost and margin per SKU under every tariff, a "what if a new tariff is announced?" tool, refund routes and deadlines for every shipment, the CAPE upload file, and an audit log
-7. **Tariff rules as data, checked against reality:** 35 dated rules with sources; predicted vs actual duty for 2,000 product-country-months: median error 0.3 points
+7. **Tariff rules as data, checked against reality:** 34 dated rules, 30 linked to the official legal text; predicted vs actual duty for 2,000 product-country-months: median error 0.3 points
 8. **BA documents:** process maps, requirements with traceability, a BRD, UAT scripts and results (15/15), decision log, data dictionary, case study
 
 ## How it works

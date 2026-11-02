@@ -1,5 +1,5 @@
 {
- "note": "Additional US tariffs 2025-2026 as rules, applied on top of each product's normal duty (MFN rate, plus the 2018-19 Section 301 tariffs on China), which is taken from the effective rate Census recorded for that product and country in 2024. Dates are entry dates; 'to' is the last day in force. Rates are ad valorem (% of customs value). Checked against Census duty data: see docs/rule-validation.md. Not legal advice.",
+ "note": "Additional US tariffs 2025-2026 as rules, applied on top of each product's normal duty (MFN rate, plus the 2018-19 Section 301 tariffs on China), which is taken from the effective rate Census recorded for that product and country in 2024. Dates are entry dates; 'to' is the last day in force. Rates are ad valorem (% of customs value). Checked against Census duty data: see docs/rule-validation.md. Each rule lists the official legal text ('official') where one was found, and a plain-language summary ('source'). Not legal advice.",
  "electronics_hs": [
   "8471",
   "847330",
@@ -24,7 +24,13 @@
    "from": "2025-02-04",
    "to": "2025-03-03",
    "exempt": [],
-   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs",
+   "official": [
+    {
+     "title": "Executive Order 14195, Imposing Duties to Address the Synthetic Opioid Supply Chain in the PRC (1 Feb 2025)",
+     "url": "https://www.whitehouse.gov/presidential-actions/2025/02/imposing-duties-to-address-the-synthetic-opioid-supply-chain-in-the-peoples-republic-of-China/"
+    }
+   ]
   },
   {
    "id": "FEN-CA-1",
@@ -50,7 +56,13 @@
    "from": "2025-03-04",
    "to": "2025-11-09",
    "exempt": [],
-   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs",
+   "official": [
+    {
+     "title": "Executive Order 14195, Imposing Duties to Address the Synthetic Opioid Supply Chain in the PRC (1 Feb 2025)",
+     "url": "https://www.whitehouse.gov/presidential-actions/2025/02/imposing-duties-to-address-the-synthetic-opioid-supply-chain-in-the-peoples-republic-of-China/"
+    }
+   ]
   },
   {
    "id": "FEN-MX",
@@ -111,7 +123,21 @@
     "s232"
    ],
    "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs",
-   "transit_until": "2025-05-27"
+   "transit_until": "2025-05-27",
+   "official": [
+    {
+     "title": "Executive Order 14257, Regulating Imports With a Reciprocal Tariff (2 Apr 2025), 90 FR 15041",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-04-07/html/2025-06063.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-CN-1",
@@ -128,7 +154,17 @@
    ],
    "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/",
    "transit_until": "2025-05-27",
-   "transit_extend_to": "2025-05-27"
+   "transit_extend_to": "2025-05-27",
+   "official": [
+    {
+     "title": "Executive Order 14257, Regulating Imports With a Reciprocal Tariff (2 Apr 2025), 90 FR 15041",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-04-07/html/2025-06063.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    }
+   ]
   },
   {
    "id": "REC-PRE",
@@ -170,7 +206,17 @@
     "electronics",
     "s232"
    ],
-   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs",
+   "official": [
+    {
+     "title": "Executive Order 14257, Regulating Imports With a Reciprocal Tariff (2 Apr 2025), 90 FR 15041",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-04-07/html/2025-06063.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    }
+   ]
   },
   {
    "id": "REC-CN-2",
@@ -186,7 +232,13 @@
     "s232"
    ],
    "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/",
-   "transit_until": "2025-05-27"
+   "transit_until": "2025-05-27",
+   "official": [
+    {
+     "title": "Executive Order 14266, Modifying Reciprocal Tariff Rates To Reflect Trading Partner Retaliation and Alignment (9 Apr 2025)",
+     "url": "https://www.federalregister.gov/documents/full_text/text/2025/04/14/2025-06378.txt"
+    }
+   ]
   },
   {
    "id": "REC-CN-3",
@@ -202,7 +254,13 @@
     "s232"
    ],
    "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/",
-   "transit_until": "2025-05-27"
+   "transit_until": "2025-05-27",
+   "official": [
+    {
+     "title": "Executive Order 14266, Modifying Reciprocal Tariff Rates To Reflect Trading Partner Retaliation and Alignment (9 Apr 2025)",
+     "url": "https://www.federalregister.gov/documents/full_text/text/2025/04/14/2025-06378.txt"
+    }
+   ]
   },
   {
    "id": "REC-CN-4",
@@ -217,7 +275,17 @@
     "electronics",
     "s232"
    ],
-   "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/"
+   "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/",
+   "official": [
+    {
+     "title": "Executive Order 14298 (12 May 2025), China reciprocal rate reduced to 10%, 90 FR (21 May 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-05-21/html/2025-09297.htm"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "FEN-CA-2",
@@ -231,7 +299,17 @@
    "exempt": [
     "usmca"
    ],
-   "source": "https://kpmg.com/us/en/taxnewsflash/news/2025/08/white-house-35-percent-tariff-canadian-imports.html"
+   "source": "https://kpmg.com/us/en/taxnewsflash/news/2025/08/white-house-35-percent-tariff-canadian-imports.html",
+   "official": [
+    {
+     "title": "Executive Order 14325, Amendment to Duties To Address the Flow of Illicit Drugs Across Our Northern Border (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-14999.htm"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "BR-40",
@@ -264,7 +342,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-CH-1",
@@ -280,7 +372,21 @@
     "electronics",
     "s232"
    ],
-   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff"
+   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-EU",
@@ -311,7 +417,21 @@
     "s232"
    ],
    "note": "15% all-in: additional duty = 15% minus the normal (MFN) rate, never below zero",
-   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff"
+   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-ID",
@@ -327,7 +447,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-IN-1",
@@ -337,13 +471,28 @@
    ],
    "rate": 25,
    "from": "2025-08-07",
-   "to": "2026-02-01",
+   "to": "2026-02-23",
    "exempt": [
     "electronics",
     "s232"
    ],
    "source": "https://kpmg.com/us/en/taxnewsflash/news/2025/08/tnf-white-house-announces-25-percent-tariff-on-indian-imports.html",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ],
+   "note": "A cut to 18% was announced in February 2026 but not implemented before the Supreme Court ruling"
   },
   {
    "id": "REC-JP",
@@ -361,7 +510,21 @@
     "s232"
    ],
    "note": "15% all-in, as for the EU (applied retroactively in September 2025)",
-   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff"
+   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-KH",
@@ -377,7 +540,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-KR",
@@ -393,7 +570,21 @@
     "electronics",
     "s232"
    ],
-   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff"
+   "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-MY",
@@ -409,7 +600,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-PH",
@@ -425,7 +630,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-TH",
@@ -441,7 +660,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-TW",
@@ -457,7 +690,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-VN",
@@ -473,7 +720,21 @@
     "s232"
    ],
    "source": "https://www.afslaw.com/perspectives/customs-import-compliance-blog/white-house-executive-order-reshapes-us-tariff",
-   "transit_until": "2025-10-04"
+   "transit_until": "2025-10-04",
+   "official": [
+    {
+     "title": "Executive Order 14326, Further Modifying the Reciprocal Tariff Rates (31 Jul 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm"
+    },
+    {
+     "title": "Presidential memorandum, Clarification of Exceptions Under Executive Order 14257 (11 Apr 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "OIL-IN",
@@ -483,12 +744,23 @@
    ],
    "rate": 25,
    "from": "2025-08-27",
-   "to": "2026-02-01",
+   "to": "2026-02-06",
    "exempt": [
     "electronics",
     "s232"
    ],
-   "source": "https://www.butzel.com/alert-tariff-on-imports-from-india-will-increase-to-50-on-august-27"
+   "source": "https://www.butzel.com/alert-tariff-on-imports-from-india-will-increase-to-50-on-august-27",
+   "official": [
+    {
+     "title": "CBP notice: Implementation of additional duties on products of India (EO 14329), 90 FR (27 Aug 2025)",
+     "url": "https://www.federalregister.gov/documents/2025/08/27/2025-16419/notice-of-implementation-of-additional-duties-on-products-of-india-pursuant-to-the-presidents"
+    },
+    {
+     "title": "Executive Order 14384, Modifying Duties To Address Threats to the United States by the Government of the Russian Federation (6 Feb 2026)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-11/pdf/2026-02818.pdf"
+    }
+   ],
+   "transit_until": "2025-09-16"
   },
   {
    "id": "S232-UPH",
@@ -504,7 +776,17 @@
    "to": null,
    "exempt": [],
    "s232": true,
-   "source": "https://www.ghy.com/trade-compliance/us-tariffs-lumber-upholstered-furniture-cabinets-vanities/"
+   "source": "https://www.ghy.com/trade-compliance/us-tariffs-lumber-upholstered-furniture-cabinets-vanities/",
+   "official": [
+    {
+     "title": "Proclamation 10976, Adjusting Imports of Timber, Lumber, and Their Derivative Products (29 Sep 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/DCPD-202501232/pdf/DCPD-202501232.pdf"
+    },
+    {
+     "title": "Proclamation 11000 (31 Dec 2025): increase to 30%/50% postponed",
+     "url": "https://www.federalregister.gov/documents/full_text/html/2026/01/09/2026-00327.html"
+    }
+   ]
   },
   {
    "id": "FEN-CN-3",
@@ -516,7 +798,17 @@
    "from": "2025-11-10",
    "to": "2026-02-23",
    "exempt": [],
-   "source": "https://www.internationaltradeinsights.com/2025/11/trump-reduces-ieepa-fentanyl-tariffs-to-10-effective-november-10-continues-suspension-of-heightened-reciprocal-tariff-rate/"
+   "source": "https://www.internationaltradeinsights.com/2025/11/trump-reduces-ieepa-fentanyl-tariffs-to-10-effective-november-10-continues-suspension-of-heightened-reciprocal-tariff-rate/",
+   "official": [
+    {
+     "title": "Executive Order 14357, Modifying Duties Addressing the Synthetic Opioid Supply Chain in the PRC (4 Nov 2025)",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2025-11-07/html/2025-19825.htm"
+    },
+    {
+     "title": "Supreme Court, Learning Resources, Inc. v. Trump, No. 24-1287 (20 Feb 2026)",
+     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+    }
+   ]
   },
   {
    "id": "REC-CH-2",
@@ -536,21 +828,6 @@
    "source": "https://www.chrobinson.com/en-us/resources/insights-and-advisories/trade-tariff-insights/u-s-reciprocal-tariff-tracker/"
   },
   {
-   "id": "REC-IN-2",
-   "program": "IEEPA reciprocal",
-   "countries": [
-    "India"
-   ],
-   "rate": 18,
-   "from": "2026-02-02",
-   "to": "2026-02-23",
-   "exempt": [
-    "electronics",
-    "s232"
-   ],
-   "source": "https://www.morganlewis.com/pubs/2026/02/us-india-trade-deal-cuts-tariffs-eases-tensions"
-  },
-  {
    "id": "S122",
    "program": "Section 122 surcharge",
    "countries": [
@@ -564,7 +841,13 @@
     "s232",
     "electronics"
    ],
-   "source": "https://www.freightfigures.com/articles/section-122-tariff-rate-status-may-2026"
+   "source": "https://www.freightfigures.com/articles/section-122-tariff-rate-status-may-2026",
+   "official": [
+    {
+     "title": "Proclamation: Imposing a Temporary Import Surcharge to Address Fundamental International Payments Problems, 91 FR (25 Feb 2026)",
+     "url": "https://www.federalregister.gov/documents/2026/02/25/2026-03824/imposing-a-temporary-import-surcharge-to-address-fundamental-international-payments-problems"
+    }
+   ]
   },
   {
    "id": "S301-26-10",
@@ -588,7 +871,17 @@
     "electronics"
    ],
    "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html",
-   "transit_until": "2026-07-27"
+   "transit_until": "2026-07-27",
+   "official": [
+    {
+     "title": "USTR: findings and proposed action in 60 Section 301 investigations (June 2026)",
+     "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action"
+    },
+    {
+     "title": "USTR notice of action, Federal Register public inspection 2026-15181 (July 2026)",
+     "url": "https://public-inspection.federalregister.gov/2026-15181.pdf"
+    }
+   ]
   },
   {
    "id": "S301-26-125",
@@ -609,7 +902,17 @@
     "electronics"
    ],
    "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html",
-   "transit_until": "2026-07-27"
+   "transit_until": "2026-07-27",
+   "official": [
+    {
+     "title": "USTR: findings and proposed action in 60 Section 301 investigations (June 2026)",
+     "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action"
+    },
+    {
+     "title": "USTR notice of action, Federal Register public inspection 2026-15181 (July 2026)",
+     "url": "https://public-inspection.federalregister.gov/2026-15181.pdf"
+    }
+   ]
   },
   {
    "id": "S301-26-EU",
@@ -641,7 +944,17 @@
     "electronics"
    ],
    "note": "Capped: the new duty only tops normal duty up to 10%",
-   "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html"
+   "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html",
+   "official": [
+    {
+     "title": "USTR: findings and proposed action in 60 Section 301 investigations (June 2026)",
+     "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action"
+    },
+    {
+     "title": "USTR notice of action, Federal Register public inspection 2026-15181 (July 2026)",
+     "url": "https://public-inspection.federalregister.gov/2026-15181.pdf"
+    }
+   ]
   },
   {
    "id": "S301-26-JKS",
@@ -661,7 +974,17 @@
     "electronics"
    ],
    "note": "Capped: the new duty only tops normal duty up to 12.5%",
-   "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html"
+   "source": "https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/july-24th/us-imposes-section-301-forced-labor-tariffs-60.html",
+   "official": [
+    {
+     "title": "USTR: findings and proposed action in 60 Section 301 investigations (June 2026)",
+     "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action"
+    },
+    {
+     "title": "USTR notice of action, Federal Register public inspection 2026-15181 (July 2026)",
+     "url": "https://public-inspection.federalregister.gov/2026-15181.pdf"
+    }
+   ]
   }
  ]
 }

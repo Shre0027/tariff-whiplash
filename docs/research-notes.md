@@ -63,7 +63,30 @@ CBP built a new tool in its ACE portal, **CAPE**, to process refunds in bulk ins
 
 Sources: [Brady Ware refund FAQ](https://bradyware.com/tariff-refund-faq/) · [Cherry Bekaert: CAPE Phase III open](https://www.cbh.com/insights/alerts/ieepa-tariff-refund-update-cape-phase-iii-open/) · [Tariff Refund Finder status page (cites CBP declarations)](https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status) · [C.H. Robinson: CAPE Phase 3](https://www.chrobinson.com/en-us/resources/insights-and-advisories/client-advisories/2026q3/09-17-26-cbp-cape-phase-3-ieepa-refunds/)
 
-## 4. What the Census data can and can't tell us
+## 4. Official legal texts
+
+Every rule in `config/tariff_rules.json` lists its official source under `official`. The main ones:
+
+| Action | Official text |
+|---|---|
+| Reciprocal tariffs (5 Apr 2025) | [Executive Order 14257](https://www.govinfo.gov/content/pkg/FR-2025-04-07/html/2025-06063.htm) |
+| Electronics exclusion | [Presidential memorandum, 11 Apr 2025](https://www.govinfo.gov/content/pkg/DCPD-202500470/pdf/DCPD-202500470.pdf) |
+| China 125% | [Executive Order 14266](https://www.federalregister.gov/documents/full_text/text/2025/04/14/2025-06378.txt) |
+| China cut to 10% (Geneva) | [Executive Order 14298](https://www.govinfo.gov/content/pkg/FR-2025-05-21/html/2025-09297.htm) |
+| Country rates from 7 Aug 2025 | [Executive Order 14326](https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-15010.htm) |
+| Canada fentanyl tariff to 35% | [Executive Order 14325](https://www.govinfo.gov/content/pkg/FR-2025-08-06/html/2025-14999.htm) |
+| India Russian-oil tariff: start / end | [CBP notice, 27 Aug 2025](https://www.federalregister.gov/documents/2025/08/27/2025-16419/notice-of-implementation-of-additional-duties-on-products-of-india-pursuant-to-the-presidents) / [Executive Order 14384, effective 7 Feb 2026](https://www.govinfo.gov/content/pkg/FR-2026-02-11/pdf/2026-02818.pdf) |
+| China fentanyl tariff cut to 10% | [Executive Order 14357](https://www.govinfo.gov/content/pkg/FR-2025-11-07/html/2025-19825.htm) |
+| Section 232 timber and furniture | [Proclamation 10976](https://www.govinfo.gov/content/pkg/DCPD-202501232/pdf/DCPD-202501232.pdf); increase postponed by [Proclamation 11000](https://www.federalregister.gov/documents/full_text/html/2026/01/09/2026-00327.html) |
+| Supreme Court ruling | [Learning Resources, Inc. v. Trump, No. 24-1287](https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf) |
+| Section 122 surcharge | [Proclamation, 91 FR, 25 Feb 2026](https://www.federalregister.gov/documents/2026/02/25/2026-03824/imposing-a-temporary-import-surcharge-to-address-fundamental-international-payments-problems) |
+| Section 301 (2026) | [USTR findings, June 2026](https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action); [notice of action](https://public-inspection.federalregister.gov/2026-15181.pdf) |
+
+**Corrections made after reading the official texts:** India's Russian-oil tariff ended on 7 February 2026 (not 2 February), with an in-transit exemption until 16 September 2025 when it began. The announced cut of India's reciprocal rate to 18% was not implemented before the Supreme Court ruling.
+
+**Still from secondary sources:** CBP's refund figures (reported from CBP court declarations) and the CAPE process details (CBP guidance as summarized by trade firms).
+
+## 5. What the Census data can and can't tell us
 
 - **Calculated duty** is the duty assessed when goods enter. It's an estimate of what is owed, not cash received, and it isn't reduced by later refunds. So 2025's numbers show the tariffs as charged, which is the point: the project measures what the tariffs cost importers at the time.
 - **Imports for consumption** is the right base for a tariff rate (goods entering the US market). General imports also include goods going into bonded warehouses.

@@ -27,7 +27,7 @@ A requirements document on its own shows planning, not delivery. So I built Part
 
 **How it was built, in order:**
 1. **Research:** each tariff program's rates, dates and exemptions, from legal and trade sources ([research notes](research-notes.md)).
-2. **Rules as data:** 35 dated rules, each with a source, in [`config/tariff_rules.json`](../config/tariff_rules.json). One engine applies them for the app, the tests and the validation.
+2. **Rules as data:** 34 dated rules, each with a source (30 linked to the official legal text), in [`config/tariff_rules.json`](../config/tariff_rules.json). One engine applies them for the app, the tests and the validation.
 3. **Validate against reality:** for 19 products × countries × months, I compared the rate the rules predict with the rate Census shows was actually charged. The first run got 72% of checks within 2 points. The gaps pointed to missing rules: goods already shipped when a tariff started kept the old rate for weeks (in-transit exemptions), and the EU, Japan and Switzerland deals cap the total at 15%. After fixing them, **82% within 2 points, median error 0.3 points** ([rule validation](rule-validation.md)). What can't be modeled (the tariff on steel content) is written down, not hidden.
 4. **Build the app:** overview, products with landed cost and margin, a "what if a new tariff is announced?" tool, shipments with refund routes and deadlines, the CAPE upload file, and an audit log.
 5. **UAT:** 15 test scripts, one or more per requirement, with actions and expected results kept separate. They ran automated against expected values worked out from the data, not from the page: **15/15 passed** after fixing the defects UAT found ([uat.md](uat.md), [results](uat-results.md)).

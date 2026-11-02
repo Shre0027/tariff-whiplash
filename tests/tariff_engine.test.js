@@ -37,9 +37,11 @@ test("Country rates from 7 Aug 2025 (Vietnam 20%), with in-transit cut-off 4 Oct
   assert.equal(rate({ ...tee, country: "Vietnam", date: "2025-09-01", loadDate: "2025-08-01" }), 26.5);
   assert.equal(rate({ ...tee, country: "Vietnam", date: "2025-10-05", loadDate: "2025-08-01" }), 36.5);
 });
-test("India: 25% + 25% Russian-oil tariff from 27 Aug 2025; 18% from 2 Feb 2026", () => {
+test("India: 25% + 25% Russian-oil tariff from 27 Aug 2025 (EO 14329); oil tariff ends 7 Feb 2026 (EO 14384)", () => {
   assert.equal(rate({ ...tee, country: "India", date: "2025-09-15" }), 66.5);
-  assert.equal(rate({ ...tee, country: "India", date: "2026-02-10" }), 34.5);
+  assert.equal(rate({ ...tee, country: "India", date: "2026-02-06" }), 66.5);
+  assert.equal(rate({ ...tee, country: "India", date: "2026-02-07" }), 41.5);   // the announced 18% was never implemented
+  assert.equal(rate({ ...tee, country: "India", date: "2025-09-10", loadDate: "2025-08-20" }), 41.5); // in transit until 16 Sep 2025
 });
 test("EU 15% all-in: additional duty tops the total up to 15%, never below zero", () => {
   assert.equal(rate({ hs10: "6403999065", baseRate: 10, country: "Italy", date: "2025-09-01" }), 15);
@@ -71,8 +73,9 @@ test("FR-4 what-if: an extra rule applies to matching products only, from its st
   assert.equal(rate({ ...tee, country: "Vietnam", date: "2026-11-30", extraRules: wi }), 16.5 + 12.5);
   assert.equal(rate({ ...chair, country: "Vietnam", date: "2026-12-01", extraRules: [{ ...wi[0], hs: null }] }), 25);
 });
-test("Every rule has a source, a start date and a rate", () => {
+test("Every rule has a source, a start date and a rate; official texts are links", () => {
   for (const r of doc.rules) {
+    for (const o of r.official || []) assert.ok(/^https:\/\//.test(o.url) && o.title, r.id + " official");
     assert.ok(/^https?:\/\//.test(r.source), r.id + " source");
     assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(r.from), r.id + " from");
     assert.ok(typeof r.rate === "number" && r.rate > 0, r.id + " rate");

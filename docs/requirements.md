@@ -157,7 +157,7 @@ Part B was built as a working prototype, **[Tariff Desk](https://shre0027.github
 | Requirement | Where it's met in the prototype | Accepted by | Status |
 |---|---|---|---|
 | FR-1 Product master with HTS code, origin, supplier | Products view; `data/sample/company.json` | UAT-01 | Done |
-| FR-2 Tariff programs as dated rules with exclusions | `config/tariff_rules.json` (35 rules, each with a source), Tariff rules view | UAT-13; engine tests; [rule validation](rule-validation.md) | Done |
+| FR-2 Tariff programs as dated rules with exclusions | `config/tariff_rules.json` (34 rules, each with a source; 30 linked to the official legal text), Tariff rules view | UAT-13; engine tests; [rule validation](rule-validation.md) | Done |
 | FR-3 Duty per SKU, all programs in order with stacking and exclusions | `templates/tariff_engine.js`; SKU duty breakdown | UAT-02; 15 engine tests | Done |
 | FR-4 Recalculate on a rule change; list SKUs below margin | What-if on the Tariff rules view; "Hit by what-if" filter | UAT-03, 04, 05 | Done |
 | FR-5 Entry data | Shipments & refunds view (sample entries in place of ACE reports) | UAT-06 | Done (sample data) |
