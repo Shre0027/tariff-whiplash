@@ -139,7 +139,7 @@ Query: [`sql/05_china_share_by_chapter.sql`](../sql/05_china_share_by_chapter.sq
 | 96 | Misc. manufactured articles | 5.8 | 53.8 | 44.6 | -0.6 | Vietnam | 0.2 |
 | 82 | Tools and cutlery | 7.4 | 27.2 | 19.2 | -0.6 | Vietnam | 0.3 |
 | 44 | Wood | 15.4 | 8.3 | 6 | -0.5 | Malaysia | 0.1 |
-| 70 | Glass | 6 | 28.9 | 22.5 | -0.4 | Vietnam | 0.2 |
+| 38 | Other chemical products | 16.3 | 6.6 | 5 | -0.4 | Indonesia | 0.5 |
 
 *Showing 20 of 46 rows; see the CSV for all.*
 
@@ -229,8 +229,8 @@ Query: [`sql/08_rate_by_chapter_latest.sql`](../sql/08_rate_by_chapter_latest.sq
 | 76 | Aluminum | Metals and building materials | 3.7 | 37.3 | 2.8 |
 | 72 | Iron and steel | Metals and building materials | 2.6 | 26.1 | 2.3 |
 | 61 | Clothing, knitted | Clothing and footwear | 14.9 | 23.1 | 4.3 |
-| 62 | Clothing, not knitted | Clothing and footwear | 14.3 | 22.2 | 3 |
 | 42 | Handbags, luggage, leather goods | Clothing and footwear | 13 | 22.2 | 1.2 |
+| 62 | Clothing, not knitted | Clothing and footwear | 14.3 | 22.2 | 3 |
 | 64 | Footwear | Clothing and footwear | 12.2 | 21.4 | 2.4 |
 | 63 | Other textile articles | Clothing and footwear | 8.7 | 17.5 | 1.4 |
 | 83 | Misc. metal articles | Metals and building materials | 6.8 | 16.7 | 1.3 |
