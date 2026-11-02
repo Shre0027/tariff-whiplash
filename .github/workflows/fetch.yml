@@ -1,0 +1,36 @@
+name: Fetch Census trade data
+
+# Census publishes each month's trade data about five weeks after the month ends,
+# so this runs on the 12th of every month, and on demand.
+on:
+  schedule:
+    - cron: "23 13 12 * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [scripts/fetch_census.py, config/countries.json, .github/workflows/fetch.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download from the Census API
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+        run: python scripts/fetch_census.py
+      - name: Save the data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw
+          git commit -m "Census data $(date -u +%Y-%m-%d)" || echo "Nothing changed"
+          git pull --rebase
+          git push

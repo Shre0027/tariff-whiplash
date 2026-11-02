@@ -1,0 +1,28 @@
+{
+ "note": "Census Schedule C country codes. 'focus' = countries fetched at product level: the 20 largest US suppliers in 2025-26 plus Cambodia and Bangladesh (often named as alternatives to China), and '-' = all countries.",
+ "focus": [
+  {"code": "-",    "name": "All countries"},
+  {"code": "5700", "name": "China"},
+  {"code": "2010", "name": "Mexico"},
+  {"code": "1220", "name": "Canada"},
+  {"code": "5520", "name": "Vietnam"},
+  {"code": "5830", "name": "Taiwan"},
+  {"code": "5800", "name": "South Korea"},
+  {"code": "5880", "name": "Japan"},
+  {"code": "4280", "name": "Germany"},
+  {"code": "5490", "name": "Thailand"},
+  {"code": "5330", "name": "India"},
+  {"code": "5570", "name": "Malaysia"},
+  {"code": "4759", "name": "Italy"},
+  {"code": "4279", "name": "France"},
+  {"code": "4120", "name": "United Kingdom"},
+  {"code": "4419", "name": "Switzerland"},
+  {"code": "4190", "name": "Ireland"},
+  {"code": "5590", "name": "Singapore"},
+  {"code": "3510", "name": "Brazil"},
+  {"code": "5650", "name": "Philippines"},
+  {"code": "5600", "name": "Indonesia"},
+  {"code": "5550", "name": "Cambodia"},
+  {"code": "5380", "name": "Bangladesh"}
+ ]
+}
