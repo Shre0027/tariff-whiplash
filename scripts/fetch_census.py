@@ -13,6 +13,7 @@ Writes, in data/raw/:
   hs10_latest.csv.gz      HS 10-digit product x focus country for the latest year (January to latest month, and the
                           latest month alone), with quantities: the only level where quantities are reported
   products_hs10.csv.gz    HS 10-digit codes with description and unit of quantity
+  hs10_monthly.csv.gz     monthly HS 10-digit data, every country, for the tracked products (from Jan 2024)
   smartphones.csv         smartphone imports (HS 851713) by country and month, from Jan 2024
 
 Things learned from the API (see docs/decision-log.md):
@@ -158,6 +159,22 @@ def hs10_latest(latest):
               sorted([d["I_COMMODITY"], d["I_COMMODITY_SDESC"], d["UNIT_QY1"]] for d in names), gz=True)
 
 
+def tracked_monthly():
+    """Monthly HS 10-digit data, every country, for the products in config/simulator_products.json (also the
+    tracker's product catalog). Used to check the tracker's tariff rules against the duty actually charged."""
+    codes = [p["hs10"] for p in json.loads((ROOT / "config/simulator_products.json").read_text())["products"]]
+    out = []
+    for code in codes:
+        rows = get({"get": "CTY_CODE,CON_VAL_MO,CAL_DUT_MO,CON_CHA_MO,CON_QY1_MO", "time": "from 2024-01",
+                    "COMM_LVL": "HS10", "I_COMMODITY": code})
+        out += [[d["time"], code, d["CTY_CODE"], d["CON_VAL_MO"], d["CAL_DUT_MO"], d["CON_CHA_MO"], d["CON_QY1_MO"]]
+                for d in rows if num(d["CON_VAL_MO"]) > 0]
+        print(f"{code}: {len(rows)} country-months")
+    out.sort(key=lambda r: (r[1], r[2], r[0]))
+    write_csv(RAW / "hs10_monthly.csv.gz", ["month", "hs10", "cty_code", "consumption_imports", "calculated_duty", "charges",
+                                            "quantity"], out, gz=True)
+
+
 def smartphones():
     rows = get({"get": "CTY_CODE,CON_VAL_MO,CAL_DUT_MO,CON_QY1_MO", "time": "from 2024-01", "COMM_LVL": "HS6", "I_COMMODITY": "851713"})
     write_csv(RAW / "smartphones.csv", ["month", "cty_code", "consumption_imports", "calculated_duty", "units"],
@@ -171,6 +188,7 @@ def main():
     product_ytd(latest)
     products(latest)
     hs10_latest(latest)
+    tracked_monthly()
     smartphones()
     (RAW / "fetched.json").write_text(json.dumps({"fetched_on": time.strftime("%Y-%m-%d", time.gmtime()),
                                                   "latest_month": latest, "source": BASE}, indent=1))
