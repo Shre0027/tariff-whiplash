@@ -1,0 +1,3471 @@
+{
+ "built": "2026-11-02",
+ "fetched": "2026-11-02",
+ "latest_month": "2026-08",
+ "months": [
+  "2022-01",
+  "2022-02",
+  "2022-03",
+  "2022-04",
+  "2022-05",
+  "2022-06",
+  "2022-07",
+  "2022-08",
+  "2022-09",
+  "2022-10",
+  "2022-11",
+  "2022-12",
+  "2023-01",
+  "2023-02",
+  "2023-03",
+  "2023-04",
+  "2023-05",
+  "2023-06",
+  "2023-07",
+  "2023-08",
+  "2023-09",
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-02",
+  "2024-03",
+  "2024-04",
+  "2024-05",
+  "2024-06",
+  "2024-07",
+  "2024-08",
+  "2024-09",
+  "2024-10",
+  "2024-11",
+  "2024-12",
+  "2025-01",
+  "2025-02",
+  "2025-03",
+  "2025-04",
+  "2025-05",
+  "2025-06",
+  "2025-07",
+  "2025-08",
+  "2025-09",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08"
+ ],
+ "rates": {
+  "All countries": [
+   3.11,
+   3.04,
+   2.76,
+   2.8,
+   2.77,
+   2.74,
+   2.93,
+   2.98,
+   2.75,
+   2.61,
+   2.47,
+   2.49,
+   2.57,
+   2.46,
+   2.15,
+   2.39,
+   2.38,
+   2.34,
+   2.46,
+   2.39,
+   2.35,
+   2.26,
+   2.17,
+   2.33,
+   2.47,
+   2.43,
+   2.21,
+   2.17,
+   2.23,
+   2.35,
+   2.48,
+   2.51,
+   2.41,
+   2.35,
+   2.35,
+   2.34,
+   2.22,
+   2.33,
+   3.72,
+   7.18,
+   9.06,
+   9.29,
+   9.5,
+   10.49,
+   10.53,
+   10.84,
+   9.79,
+   9.34,
+   9.87,
+   8.48,
+   6.85,
+   6.74,
+   6.89,
+   6.81,
+   6.45,
+   6.87
+  ],
+  "China": [
+   11.27,
+   11.35,
+   11.07,
+   11.79,
+   11.62,
+   10.4,
+   11.36,
+   11.01,
+   9.68,
+   10.3,
+   10.56,
+   10.73,
+   10.97,
+   11.6,
+   10.32,
+   11.29,
+   11.24,
+   10.87,
+   10.79,
+   10.44,
+   9.58,
+   9.5,
+   9.54,
+   10.61,
+   11.32,
+   11.47,
+   11.36,
+   11.32,
+   10.99,
+   11.38,
+   11.31,
+   11.17,
+   9.93,
+   9.76,
+   10.54,
+   11.16,
+   11.11,
+   13.07,
+   26.43,
+   38.74,
+   47.92,
+   40.01,
+   40.04,
+   39.74,
+   37.58,
+   37.82,
+   32.38,
+   30.78,
+   31.81,
+   29.6,
+   23.08,
+   22.46,
+   21.93,
+   21.69,
+   21.4,
+   22.77
+  ],
+  "India": [
+   2.77,
+   3.02,
+   3.16,
+   3.17,
+   2.93,
+   2.7,
+   2.94,
+   2.86,
+   3.11,
+   2.73,
+   2.81,
+   2.89,
+   2.44,
+   2.61,
+   2.66,
+   2.45,
+   2.35,
+   2.59,
+   2.52,
+   2.44,
+   2.43,
+   2.31,
+   2.18,
+   2.26,
+   2.0,
+   2.39,
+   2.48,
+   2.39,
+   2.19,
+   2.31,
+   2.41,
+   2.51,
+   2.7,
+   2.5,
+   2.64,
+   2.39,
+   2.26,
+   2.06,
+   2.31,
+   3.77,
+   5.75,
+   8.29,
+   8.0,
+   10.98,
+   18.22,
+   22.03,
+   19.51,
+   19.69,
+   20.61,
+   14.99,
+   8.29,
+   7.39,
+   8.4,
+   9.06,
+   8.15,
+   8.22
+  ],
+  "Vietnam": [
+   4.52,
+   5.25,
+   4.99,
+   4.88,
+   4.83,
+   4.45,
+   5.32,
+   5.19,
+   4.93,
+   4.8,
+   4.29,
+   4.88,
+   4.86,
+   4.6,
+   3.92,
+   4.07,
+   4.21,
+   4.21,
+   4.32,
+   4.6,
+   4.03,
+   3.56,
+   3.48,
+   3.67,
+   4.29,
+   4.13,
+   3.69,
+   3.64,
+   3.45,
+   3.93,
+   4.13,
+   3.94,
+   4.03,
+   3.65,
+   3.26,
+   3.7,
+   3.52,
+   3.19,
+   3.37,
+   4.57,
+   6.91,
+   8.97,
+   8.71,
+   10.25,
+   13.07,
+   12.4,
+   12.19,
+   12.61,
+   12.27,
+   11.9,
+   7.01,
+   6.52,
+   6.68,
+   6.44,
+   6.18,
+   7.07
+  ],
+  "Mexico": [
+   0.2,
+   0.21,
+   0.19,
+   0.18,
+   0.21,
+   0.2,
+   0.22,
+   0.24,
+   0.22,
+   0.22,
+   0.23,
+   0.23,
+   0.25,
+   0.24,
+   0.24,
+   0.24,
+   0.24,
+   0.25,
+   0.28,
+   0.27,
+   0.26,
+   0.24,
+   0.26,
+   0.26,
+   0.26,
+   0.24,
+   0.26,
+   0.25,
+   0.24,
+   0.23,
+   0.26,
+   0.25,
+   0.22,
+   0.24,
+   0.23,
+   0.25,
+   0.27,
+   0.27,
+   3.18,
+   4.22,
+   5.02,
+   4.53,
+   4.29,
+   4.62,
+   4.43,
+   4.35,
+   4.14,
+   4.29,
+   4.03,
+   3.74,
+   3.38,
+   3.61,
+   3.68,
+   3.43,
+   2.9,
+   3.2
+  ],
+  "Canada": [
+   0.08,
+   0.08,
+   0.08,
+   0.07,
+   0.08,
+   0.08,
+   0.09,
+   0.1,
+   0.09,
+   0.09,
+   0.08,
+   0.09,
+   0.09,
+   0.09,
+   0.09,
+   0.08,
+   0.09,
+   0.08,
+   0.1,
+   0.09,
+   0.09,
+   0.08,
+   0.09,
+   0.08,
+   0.1,
+   0.09,
+   0.11,
+   0.1,
+   0.11,
+   0.1,
+   0.11,
+   0.1,
+   0.1,
+   0.11,
+   0.11,
+   0.1,
+   0.11,
+   0.11,
+   1.6,
+   2.98,
+   3.28,
+   3.55,
+   2.89,
+   3.76,
+   3.81,
+   3.8,
+   3.63,
+   3.09,
+   3.1,
+   3.2,
+   3.15,
+   3.19,
+   3.07,
+   2.85,
+   2.82,
+   3.18
+  ]
+ },
+ "events": [
+  {
+   "date": "2025-02-04",
+   "countries": [
+    "China"
+   ],
+   "law": "IEEPA",
+   "event": "10% additional tariff on China (fentanyl-related emergency)",
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+  },
+  {
+   "date": "2025-03-04",
+   "countries": [
+    "China",
+    "Canada",
+    "Mexico"
+   ],
+   "law": "IEEPA",
+   "event": "China fentanyl tariff raised to 20%; 25% on Canada and Mexico (non-USMCA goods)",
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+  },
+  {
+   "date": "2025-04-05",
+   "countries": [
+    "All"
+   ],
+   "law": "IEEPA",
+   "event": "10% baseline 'reciprocal' tariff on most countries",
+   "source": "https://www.marketplace.org/2025/04/02/tariff-timeline-what-is-the-status-of-the-trump-administrations-tariffs"
+  },
+  {
+   "date": "2025-04-10",
+   "countries": [
+    "China"
+   ],
+   "law": "IEEPA",
+   "event": "China reciprocal tariff raised to 125% (145% with fentanyl tariff); higher country rates for others paused",
+   "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/"
+  },
+  {
+   "date": "2025-05-14",
+   "countries": [
+    "China"
+   ],
+   "law": "IEEPA",
+   "event": "Geneva truce: China reciprocal tariff cut to 10% (30% with fentanyl tariff)",
+   "source": "https://www.thompsoncoburn.com/insights/may-13-2025-u-s-reduces-125-reciprocal-tariffs-against-china-to-10-for-90-days-china-reduces-its-retaliatory-tariffs-to-10-for-90-days/"
+  },
+  {
+   "date": "2025-08-07",
+   "countries": [
+    "India",
+    "Vietnam",
+    "others"
+   ],
+   "law": "IEEPA",
+   "event": "Country-specific reciprocal rates take effect (India 25%)",
+   "source": "https://kpmg.com/us/en/taxnewsflash/news/2025/08/tnf-white-house-announces-25-percent-tariff-on-indian-imports.html"
+  },
+  {
+   "date": "2025-08-27",
+   "countries": [
+    "India"
+   ],
+   "law": "IEEPA",
+   "event": "Additional 25% on India over Russian oil purchases: 50% combined",
+   "source": "https://www.butzel.com/alert-tariff-on-imports-from-india-will-increase-to-50-on-august-27"
+  },
+  {
+   "date": "2025-11-10",
+   "countries": [
+    "China"
+   ],
+   "law": "IEEPA",
+   "event": "China fentanyl tariff cut from 20% to 10% after Trump-Xi deal",
+   "source": "https://www.internationaltradeinsights.com/2025/11/trump-reduces-ieepa-fentanyl-tariffs-to-10-effective-november-10-continues-suspension-of-heightened-reciprocal-tariff-rate/"
+  },
+  {
+   "date": "2026-02-02",
+   "countries": [
+    "India"
+   ],
+   "law": "IEEPA",
+   "event": "US-India deal: Russian-oil tariff removed, India rate cut to 18%",
+   "source": "https://www.morganlewis.com/pubs/2026/02/us-india-trade-deal-cuts-tariffs-eases-tensions"
+  },
+  {
+   "date": "2026-02-20",
+   "countries": [
+    "All"
+   ],
+   "law": "Supreme Court",
+   "event": "Supreme Court rules IEEPA does not authorize tariffs (Learning Resources v. Trump); IEEPA tariffs end",
+   "source": "https://www.bradley.com/insights/publications/2026/02/supreme-court-strikes-down-ieepa-tariffs-key-takeaways-and-next-steps-for-businesses/"
+  },
+  {
+   "date": "2026-02-24",
+   "countries": [
+    "All"
+   ],
+   "law": "Section 122",
+   "event": "Temporary global import surcharge (10%, reported increase to 15%) for up to 150 days",
+   "source": "https://www.bradley.com/insights/publications/2026/02/supreme-court-strikes-down-ieepa-tariffs-key-takeaways-and-next-steps-for-businesses/"
+  },
+  {
+   "date": "2026-07-24",
+   "countries": [
+    "60 economies"
+   ],
+   "law": "Section 301",
+   "event": "Section 122 expires; new Section 301 'forced labor' tariffs of 10-12.5% on 60 economies (Section 232 goods excluded)",
+   "source": "https://www.clearygottlieb.com/news-and-insights/publication-listing/trump-administration-imposes-new-section-301-tariffs-on-60-trading-partners"
+  },
+  {
+   "date": "2026-09-11",
+   "countries": [
+    "All"
+   ],
+   "law": "Refunds",
+   "event": "CBP reports about $122 billion of IEEPA tariff refunds issued via its CAPE system (Phases I-II accepted nearly $135 billion in claims)",
+   "source": "https://www.cbh.com/insights/alerts/ieepa-tariff-refund-update-cape-phase-iii-set-for-october-6/"
+  }
+ ],
+ "duty_by_year": [
+  {
+   "year": "2022",
+   "imports_jan_aug_bn": 2162.0,
+   "duty_jan_aug_bn": 62.3,
+   "effective_rate_pct": 2.88,
+   "above_2024_rate_bn": 11.4
+  },
+  {
+   "year": "2023",
+   "imports_jan_aug_bn": 2032.4,
+   "duty_jan_aug_bn": 48.5,
+   "effective_rate_pct": 2.39,
+   "above_2024_rate_bn": 0.6
+  },
+  {
+   "year": "2024",
+   "imports_jan_aug_bn": 2120.8,
+   "duty_jan_aug_bn": 50.0,
+   "effective_rate_pct": 2.36,
+   "above_2024_rate_bn": 0.0
+  },
+  {
+   "year": "2025",
+   "imports_jan_aug_bn": 2306.1,
+   "duty_jan_aug_bn": 149.5,
+   "effective_rate_pct": 6.48,
+   "above_2024_rate_bn": 95.1
+  },
+  {
+   "year": "2026",
+   "imports_jan_aug_bn": 2382.8,
+   "duty_jan_aug_bn": 173.6,
+   "effective_rate_pct": 7.29,
+   "above_2024_rate_bn": 117.4
+  }
+ ],
+ "extra_duty": [
+  {
+   "main_tariff": "Mostly IEEPA",
+   "extra_duty_bn": 149.6,
+   "chapters": 92
+  },
+  {
+   "main_tariff": "Mostly Section 232",
+   "extra_duty_bn": 67.3,
+   "chapters": 6
+  },
+  {
+   "main_tariff": null,
+   "extra_duty_bn": 216.8,
+   "chapters": 98
+  }
+ ],
+ "shares": [
+  {
+   "country": "China",
+   "jan_aug_2024_bn": 273.4,
+   "jan_aug_2026_bn": 175.6,
+   "change_pct": -35.8,
+   "share_2024_pct": 12.9,
+   "share_2026_pct": 7.4,
+   "share_change_pts": -5.52
+  },
+  {
+   "country": "Canada",
+   "jan_aug_2024_bn": 273.5,
+   "jan_aug_2026_bn": 268.7,
+   "change_pct": -1.7,
+   "share_2024_pct": 12.9,
+   "share_2026_pct": 11.3,
+   "share_change_pts": -1.62
+  },
+  {
+   "country": "Ireland",
+   "jan_aug_2024_bn": 61.5,
+   "jan_aug_2026_bn": 37.6,
+   "change_pct": -38.8,
+   "share_2024_pct": 2.9,
+   "share_2026_pct": 1.6,
+   "share_change_pts": -1.32
+  },
+  {
+   "country": "Germany",
+   "jan_aug_2024_bn": 107.4,
+   "jan_aug_2026_bn": 100.0,
+   "change_pct": -6.9,
+   "share_2024_pct": 5.1,
+   "share_2026_pct": 4.2,
+   "share_change_pts": -0.87
+  },
+  {
+   "country": "Japan",
+   "jan_aug_2024_bn": 99.8,
+   "jan_aug_2026_bn": 96.3,
+   "change_pct": -3.5,
+   "share_2024_pct": 4.7,
+   "share_2026_pct": 4.0,
+   "share_change_pts": -0.67
+  },
+  {
+   "country": "Singapore",
+   "jan_aug_2024_bn": 29.1,
+   "jan_aug_2026_bn": 22.2,
+   "change_pct": -23.7,
+   "share_2024_pct": 1.4,
+   "share_2026_pct": 0.9,
+   "share_change_pts": -0.44
+  },
+  {
+   "country": "Brazil",
+   "jan_aug_2024_bn": 28.3,
+   "jan_aug_2026_bn": 24.0,
+   "change_pct": -15.2,
+   "share_2024_pct": 1.3,
+   "share_2026_pct": 1.0,
+   "share_change_pts": -0.33
+  },
+  {
+   "country": "United Kingdom",
+   "jan_aug_2024_bn": 45.0,
+   "jan_aug_2026_bn": 43.8,
+   "change_pct": -2.7,
+   "share_2024_pct": 2.1,
+   "share_2026_pct": 1.8,
+   "share_change_pts": -0.28
+  },
+  {
+   "country": "Italy",
+   "jan_aug_2024_bn": 51.3,
+   "jan_aug_2026_bn": 51.0,
+   "change_pct": -0.6,
+   "share_2024_pct": 2.4,
+   "share_2026_pct": 2.1,
+   "share_change_pts": -0.28
+  },
+  {
+   "country": "Switzerland",
+   "jan_aug_2024_bn": 32.9,
+   "jan_aug_2026_bn": 33.6,
+   "change_pct": 2.1,
+   "share_2024_pct": 1.6,
+   "share_2026_pct": 1.4,
+   "share_change_pts": -0.14
+  },
+  {
+   "country": "All countries",
+   "jan_aug_2024_bn": 2120.8,
+   "jan_aug_2026_bn": 2382.8,
+   "change_pct": 12.4,
+   "share_2024_pct": 100.0,
+   "share_2026_pct": 100.0,
+   "share_change_pts": 0.0
+  },
+  {
+   "country": "Bangladesh",
+   "jan_aug_2024_bn": 5.4,
+   "jan_aug_2026_bn": 6.5,
+   "change_pct": 19.3,
+   "share_2024_pct": 0.3,
+   "share_2026_pct": 0.3,
+   "share_change_pts": 0.02
+  },
+  {
+   "country": "France",
+   "jan_aug_2024_bn": 39.7,
+   "jan_aug_2026_bn": 45.4,
+   "change_pct": 14.2,
+   "share_2024_pct": 1.9,
+   "share_2026_pct": 1.9,
+   "share_change_pts": 0.03
+  },
+  {
+   "country": "India",
+   "jan_aug_2024_bn": 58.5,
+   "jan_aug_2026_bn": 66.6,
+   "change_pct": 13.9,
+   "share_2024_pct": 2.8,
+   "share_2026_pct": 2.8,
+   "share_change_pts": 0.04
+  },
+  {
+   "country": "Indonesia",
+   "jan_aug_2024_bn": 17.6,
+   "jan_aug_2026_bn": 21.9,
+   "change_pct": 24.3,
+   "share_2024_pct": 0.8,
+   "share_2026_pct": 0.9,
+   "share_change_pts": 0.09
+  },
+  {
+   "country": "Cambodia",
+   "jan_aug_2024_bn": 7.9,
+   "jan_aug_2026_bn": 12.0,
+   "change_pct": 50.9,
+   "share_2024_pct": 0.4,
+   "share_2026_pct": 0.5,
+   "share_change_pts": 0.13
+  },
+  {
+   "country": "Philippines",
+   "jan_aug_2024_bn": 8.6,
+   "jan_aug_2026_bn": 17.3,
+   "change_pct": 99.9,
+   "share_2024_pct": 0.4,
+   "share_2026_pct": 0.7,
+   "share_change_pts": 0.32
+  },
+  {
+   "country": "South Korea",
+   "jan_aug_2024_bn": 87.9,
+   "jan_aug_2026_bn": 108.6,
+   "change_pct": 23.5,
+   "share_2024_pct": 4.1,
+   "share_2026_pct": 4.6,
+   "share_change_pts": 0.41
+  },
+  {
+   "country": "Malaysia",
+   "jan_aug_2024_bn": 32.1,
+   "jan_aug_2026_bn": 53.4,
+   "change_pct": 66.5,
+   "share_2024_pct": 1.5,
+   "share_2026_pct": 2.2,
+   "share_change_pts": 0.73
+  },
+  {
+   "country": "Mexico",
+   "jan_aug_2024_bn": 331.5,
+   "jan_aug_2026_bn": 417.0,
+   "change_pct": 25.8,
+   "share_2024_pct": 15.6,
+   "share_2026_pct": 17.5,
+   "share_change_pts": 1.87
+  },
+  {
+   "country": "Thailand",
+   "jan_aug_2024_bn": 40.2,
+   "jan_aug_2026_bn": 92.1,
+   "change_pct": 129.3,
+   "share_2024_pct": 1.9,
+   "share_2026_pct": 3.9,
+   "share_change_pts": 1.97
+  },
+  {
+   "country": "Vietnam",
+   "jan_aug_2024_bn": 88.9,
+   "jan_aug_2026_bn": 178.2,
+   "change_pct": 100.6,
+   "share_2024_pct": 4.2,
+   "share_2026_pct": 7.5,
+   "share_change_pts": 3.29
+  },
+  {
+   "country": "Taiwan",
+   "jan_aug_2024_bn": 75.0,
+   "jan_aug_2026_bn": 179.3,
+   "change_pct": 139.2,
+   "share_2024_pct": 3.5,
+   "share_2026_pct": 7.5,
+   "share_change_pts": 3.99
+  }
+ ],
+ "chapters_china": [
+  {
+   "hs2": "85",
+   "chapter": "Electrical and electronics",
+   "us_imports_2024_bn": 297.6,
+   "china_share_2024_pct": 23.9,
+   "china_share_2026_pct": 9.6,
+   "china_change_bn": -33.0,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 32.1
+  },
+  {
+   "hs2": "84",
+   "chapter": "Machinery, computers",
+   "us_imports_2024_bn": 335.8,
+   "china_share_2024_pct": 15.6,
+   "china_share_2026_pct": 4.5,
+   "china_change_bn": -25.9,
+   "top_gainer": "Taiwan",
+   "top_gainer_change_bn": 88.3
+  },
+  {
+   "hs2": "95",
+   "chapter": "Toys, games, sports equipment",
+   "us_imports_2024_bn": 23.1,
+   "china_share_2024_pct": 71.4,
+   "china_share_2026_pct": 50.7,
+   "china_change_bn": -5.9,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 2.3
+  },
+  {
+   "hs2": "94",
+   "chapter": "Furniture, lighting, bedding",
+   "us_imports_2024_bn": 44.4,
+   "china_share_2024_pct": 28.9,
+   "china_share_2026_pct": 18.6,
+   "china_change_bn": -5.7,
+   "top_gainer": "Cambodia",
+   "top_gainer_change_bn": 0.6
+  },
+  {
+   "hs2": "39",
+   "chapter": "Plastics",
+   "us_imports_2024_bn": 48.6,
+   "china_share_2024_pct": 26.4,
+   "china_share_2026_pct": 19.3,
+   "china_change_bn": -3.8,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 1.0
+  },
+  {
+   "hs2": "87",
+   "chapter": "Vehicles and parts",
+   "us_imports_2024_bn": 260.4,
+   "china_share_2024_pct": 4.2,
+   "china_share_2026_pct": 3.3,
+   "china_change_bn": -3.8,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.5
+  },
+  {
+   "hs2": "73",
+   "chapter": "Iron and steel articles",
+   "us_imports_2024_bn": 32.8,
+   "china_share_2024_pct": 23.6,
+   "china_share_2026_pct": 18.2,
+   "china_change_bn": -3.3,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.3
+  },
+  {
+   "hs2": "64",
+   "chapter": "Footwear",
+   "us_imports_2024_bn": 18.0,
+   "china_share_2024_pct": 37.1,
+   "china_share_2026_pct": 20.6,
+   "china_change_bn": -3.0,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 1.0
+  },
+  {
+   "hs2": "61",
+   "chapter": "Clothing, knitted",
+   "us_imports_2024_bn": 28.8,
+   "china_share_2024_pct": 21.7,
+   "china_share_2026_pct": 12.3,
+   "china_change_bn": -2.9,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.8
+  },
+  {
+   "hs2": "62",
+   "chapter": "Clothing, not knitted",
+   "us_imports_2024_bn": 23.7,
+   "china_share_2024_pct": 20.8,
+   "china_share_2026_pct": 11.7,
+   "china_change_bn": -2.3,
+   "top_gainer": "Bangladesh",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs2": "63",
+   "chapter": "Other textile articles",
+   "us_imports_2024_bn": 10.8,
+   "china_share_2024_pct": 50.6,
+   "china_share_2026_pct": 39.7,
+   "china_change_bn": -1.7,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.3
+  },
+  {
+   "hs2": "90",
+   "chapter": "Medical, optical, measuring instruments",
+   "us_imports_2024_bn": 80.1,
+   "china_share_2024_pct": 9.4,
+   "china_share_2026_pct": 7.6,
+   "china_change_bn": -1.4,
+   "top_gainer": "Ireland",
+   "top_gainer_change_bn": 0.9
+  },
+  {
+   "hs2": "48",
+   "chapter": "Paper and paperboard",
+   "us_imports_2024_bn": 12.6,
+   "china_share_2024_pct": 14.0,
+   "china_share_2026_pct": 7.0,
+   "china_change_bn": -0.9,
+   "top_gainer": "Thailand",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "42",
+   "chapter": "Handbags, luggage, leather goods",
+   "us_imports_2024_bn": 8.8,
+   "china_share_2024_pct": 22.6,
+   "china_share_2026_pct": 12.7,
+   "china_change_bn": -0.9,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "83",
+   "chapter": "Misc. metal articles",
+   "us_imports_2024_bn": 10.1,
+   "china_share_2024_pct": 33.9,
+   "china_share_2026_pct": 27.0,
+   "china_change_bn": -0.8,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "40",
+   "chapter": "Rubber",
+   "us_imports_2024_bn": 22.6,
+   "china_share_2024_pct": 7.5,
+   "china_share_2026_pct": 4.4,
+   "china_change_bn": -0.7,
+   "top_gainer": "Cambodia",
+   "top_gainer_change_bn": 0.5
+  },
+  {
+   "hs2": "82",
+   "chapter": "Tools and cutlery",
+   "us_imports_2024_bn": 7.4,
+   "china_share_2024_pct": 27.2,
+   "china_share_2026_pct": 19.2,
+   "china_change_bn": -0.6,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.3
+  },
+  {
+   "hs2": "96",
+   "chapter": "Misc. manufactured articles",
+   "us_imports_2024_bn": 5.8,
+   "china_share_2024_pct": 53.8,
+   "china_share_2026_pct": 44.6,
+   "china_change_bn": -0.6,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "44",
+   "chapter": "Wood",
+   "us_imports_2024_bn": 15.4,
+   "china_share_2024_pct": 8.3,
+   "china_share_2026_pct": 6.0,
+   "china_change_bn": -0.5,
+   "top_gainer": "Malaysia",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs2": "38",
+   "chapter": "Other chemical products",
+   "us_imports_2024_bn": 16.3,
+   "china_share_2024_pct": 6.6,
+   "china_share_2026_pct": 5.0,
+   "china_change_bn": -0.4,
+   "top_gainer": "Indonesia",
+   "top_gainer_change_bn": 0.5
+  },
+  {
+   "hs2": "71",
+   "chapter": "Gold, jewelry, precious metals",
+   "us_imports_2024_bn": 48.2,
+   "china_share_2024_pct": 2.2,
+   "china_share_2026_pct": 1.5,
+   "china_change_bn": -0.4,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 4.4
+  },
+  {
+   "hs2": "70",
+   "chapter": "Glass",
+   "us_imports_2024_bn": 6.0,
+   "china_share_2024_pct": 28.9,
+   "china_share_2026_pct": 22.5,
+   "china_change_bn": -0.4,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "76",
+   "chapter": "Aluminum",
+   "us_imports_2024_bn": 17.5,
+   "china_share_2024_pct": 10.8,
+   "china_share_2026_pct": 7.4,
+   "china_change_bn": -0.3,
+   "top_gainer": "South Korea",
+   "top_gainer_change_bn": 0.8
+  },
+  {
+   "hs2": "30",
+   "chapter": "Pharmaceuticals",
+   "us_imports_2024_bn": 141.9,
+   "china_share_2024_pct": 3.6,
+   "china_share_2026_pct": 4.3,
+   "china_change_bn": -0.3,
+   "top_gainer": "South Korea",
+   "top_gainer_change_bn": 3.4
+  },
+  {
+   "hs2": "15",
+   "chapter": "Fats and oils",
+   "us_imports_2024_bn": 11.1,
+   "china_share_2024_pct": 7.3,
+   "china_share_2026_pct": 4.8,
+   "china_change_bn": -0.3,
+   "top_gainer": "Malaysia",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs2": "27",
+   "chapter": "Oil, gas, coal",
+   "us_imports_2024_bn": 168.7,
+   "china_share_2024_pct": 0.2,
+   "china_share_2026_pct": 0.0,
+   "china_change_bn": -0.3,
+   "top_gainer": "Canada",
+   "top_gainer_change_bn": 4.2
+  },
+  {
+   "hs2": "29",
+   "chapter": "Organic chemicals",
+   "us_imports_2024_bn": 34.2,
+   "china_share_2024_pct": 16.2,
+   "china_share_2026_pct": 22.6,
+   "china_change_bn": -0.3,
+   "top_gainer": "India",
+   "top_gainer_change_bn": 0.5
+  },
+  {
+   "hs2": "28",
+   "chapter": "Inorganic chemicals",
+   "us_imports_2024_bn": 12.3,
+   "china_share_2024_pct": 10.5,
+   "china_share_2026_pct": 7.3,
+   "china_change_bn": -0.3,
+   "top_gainer": "United Kingdom",
+   "top_gainer_change_bn": 0.5
+  },
+  {
+   "hs2": "68",
+   "chapter": "Stone, plaster, cement articles",
+   "us_imports_2024_bn": 6.3,
+   "china_share_2024_pct": 9.4,
+   "china_share_2026_pct": 6.6,
+   "china_change_bn": -0.2,
+   "top_gainer": "Thailand",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs2": "07",
+   "chapter": "Vegetables",
+   "us_imports_2024_bn": 10.6,
+   "china_share_2024_pct": 2.4,
+   "china_share_2026_pct": 2.1,
+   "china_change_bn": -0.1,
+   "top_gainer": "Canada",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "33",
+   "chapter": "Cosmetics, perfume",
+   "us_imports_2024_bn": 15.3,
+   "china_share_2024_pct": 5.1,
+   "china_share_2026_pct": 5.5,
+   "china_change_bn": -0.1,
+   "top_gainer": "South Korea",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs2": "72",
+   "chapter": "Iron and steel",
+   "us_imports_2024_bn": 22.1,
+   "china_share_2024_pct": 1.6,
+   "china_share_2026_pct": 1.4,
+   "china_change_bn": -0.1,
+   "top_gainer": "India",
+   "top_gainer_change_bn": 0.6
+  },
+  {
+   "hs2": "03",
+   "chapter": "Fish and seafood",
+   "us_imports_2024_bn": 13.1,
+   "china_share_2024_pct": 5.9,
+   "china_share_2026_pct": 4.7,
+   "china_change_bn": -0.1,
+   "top_gainer": "Canada",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs2": "74",
+   "chapter": "Copper",
+   "us_imports_2024_bn": 11.0,
+   "china_share_2024_pct": 2.8,
+   "china_share_2026_pct": 1.2,
+   "china_change_bn": -0.1,
+   "top_gainer": "South Korea",
+   "top_gainer_change_bn": 0.6
+  },
+  {
+   "hs2": "21",
+   "chapter": "Other prepared foods",
+   "us_imports_2024_bn": 8.1,
+   "china_share_2024_pct": 6.8,
+   "china_share_2026_pct": 6.3,
+   "china_change_bn": -0.1,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs2": "02",
+   "chapter": "Meat",
+   "us_imports_2024_bn": 9.6,
+   "china_share_2024_pct": 0.1,
+   "china_share_2026_pct": 0.0,
+   "china_change_bn": -0.0,
+   "top_gainer": "Brazil",
+   "top_gainer_change_bn": 0.8
+  },
+  {
+   "hs2": "20",
+   "chapter": "Prepared fruit and vegetables",
+   "us_imports_2024_bn": 9.3,
+   "china_share_2024_pct": 5.9,
+   "china_share_2026_pct": 5.3,
+   "china_change_bn": -0.0,
+   "top_gainer": "Thailand",
+   "top_gainer_change_bn": 0.2
+  },
+  {
+   "hs2": "31",
+   "chapter": "Fertilizers",
+   "us_imports_2024_bn": 6.2,
+   "china_share_2024_pct": 0.2,
+   "china_share_2026_pct": 0.1,
+   "china_change_bn": -0.0,
+   "top_gainer": "Singapore",
+   "top_gainer_change_bn": 0.0
+  },
+  {
+   "hs2": "19",
+   "chapter": "Bakery, pasta, cereal foods",
+   "us_imports_2024_bn": 10.1,
+   "china_share_2024_pct": 1.6,
+   "china_share_2026_pct": 1.4,
+   "china_change_bn": -0.0,
+   "top_gainer": "South Korea",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs2": "09",
+   "chapter": "Coffee, tea, spices",
+   "us_imports_2024_bn": 7.3,
+   "china_share_2024_pct": 2.3,
+   "china_share_2026_pct": 1.4,
+   "china_change_bn": -0.0,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs2": "97",
+   "chapter": "Art and antiques",
+   "us_imports_2024_bn": 5.9,
+   "china_share_2024_pct": 1.1,
+   "china_share_2026_pct": 0.6,
+   "china_change_bn": -0.0,
+   "top_gainer": "France",
+   "top_gainer_change_bn": 0.7
+  },
+  {
+   "hs2": "88",
+   "chapter": "Aircraft",
+   "us_imports_2024_bn": 22.8,
+   "china_share_2024_pct": 1.5,
+   "china_share_2026_pct": 1.2,
+   "china_change_bn": -0.0,
+   "top_gainer": "France",
+   "top_gainer_change_bn": 2.2
+  },
+  {
+   "hs2": "22",
+   "chapter": "Beverages and spirits",
+   "us_imports_2024_bn": 20.5,
+   "china_share_2024_pct": 0.3,
+   "china_share_2026_pct": 0.2,
+   "china_change_bn": -0.0,
+   "top_gainer": "Ireland",
+   "top_gainer_change_bn": 0.0
+  },
+  {
+   "hs2": "08",
+   "chapter": "Fruit and nuts",
+   "us_imports_2024_bn": 16.2,
+   "china_share_2024_pct": 0.5,
+   "china_share_2026_pct": 0.4,
+   "china_change_bn": -0.0,
+   "top_gainer": "Canada",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs2": "98",
+   "chapter": "Special classification (returns etc.)",
+   "us_imports_2024_bn": 68.0,
+   "china_share_2024_pct": 6.2,
+   "china_share_2026_pct": 7.1,
+   "china_change_bn": 1.7,
+   "top_gainer": "Germany",
+   "top_gainer_change_bn": 1.7
+  },
+  {
+   "hs2": "99",
+   "chapter": "Special import provisions",
+   "us_imports_2024_bn": 15.9,
+   "china_share_2024_pct": 20.6,
+   "china_share_2026_pct": 31.4,
+   "china_change_bn": 4.6,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 1.0
+  }
+ ],
+ "products_china": [
+  {
+   "hs6": "847130",
+   "description": "PORT DIGTL AUTOMATIC DATA PROCESS MACH NOT > 10 KG",
+   "us_imports_2024_bn": 31.79,
+   "china_share_2024_pct": 66.9,
+   "china_share_2026_pct": 7.1,
+   "china_change_bn": -18.65,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 16.96
+  },
+  {
+   "hs6": "851713",
+   "description": "SMARTPHONES",
+   "us_imports_2024_bn": 31.92,
+   "china_share_2024_pct": 67.9,
+   "china_share_2026_pct": 22.2,
+   "china_change_bn": -13.47,
+   "top_gainer": "India",
+   "top_gainer_change_bn": 13.2
+  },
+  {
+   "hs6": "850760",
+   "description": "LITHIUM ION BATTERIES",
+   "us_imports_2024_bn": 12.68,
+   "china_share_2024_pct": 72.0,
+   "china_share_2026_pct": 39.5,
+   "china_change_bn": -4.8,
+   "top_gainer": "Japan",
+   "top_gainer_change_bn": 1.16
+  },
+  {
+   "hs6": "300490",
+   "description": "MEDICAMENTS NESOI, MEASURED DOSES, RETAIL PK NESOI",
+   "us_imports_2024_bn": 55.63,
+   "china_share_2024_pct": 6.7,
+   "china_share_2026_pct": 2.3,
+   "china_change_bn": -2.74,
+   "top_gainer": "France",
+   "top_gainer_change_bn": 1.1
+  },
+  {
+   "hs6": "851762",
+   "description": "MACH FOR RECP/CONVR/TRANS/REGN OF VOICE/IMAGE/DATA",
+   "us_imports_2024_bn": 34.34,
+   "china_share_2024_pct": 14.3,
+   "china_share_2026_pct": 2.8,
+   "china_change_bn": -2.51,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 18.46
+  },
+  {
+   "hs6": "950300",
+   "description": "TRICYCLE, SCOOTR, PEDAL CAR & SIM WHEELED TYS; ETC",
+   "us_imports_2024_bn": 9.7,
+   "china_share_2024_pct": 76.0,
+   "china_share_2026_pct": 63.6,
+   "china_change_bn": -2.02,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.4
+  },
+  {
+   "hs6": "852852",
+   "description": "OTHER MONITORS CAPABLE OF DIRECT CONNECT TO ADP",
+   "us_imports_2024_bn": 4.11,
+   "china_share_2024_pct": 79.1,
+   "china_share_2026_pct": 31.9,
+   "china_change_bn": -1.93,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 1.11
+  },
+  {
+   "hs6": "950450",
+   "description": "VIDEO GAME CONSOLES & MACH, EXC OF SUBHEAD 9504.30",
+   "us_imports_2024_bn": 2.8,
+   "china_share_2024_pct": 79.8,
+   "china_share_2026_pct": 15.0,
+   "china_change_bn": -1.86,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 1.26
+  },
+  {
+   "hs6": "851830",
+   "description": "HEAD-EAR-PHONES & COMBINED MICROPHONE/SPEAKER SETS",
+   "us_imports_2024_bn": 4.22,
+   "china_share_2024_pct": 48.0,
+   "china_share_2026_pct": 22.4,
+   "china_change_bn": -1.28,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.26
+  },
+  {
+   "hs6": "940161",
+   "description": "SEATS W WOODEN FRAMES, UPHOLSTERED, NESOI",
+   "us_imports_2024_bn": 4.69,
+   "china_share_2024_pct": 27.3,
+   "china_share_2026_pct": 7.8,
+   "china_change_bn": -1.01,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.16
+  },
+  {
+   "hs6": "391810",
+   "description": "FLOOR, WALL, ETC COVERS, VINYL CHLORIDE POLYMERS",
+   "us_imports_2024_bn": 2.8,
+   "china_share_2024_pct": 37.0,
+   "china_share_2026_pct": 3.8,
+   "china_change_bn": -0.95,
+   "top_gainer": "Thailand",
+   "top_gainer_change_bn": 0.38
+  },
+  {
+   "hs6": "940320",
+   "description": "METAL FURNITURE NESOI",
+   "us_imports_2024_bn": 4.22,
+   "china_share_2024_pct": 42.6,
+   "china_share_2026_pct": 29.3,
+   "china_change_bn": -0.9,
+   "top_gainer": "Thailand",
+   "top_gainer_change_bn": 0.19
+  },
+  {
+   "hs6": "847330",
+   "description": "PARTS & ACCESSORIES FOR ADP MACHINES & UNITS",
+   "us_imports_2024_bn": 31.4,
+   "china_share_2024_pct": 9.4,
+   "china_share_2026_pct": 2.1,
+   "china_change_bn": -0.85,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 23.3
+  },
+  {
+   "hs6": "640419",
+   "description": "FOOTWEAR, OUT SOLE RUB OR PLAST & TEXT UPPER NESOI",
+   "us_imports_2024_bn": 2.56,
+   "china_share_2024_pct": 56.5,
+   "china_share_2026_pct": 32.0,
+   "china_change_bn": -0.75,
+   "top_gainer": "Cambodia",
+   "top_gainer_change_bn": 0.17
+  },
+  {
+   "hs6": "852872",
+   "description": "RECEPTION APPARATUS FOR TELEVISION, COLOR, NESOI",
+   "us_imports_2024_bn": 6.98,
+   "china_share_2024_pct": 10.5,
+   "china_share_2026_pct": 0.2,
+   "china_change_bn": -0.72,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 0.94
+  },
+  {
+   "hs6": "732393",
+   "description": "TABLE, KITCHEN ETC ARTICLES & PTS, STAINLESS STEEL",
+   "us_imports_2024_bn": 1.51,
+   "china_share_2024_pct": 85.2,
+   "china_share_2026_pct": 70.0,
+   "china_change_bn": -0.71,
+   "top_gainer": "Italy",
+   "top_gainer_change_bn": 0.02
+  },
+  {
+   "hs6": "940179",
+   "description": "SEATS WITH METAL FRAMES, EXCEPT UPHOLSTERED NESOI",
+   "us_imports_2024_bn": 1.55,
+   "china_share_2024_pct": 73.8,
+   "china_share_2026_pct": 34.0,
+   "china_change_bn": -0.7,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.29
+  },
+  {
+   "hs6": "640299",
+   "description": "FOOTWEAR, OUTER SOLE & UPPER RUBBER OR PLAST NESOI",
+   "us_imports_2024_bn": 3.32,
+   "china_share_2024_pct": 56.0,
+   "china_share_2026_pct": 33.5,
+   "china_change_bn": -0.69,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.39
+  },
+  {
+   "hs6": "852589",
+   "description": "TV, DIGITAL, VIDEO CAMERAS, NESOI",
+   "us_imports_2024_bn": 5.47,
+   "china_share_2024_pct": 17.4,
+   "china_share_2026_pct": 5.6,
+   "china_change_bn": -0.64,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.53
+  },
+  {
+   "hs6": "630790",
+   "description": "MADE-UP TEXTILE ARTICLES, NESOI",
+   "us_imports_2024_bn": 3.09,
+   "china_share_2024_pct": 65.9,
+   "china_share_2026_pct": 51.1,
+   "china_change_bn": -0.63,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.14
+  },
+  {
+   "hs6": "392410",
+   "description": "TABLEWARE AND KITCHENWARE OF PLASTICS",
+   "us_imports_2024_bn": 2.86,
+   "china_share_2024_pct": 78.1,
+   "china_share_2026_pct": 67.5,
+   "china_change_bn": -0.61,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.1
+  },
+  {
+   "hs6": "732111",
+   "description": "COOKING APPLIANCES ETC FOR GAS FUEL, IRON OR STEEL",
+   "us_imports_2024_bn": 1.48,
+   "china_share_2024_pct": 52.2,
+   "china_share_2026_pct": 13.6,
+   "china_change_bn": -0.61,
+   "top_gainer": "Malaysia",
+   "top_gainer_change_bn": 0.18
+  },
+  {
+   "hs6": "870310",
+   "description": "PASS VEH FOR SNOW; GOLF CARTS & SIMILAR VEHICLES",
+   "us_imports_2024_bn": 1.54,
+   "china_share_2024_pct": 39.8,
+   "china_share_2026_pct": 3.0,
+   "china_change_bn": -0.59,
+   "top_gainer": "Vietnam",
+   "top_gainer_change_bn": 0.11
+  },
+  {
+   "hs6": "854370",
+   "description": "ELEC MACH AND APP, HAVING INDIV FUNCTIONS, NESOI",
+   "us_imports_2024_bn": 8.77,
+   "china_share_2024_pct": 11.9,
+   "china_share_2026_pct": 5.7,
+   "china_change_bn": -0.55,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 0.75
+  },
+  {
+   "hs6": "392690",
+   "description": "ARTICLES OF PLASTICS, NESOI",
+   "us_imports_2024_bn": 6.83,
+   "china_share_2024_pct": 38.4,
+   "china_share_2026_pct": 28.7,
+   "china_change_bn": -0.53,
+   "top_gainer": "Mexico",
+   "top_gainer_change_bn": 0.38
+  }
+ ],
+ "rate_by_country": [
+  {
+   "country": "Bangladesh",
+   "rate_2024_pct": 15.06,
+   "rate_oct_2025_pct": 33.45,
+   "rate_latest_pct": 24.18,
+   "imports_latest_month_bn": 0.9
+  },
+  {
+   "country": "China",
+   "rate_2024_pct": 10.93,
+   "rate_oct_2025_pct": 37.82,
+   "rate_latest_pct": 22.77,
+   "imports_latest_month_bn": 26.3
+  },
+  {
+   "country": "Cambodia",
+   "rate_2024_pct": 7.02,
+   "rate_oct_2025_pct": 28.84,
+   "rate_latest_pct": 19.8,
+   "imports_latest_month_bn": 2.0
+  },
+  {
+   "country": "Indonesia",
+   "rate_2024_pct": 4.88,
+   "rate_oct_2025_pct": 22.06,
+   "rate_latest_pct": 13.94,
+   "imports_latest_month_bn": 3.0
+  },
+  {
+   "country": "Brazil",
+   "rate_2024_pct": 1.28,
+   "rate_oct_2025_pct": 22.33,
+   "rate_latest_pct": 12.09,
+   "imports_latest_month_bn": 3.5
+  },
+  {
+   "country": "Japan",
+   "rate_2024_pct": 1.52,
+   "rate_oct_2025_pct": 14.62,
+   "rate_latest_pct": 10.85,
+   "imports_latest_month_bn": 11.9
+  },
+  {
+   "country": "Germany",
+   "rate_2024_pct": 1.38,
+   "rate_oct_2025_pct": 10.94,
+   "rate_latest_pct": 9.02,
+   "imports_latest_month_bn": 12.9
+  },
+  {
+   "country": "India",
+   "rate_2024_pct": 2.41,
+   "rate_oct_2025_pct": 22.03,
+   "rate_latest_pct": 8.22,
+   "imports_latest_month_bn": 9.3
+  },
+  {
+   "country": "South Korea",
+   "rate_2024_pct": 0.19,
+   "rate_oct_2025_pct": 14.12,
+   "rate_latest_pct": 7.6,
+   "imports_latest_month_bn": 15.2
+  },
+  {
+   "country": "Italy",
+   "rate_2024_pct": 2.23,
+   "rate_oct_2025_pct": 11.23,
+   "rate_latest_pct": 7.41,
+   "imports_latest_month_bn": 7.5
+  },
+  {
+   "country": "Vietnam",
+   "rate_2024_pct": 3.81,
+   "rate_oct_2025_pct": 12.4,
+   "rate_latest_pct": 7.07,
+   "imports_latest_month_bn": 26.5
+  },
+  {
+   "country": "All countries",
+   "rate_2024_pct": 2.36,
+   "rate_oct_2025_pct": 10.84,
+   "rate_latest_pct": 6.87,
+   "imports_latest_month_bn": 330.7
+  },
+  {
+   "country": "United Kingdom",
+   "rate_2024_pct": 0.95,
+   "rate_oct_2025_pct": 5.72,
+   "rate_latest_pct": 6.33,
+   "imports_latest_month_bn": 5.4
+  },
+  {
+   "country": "Thailand",
+   "rate_2024_pct": 1.63,
+   "rate_oct_2025_pct": 8.94,
+   "rate_latest_pct": 5.85,
+   "imports_latest_month_bn": 11.8
+  },
+  {
+   "country": "France",
+   "rate_2024_pct": 1.17,
+   "rate_oct_2025_pct": 6.26,
+   "rate_latest_pct": 5.03,
+   "imports_latest_month_bn": 5.9
+  },
+  {
+   "country": "Philippines",
+   "rate_2024_pct": 1.35,
+   "rate_oct_2025_pct": 14.43,
+   "rate_latest_pct": 4.46,
+   "imports_latest_month_bn": 3.1
+  },
+  {
+   "country": "Malaysia",
+   "rate_2024_pct": 0.69,
+   "rate_oct_2025_pct": 9.41,
+   "rate_latest_pct": 3.35,
+   "imports_latest_month_bn": 8.0
+  },
+  {
+   "country": "Switzerland",
+   "rate_2024_pct": 0.59,
+   "rate_oct_2025_pct": 8.95,
+   "rate_latest_pct": 3.21,
+   "imports_latest_month_bn": 5.2
+  },
+  {
+   "country": "Mexico",
+   "rate_2024_pct": 0.24,
+   "rate_oct_2025_pct": 4.35,
+   "rate_latest_pct": 3.2,
+   "imports_latest_month_bn": 60.3
+  },
+  {
+   "country": "Canada",
+   "rate_2024_pct": 0.1,
+   "rate_oct_2025_pct": 3.8,
+   "rate_latest_pct": 3.18,
+   "imports_latest_month_bn": 35.7
+  },
+  {
+   "country": "Taiwan",
+   "rate_2024_pct": 0.94,
+   "rate_oct_2025_pct": 3.51,
+   "rate_latest_pct": 2.94,
+   "imports_latest_month_bn": 22.9
+  },
+  {
+   "country": "Singapore",
+   "rate_2024_pct": 0.08,
+   "rate_oct_2025_pct": 2.94,
+   "rate_latest_pct": 1.64,
+   "imports_latest_month_bn": 3.6
+  },
+  {
+   "country": "Ireland",
+   "rate_2024_pct": 0.18,
+   "rate_oct_2025_pct": 1.7,
+   "rate_latest_pct": 1.63,
+   "imports_latest_month_bn": 4.0
+  }
+ ],
+ "rate_by_chapter": [
+  {
+   "hs2": "73",
+   "chapter": "Iron and steel articles",
+   "group": "Metals and building materials",
+   "rate_2024_pct": 5.6,
+   "rate_latest_pct": 42.8,
+   "imports_latest_bn": 3.2
+  },
+  {
+   "hs2": "76",
+   "chapter": "Aluminum",
+   "group": "Metals and building materials",
+   "rate_2024_pct": 3.7,
+   "rate_latest_pct": 37.3,
+   "imports_latest_bn": 2.8
+  },
+  {
+   "hs2": "72",
+   "chapter": "Iron and steel",
+   "group": "Metals and building materials",
+   "rate_2024_pct": 2.6,
+   "rate_latest_pct": 26.1,
+   "imports_latest_bn": 2.3
+  },
+  {
+   "hs2": "61",
+   "chapter": "Clothing, knitted",
+   "group": "Clothing and footwear",
+   "rate_2024_pct": 14.9,
+   "rate_latest_pct": 23.1,
+   "imports_latest_bn": 4.3
+  },
+  {
+   "hs2": "42",
+   "chapter": "Handbags, luggage, leather goods",
+   "group": "Clothing and footwear",
+   "rate_2024_pct": 13.0,
+   "rate_latest_pct": 22.2,
+   "imports_latest_bn": 1.2
+  },
+  {
+   "hs2": "62",
+   "chapter": "Clothing, not knitted",
+   "group": "Clothing and footwear",
+   "rate_2024_pct": 14.3,
+   "rate_latest_pct": 22.2,
+   "imports_latest_bn": 3.0
+  },
+  {
+   "hs2": "64",
+   "chapter": "Footwear",
+   "group": "Clothing and footwear",
+   "rate_2024_pct": 12.2,
+   "rate_latest_pct": 21.4,
+   "imports_latest_bn": 2.4
+  },
+  {
+   "hs2": "63",
+   "chapter": "Other textile articles",
+   "group": "Clothing and footwear",
+   "rate_2024_pct": 8.7,
+   "rate_latest_pct": 17.5,
+   "imports_latest_bn": 1.4
+  },
+  {
+   "hs2": "83",
+   "chapter": "Misc. metal articles",
+   "group": "Metals and building materials",
+   "rate_2024_pct": 6.8,
+   "rate_latest_pct": 16.7,
+   "imports_latest_bn": 1.3
+  },
+  {
+   "hs2": "82",
+   "chapter": "Tools and cutlery",
+   "group": "Metals and building materials",
+   "rate_2024_pct": 8.4,
+   "rate_latest_pct": 16.2,
+   "imports_latest_bn": 1.0
+  },
+  {
+   "hs2": "94",
+   "chapter": "Furniture, lighting, bedding",
+   "group": "Other manufactured goods",
+   "rate_2024_pct": 5.6,
+   "rate_latest_pct": 13.9,
+   "imports_latest_bn": 5.2
+  },
+  {
+   "hs2": "40",
+   "chapter": "Rubber",
+   "group": "Chemicals and plastics",
+   "rate_2024_pct": 3.1,
+   "rate_latest_pct": 13.4,
+   "imports_latest_bn": 2.9
+  },
+  {
+   "hs2": "87",
+   "chapter": "Vehicles and parts",
+   "group": "Vehicles and transport",
+   "rate_2024_pct": 2.0,
+   "rate_latest_pct": 12.7,
+   "imports_latest_bn": 28.1
+  },
+  {
+   "hs2": "95",
+   "chapter": "Toys, games, sports equipment",
+   "group": "Other manufactured goods",
+   "rate_2024_pct": 1.2,
+   "rate_latest_pct": 11.8,
+   "imports_latest_bn": 3.8
+  },
+  {
+   "hs2": "39",
+   "chapter": "Plastics",
+   "group": "Chemicals and plastics",
+   "rate_2024_pct": 5.3,
+   "rate_latest_pct": 11.4,
+   "imports_latest_bn": 6.4
+  },
+  {
+   "hs2": "33",
+   "chapter": "Cosmetics, perfume",
+   "group": "Chemicals and plastics",
+   "rate_2024_pct": 1.3,
+   "rate_latest_pct": 10.2,
+   "imports_latest_bn": 1.8
+  },
+  {
+   "hs2": "44",
+   "chapter": "Wood",
+   "group": "Wood and paper",
+   "rate_2024_pct": 2.1,
+   "rate_latest_pct": 10.1,
+   "imports_latest_bn": 1.7
+  },
+  {
+   "hs2": "29",
+   "chapter": "Organic chemicals",
+   "group": "Chemicals and plastics",
+   "rate_2024_pct": 2.4,
+   "rate_latest_pct": 8.6,
+   "imports_latest_bn": 3.2
+  },
+  {
+   "hs2": "03",
+   "chapter": "Fish and seafood",
+   "group": "Food and farm",
+   "rate_2024_pct": 0.8,
+   "rate_latest_pct": 8.2,
+   "imports_latest_bn": 1.8
+  },
+  {
+   "hs2": "48",
+   "chapter": "Paper and paperboard",
+   "group": "Wood and paper",
+   "rate_2024_pct": 2.8,
+   "rate_latest_pct": 8.1,
+   "imports_latest_bn": 1.7
+  }
+ ],
+ "smartphones": [
+  {
+   "half_year": "2024 H1",
+   "us_imports_bn": 23.7,
+   "india_pct": 16.5,
+   "china_pct": 67.2,
+   "vietnam_pct": 14.9,
+   "months_of_data": 6
+  },
+  {
+   "half_year": "2024 H2",
+   "us_imports_bn": 32.5,
+   "india_pct": 9.0,
+   "china_pct": 76.3,
+   "vietnam_pct": 13.3,
+   "months_of_data": 6
+  },
+  {
+   "half_year": "2025 H1",
+   "us_imports_bn": 29.9,
+   "india_pct": 38.1,
+   "china_pct": 39.3,
+   "vietnam_pct": 20.2,
+   "months_of_data": 6
+  },
+  {
+   "half_year": "2025 H2",
+   "us_imports_bn": 28.9,
+   "india_pct": 40.1,
+   "china_pct": 40.6,
+   "vietnam_pct": 16.4,
+   "months_of_data": 6
+  },
+  {
+   "half_year": "2026 H1",
+   "us_imports_bn": 27.4,
+   "india_pct": 49.3,
+   "china_pct": 23.3,
+   "vietnam_pct": 20.7,
+   "months_of_data": 6
+  },
+  {
+   "half_year": "2026 H2",
+   "us_imports_bn": 9.7,
+   "india_pct": 46.6,
+   "china_pct": 18.8,
+   "vietnam_pct": 30.5,
+   "months_of_data": 2
+  }
+ ],
+ "refunds": {
+  "note": "IEEPA tariff refunds through CBP's CAPE system, as reported. Amounts are 'sent to the Treasury for payment' (CBP's measure), including interest. Second-hand reports of CBP court declarations; CBP's own refunds page is the primary source.",
+  "collected_bn": 166,
+  "collected_note": "IEEPA duties collected from 330,000+ importers (CBP, 6 March 2026, as reported)",
+  "progress": [
+   {
+    "date": "2026-07-10",
+    "sent_bn": 86.3,
+    "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"
+   },
+   {
+    "date": "2026-08-21",
+    "sent_bn": 106.6,
+    "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"
+   },
+   {
+    "date": "2026-09-11",
+    "sent_bn": 122.0,
+    "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"
+   },
+   {
+    "date": "2026-10-02",
+    "sent_bn": 126.0,
+    "source": "https://www.cbh.com/insights/alerts/ieepa-tariff-refund-update-cape-phase-iii-open/"
+   }
+  ],
+  "pending_ach_bn": 1.1,
+  "pending_ach_note": "Waiting because the importer's bank (ACH) details are missing or unvalidated (CBP, 2 October 2026, as reported)"
+ },
+ "simulator": [
+  {
+   "hs10": "8517130000",
+   "name": "Smartphones",
+   "per": "phone",
+   "us_value_bn": 37.08,
+   "countries": [
+    {
+     "country": "India",
+     "price": 515.8,
+     "freight": 2.39,
+     "rate": 0.55,
+     "rate_from": "latest month",
+     "share": 48.6,
+     "units_m": 34.91,
+     "value_bn": 18.01
+    },
+    {
+     "country": "Vietnam",
+     "price": 287.47,
+     "freight": 1.19,
+     "rate": 0.69,
+     "rate_from": "latest month",
+     "share": 23.2,
+     "units_m": 29.97,
+     "value_bn": 8.62
+    },
+    {
+     "country": "China",
+     "price": 353.15,
+     "freight": 1.58,
+     "rate": 0.2,
+     "rate_from": "latest month",
+     "share": 22.2,
+     "units_m": 23.26,
+     "value_bn": 8.21
+    },
+    {
+     "country": "South Korea",
+     "price": 752.01,
+     "freight": 3.65,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 5.0,
+     "units_m": 2.48,
+     "value_bn": 1.86
+    },
+    {
+     "country": "Indonesia",
+     "price": 171.05,
+     "freight": 3.31,
+     "rate": 0.14,
+     "rate_from": "latest month",
+     "share": 0.6,
+     "units_m": 1.32,
+     "value_bn": 0.23
+    },
+    {
+     "country": "Malaysia",
+     "price": 389.18,
+     "freight": 7.16,
+     "rate": 0.01,
+     "rate_from": "latest month",
+     "share": 0.2,
+     "units_m": 0.17,
+     "value_bn": 0.07
+    }
+   ]
+  },
+  {
+   "hs10": "8471300100",
+   "name": "Laptops",
+   "per": "laptop",
+   "us_value_bn": 36.7,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 614.11,
+     "freight": 4.65,
+     "rate": 0.07,
+     "rate_from": "latest month",
+     "share": 69.8,
+     "units_m": 41.73,
+     "value_bn": 25.63
+    },
+    {
+     "country": "Thailand",
+     "price": 616.46,
+     "freight": 4.49,
+     "rate": 0.01,
+     "rate_from": "latest month",
+     "share": 10.1,
+     "units_m": 6.02,
+     "value_bn": 3.71
+    },
+    {
+     "country": "Mexico",
+     "price": 668.23,
+     "freight": 0.31,
+     "rate": 0.01,
+     "rate_from": "latest month",
+     "share": 8.1,
+     "units_m": 4.46,
+     "value_bn": 2.98
+    },
+    {
+     "country": "China",
+     "price": 360.19,
+     "freight": 3.54,
+     "rate": 0.17,
+     "rate_from": "latest month",
+     "share": 7.1,
+     "units_m": 7.27,
+     "value_bn": 2.62
+    },
+    {
+     "country": "Taiwan",
+     "price": 1085.25,
+     "freight": 10.64,
+     "rate": 0.27,
+     "rate_from": "latest month",
+     "share": 3.7,
+     "units_m": 1.25,
+     "value_bn": 1.35
+    },
+    {
+     "country": "Indonesia",
+     "price": 137.34,
+     "freight": 2.42,
+     "rate": 0.72,
+     "rate_from": "latest month",
+     "share": 0.6,
+     "units_m": 1.67,
+     "value_bn": 0.23
+    },
+    {
+     "country": "India",
+     "price": 148.88,
+     "freight": 2.65,
+     "rate": 0.81,
+     "rate_from": "latest month",
+     "share": 0.1,
+     "units_m": 0.29,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Japan",
+     "price": 280.12,
+     "freight": 2.17,
+     "rate": 6.31,
+     "rate_from": "year so far",
+     "share": 0.1,
+     "units_m": 0.12,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "8528520000",
+   "name": "Computer monitors",
+   "per": "monitor",
+   "us_value_bn": 4.13,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 138.64,
+     "freight": 3.0,
+     "rate": 0.04,
+     "rate_from": "latest month",
+     "share": 34.7,
+     "units_m": 10.33,
+     "value_bn": 1.43
+    },
+    {
+     "country": "China",
+     "price": 101.15,
+     "freight": 4.6,
+     "rate": 0.32,
+     "rate_from": "latest month",
+     "share": 31.9,
+     "units_m": 13.02,
+     "value_bn": 1.32
+    },
+    {
+     "country": "Thailand",
+     "price": 122.21,
+     "freight": 3.31,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 10.8,
+     "units_m": 3.67,
+     "value_bn": 0.45
+    },
+    {
+     "country": "Mexico",
+     "price": 229.47,
+     "freight": 1.85,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 6.4,
+     "units_m": 1.15,
+     "value_bn": 0.26
+    },
+    {
+     "country": "South Korea",
+     "price": 661.05,
+     "freight": 11.34,
+     "rate": 0.14,
+     "rate_from": "latest month",
+     "share": 5.7,
+     "units_m": 0.36,
+     "value_bn": 0.24
+    },
+    {
+     "country": "Taiwan",
+     "price": 298.19,
+     "freight": 8.62,
+     "rate": 0.32,
+     "rate_from": "latest month",
+     "share": 3.1,
+     "units_m": 0.43,
+     "value_bn": 0.13
+    },
+    {
+     "country": "Japan",
+     "price": 771.93,
+     "freight": 9.55,
+     "rate": 0.4,
+     "rate_from": "latest month",
+     "share": 1.4,
+     "units_m": 0.07,
+     "value_bn": 0.06
+    },
+    {
+     "country": "India",
+     "price": 100.82,
+     "freight": 2.44,
+     "rate": 0.07,
+     "rate_from": "year so far",
+     "share": 1.2,
+     "units_m": 0.51,
+     "value_bn": 0.05
+    },
+    {
+     "country": "Indonesia",
+     "price": 245.5,
+     "freight": 4.97,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 1.0,
+     "units_m": 0.17,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Canada",
+     "price": 6735.22,
+     "freight": 28.66,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 0.9,
+     "units_m": 0.01,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Italy",
+     "price": 1470.91,
+     "freight": 10.9,
+     "rate": 0.02,
+     "rate_from": "latest month",
+     "share": 0.7,
+     "units_m": 0.02,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Germany",
+     "price": 1810.61,
+     "freight": 40.43,
+     "rate": 0.49,
+     "rate_from": "latest month",
+     "share": 0.5,
+     "units_m": 0.01,
+     "value_bn": 0.02
+    }
+   ]
+  },
+  {
+   "hs10": "8518302000",
+   "name": "Headphones and earbuds",
+   "per": "set",
+   "us_value_bn": 3.29,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 34.41,
+     "freight": 0.5,
+     "rate": 6.97,
+     "rate_from": "latest month",
+     "share": 64.0,
+     "units_m": 61.23,
+     "value_bn": 2.11
+    },
+    {
+     "country": "China",
+     "price": 4.84,
+     "freight": 0.14,
+     "rate": 10.0,
+     "rate_from": "latest month",
+     "share": 22.4,
+     "units_m": 152.43,
+     "value_bn": 0.74
+    },
+    {
+     "country": "Mexico",
+     "price": 48.96,
+     "freight": 0.07,
+     "rate": 0.5,
+     "rate_from": "latest month",
+     "share": 3.5,
+     "units_m": 2.34,
+     "value_bn": 0.11
+    },
+    {
+     "country": "Thailand",
+     "price": 52.75,
+     "freight": 0.85,
+     "rate": 10.26,
+     "rate_from": "latest month",
+     "share": 3.0,
+     "units_m": 1.88,
+     "value_bn": 0.1
+    },
+    {
+     "country": "Malaysia",
+     "price": 30.08,
+     "freight": 0.52,
+     "rate": 9.77,
+     "rate_from": "latest month",
+     "share": 2.6,
+     "units_m": 2.81,
+     "value_bn": 0.08
+    },
+    {
+     "country": "Philippines",
+     "price": 24.91,
+     "freight": 0.55,
+     "rate": 12.42,
+     "rate_from": "latest month",
+     "share": 0.7,
+     "units_m": 0.9,
+     "value_bn": 0.02
+    }
+   ]
+  },
+  {
+   "hs10": "9504500000",
+   "name": "Video game consoles",
+   "per": "console",
+   "us_value_bn": 2.55,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 254.23,
+     "freight": 2.75,
+     "rate": 12.4,
+     "rate_from": "latest month",
+     "share": 58.3,
+     "units_m": 5.86,
+     "value_bn": 1.49
+    },
+    {
+     "country": "China",
+     "price": 41.49,
+     "freight": 1.52,
+     "rate": 12.29,
+     "rate_from": "latest month",
+     "share": 15.0,
+     "units_m": 9.25,
+     "value_bn": 0.38
+    },
+    {
+     "country": "Thailand",
+     "price": 279.76,
+     "freight": 6.25,
+     "rate": 12.08,
+     "rate_from": "latest month",
+     "share": 8.6,
+     "units_m": 0.78,
+     "value_bn": 0.22
+    },
+    {
+     "country": "Cambodia",
+     "price": 274.79,
+     "freight": 1.12,
+     "rate": 10.0,
+     "rate_from": "latest month",
+     "share": 7.1,
+     "units_m": 0.66,
+     "value_bn": 0.18
+    },
+    {
+     "country": "Malaysia",
+     "price": 381.91,
+     "freight": 3.25,
+     "rate": 10.19,
+     "rate_from": "year so far",
+     "share": 4.3,
+     "units_m": 0.29,
+     "value_bn": 0.11
+    },
+    {
+     "country": "Japan",
+     "price": 46.01,
+     "freight": 0.74,
+     "rate": 12.13,
+     "rate_from": "latest month",
+     "share": 2.7,
+     "units_m": 1.48,
+     "value_bn": 0.07
+    },
+    {
+     "country": "Mexico",
+     "price": 147.0,
+     "freight": 1.57,
+     "rate": 0.01,
+     "rate_from": "latest month",
+     "share": 2.6,
+     "units_m": 0.45,
+     "value_bn": 0.07
+    }
+   ]
+  },
+  {
+   "hs10": "8518220000",
+   "name": "Speakers",
+   "per": "speaker",
+   "us_value_bn": 0.99,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 61.89,
+     "freight": 0.79,
+     "rate": 11.56,
+     "rate_from": "latest month",
+     "share": 40.7,
+     "units_m": 6.5,
+     "value_bn": 0.4
+    },
+    {
+     "country": "China",
+     "price": 57.24,
+     "freight": 2.05,
+     "rate": 18.92,
+     "rate_from": "latest month",
+     "share": 26.6,
+     "units_m": 4.58,
+     "value_bn": 0.26
+    },
+    {
+     "country": "Malaysia",
+     "price": 151.43,
+     "freight": 2.01,
+     "rate": 9.83,
+     "rate_from": "latest month",
+     "share": 6.8,
+     "units_m": 0.44,
+     "value_bn": 0.07
+    },
+    {
+     "country": "Thailand",
+     "price": 82.28,
+     "freight": 2.18,
+     "rate": 11.78,
+     "rate_from": "latest month",
+     "share": 6.2,
+     "units_m": 0.74,
+     "value_bn": 0.06
+    },
+    {
+     "country": "Mexico",
+     "price": 196.54,
+     "freight": 0.43,
+     "rate": 0.34,
+     "rate_from": "latest month",
+     "share": 3.5,
+     "units_m": 0.17,
+     "value_bn": 0.03
+    },
+    {
+     "country": "France",
+     "price": 415.47,
+     "freight": 8.88,
+     "rate": 9.76,
+     "rate_from": "latest month",
+     "share": 3.5,
+     "units_m": 0.08,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Italy",
+     "price": 813.84,
+     "freight": 11.7,
+     "rate": 9.52,
+     "rate_from": "latest month",
+     "share": 3.3,
+     "units_m": 0.04,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "8508110000",
+   "name": "Vacuum cleaners",
+   "per": "vacuum",
+   "us_value_bn": 1.66,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 37.81,
+     "freight": 1.74,
+     "rate": 12.03,
+     "rate_from": "latest month",
+     "share": 46.4,
+     "units_m": 20.35,
+     "value_bn": 0.77
+    },
+    {
+     "country": "Malaysia",
+     "price": 91.87,
+     "freight": 1.82,
+     "rate": 9.76,
+     "rate_from": "latest month",
+     "share": 18.4,
+     "units_m": 3.31,
+     "value_bn": 0.3
+    },
+    {
+     "country": "China",
+     "price": 45.34,
+     "freight": 2.04,
+     "rate": 37.44,
+     "rate_from": "latest month",
+     "share": 15.2,
+     "units_m": 5.54,
+     "value_bn": 0.25
+    },
+    {
+     "country": "Philippines",
+     "price": 235.85,
+     "freight": 3.6,
+     "rate": 12.5,
+     "rate_from": "latest month",
+     "share": 9.2,
+     "units_m": 0.64,
+     "value_bn": 0.15
+    },
+    {
+     "country": "Mexico",
+     "price": 53.77,
+     "freight": 0.24,
+     "rate": 0.16,
+     "rate_from": "latest month",
+     "share": 3.5,
+     "units_m": 1.09,
+     "value_bn": 0.06
+    },
+    {
+     "country": "Germany",
+     "price": 183.95,
+     "freight": 2.48,
+     "rate": 9.97,
+     "rate_from": "latest month",
+     "share": 2.6,
+     "units_m": 0.23,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Thailand",
+     "price": 53.47,
+     "freight": 1.8,
+     "rate": 11.59,
+     "rate_from": "latest month",
+     "share": 1.7,
+     "units_m": 0.52,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Indonesia",
+     "price": 36.17,
+     "freight": 0.87,
+     "rate": 10.0,
+     "rate_from": "latest month",
+     "share": 1.7,
+     "units_m": 0.79,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "8516710020",
+   "name": "Coffee makers",
+   "per": "coffee maker",
+   "us_value_bn": 0.53,
+   "countries": [
+    {
+     "country": "China",
+     "price": 18.67,
+     "freight": 1.02,
+     "rate": 22.95,
+     "rate_from": "latest month",
+     "share": 24.5,
+     "units_m": 6.96,
+     "value_bn": 0.13
+    },
+    {
+     "country": "Indonesia",
+     "price": 28.58,
+     "freight": 0.71,
+     "rate": 13.68,
+     "rate_from": "latest month",
+     "share": 22.6,
+     "units_m": 4.2,
+     "value_bn": 0.12
+    },
+    {
+     "country": "Malaysia",
+     "price": 52.84,
+     "freight": 0.83,
+     "rate": 13.7,
+     "rate_from": "latest month",
+     "share": 19.3,
+     "units_m": 1.94,
+     "value_bn": 0.1
+    },
+    {
+     "country": "Thailand",
+     "price": 56.38,
+     "freight": 1.41,
+     "rate": 16.13,
+     "rate_from": "latest month",
+     "share": 16.3,
+     "units_m": 1.54,
+     "value_bn": 0.09
+    },
+    {
+     "country": "Vietnam",
+     "price": 20.17,
+     "freight": 1.28,
+     "rate": 15.98,
+     "rate_from": "latest month",
+     "share": 5.5,
+     "units_m": 1.46,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "8507600090",
+   "name": "Lithium-ion batteries",
+   "per": "battery",
+   "us_value_bn": 5.54,
+   "countries": [
+    {
+     "country": "China",
+     "price": 70.71,
+     "freight": 1.01,
+     "rate": 35.09,
+     "rate_from": "latest month",
+     "share": 52.8,
+     "units_m": 41.38,
+     "value_bn": 2.93
+    },
+    {
+     "country": "South Korea",
+     "price": 56.26,
+     "freight": 0.63,
+     "rate": 11.21,
+     "rate_from": "latest month",
+     "share": 8.9,
+     "units_m": 8.8,
+     "value_bn": 0.49
+    },
+    {
+     "country": "Malaysia",
+     "price": 36.1,
+     "freight": 1.17,
+     "rate": 11.04,
+     "rate_from": "latest month",
+     "share": 8.2,
+     "units_m": 12.63,
+     "value_bn": 0.46
+    },
+    {
+     "country": "Japan",
+     "price": 109.48,
+     "freight": 0.83,
+     "rate": 12.32,
+     "rate_from": "latest month",
+     "share": 6.5,
+     "units_m": 3.29,
+     "value_bn": 0.36
+    },
+    {
+     "country": "Thailand",
+     "price": 853.3,
+     "freight": 4.9,
+     "rate": 1.37,
+     "rate_from": "latest month",
+     "share": 5.1,
+     "units_m": 0.33,
+     "value_bn": 0.28
+    },
+    {
+     "country": "Taiwan",
+     "price": 65.61,
+     "freight": 1.22,
+     "rate": 10.11,
+     "rate_from": "latest month",
+     "share": 4.3,
+     "units_m": 3.64,
+     "value_bn": 0.24
+    },
+    {
+     "country": "Canada",
+     "price": 56.09,
+     "freight": 0.14,
+     "rate": 1.88,
+     "rate_from": "latest month",
+     "share": 3.8,
+     "units_m": 3.74,
+     "value_bn": 0.21
+    },
+    {
+     "country": "Vietnam",
+     "price": 27.57,
+     "freight": 1.15,
+     "rate": 15.41,
+     "rate_from": "latest month",
+     "share": 2.8,
+     "units_m": 5.6,
+     "value_bn": 0.15
+    },
+    {
+     "country": "Mexico",
+     "price": 327.37,
+     "freight": 0.32,
+     "rate": 0.35,
+     "rate_from": "latest month",
+     "share": 1.9,
+     "units_m": 0.32,
+     "value_bn": 0.1
+    },
+    {
+     "country": "Singapore",
+     "price": 155.98,
+     "freight": 8.51,
+     "rate": 13.31,
+     "rate_from": "year so far",
+     "share": 1.0,
+     "units_m": 0.37,
+     "value_bn": 0.06
+    },
+    {
+     "country": "United Kingdom",
+     "price": 1372.91,
+     "freight": 11.61,
+     "rate": 3.23,
+     "rate_from": "latest month",
+     "share": 0.6,
+     "units_m": 0.03,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Germany",
+     "price": 176.4,
+     "freight": 4.23,
+     "rate": 9.73,
+     "rate_from": "latest month",
+     "share": 0.4,
+     "units_m": 0.14,
+     "value_bn": 0.02
+    }
+   ]
+  },
+  {
+   "hs10": "9401616011",
+   "name": "Upholstered chairs and sofas",
+   "per": "seat",
+   "us_value_bn": 1.75,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 136.45,
+     "freight": 29.48,
+     "rate": 25.13,
+     "rate_from": "latest month",
+     "share": 65.6,
+     "units_m": 8.4,
+     "value_bn": 1.15
+    },
+    {
+     "country": "China",
+     "price": 26.34,
+     "freight": 11.3,
+     "rate": 37.71,
+     "rate_from": "latest month",
+     "share": 9.0,
+     "units_m": 5.98,
+     "value_bn": 0.16
+    },
+    {
+     "country": "Mexico",
+     "price": 252.55,
+     "freight": 4.39,
+     "rate": 25.01,
+     "rate_from": "latest month",
+     "share": 6.1,
+     "units_m": 0.42,
+     "value_bn": 0.11
+    },
+    {
+     "country": "Cambodia",
+     "price": 192.62,
+     "freight": 30.67,
+     "rate": 25.2,
+     "rate_from": "latest month",
+     "share": 6.0,
+     "units_m": 0.54,
+     "value_bn": 0.1
+    },
+    {
+     "country": "Italy",
+     "price": 248.14,
+     "freight": 17.3,
+     "rate": 15.15,
+     "rate_from": "latest month",
+     "share": 5.2,
+     "units_m": 0.36,
+     "value_bn": 0.09
+    },
+    {
+     "country": "Thailand",
+     "price": 91.36,
+     "freight": 16.77,
+     "rate": 25.05,
+     "rate_from": "latest month",
+     "share": 1.7,
+     "units_m": 0.32,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Malaysia",
+     "price": 90.48,
+     "freight": 14.8,
+     "rate": 25.34,
+     "rate_from": "latest month",
+     "share": 1.7,
+     "units_m": 0.33,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Canada",
+     "price": 404.15,
+     "freight": 17.03,
+     "rate": 24.6,
+     "rate_from": "latest month",
+     "share": 1.4,
+     "units_m": 0.06,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "9403608093",
+   "name": "Wooden furniture",
+   "per": "piece",
+   "us_value_bn": 2.67,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 50.78,
+     "freight": 7.44,
+     "rate": 15.23,
+     "rate_from": "latest month",
+     "share": 38.4,
+     "units_m": 20.17,
+     "value_bn": 1.02
+    },
+    {
+     "country": "China",
+     "price": 10.89,
+     "freight": 3.26,
+     "rate": 37.64,
+     "rate_from": "latest month",
+     "share": 13.2,
+     "units_m": 32.29,
+     "value_bn": 0.35
+    },
+    {
+     "country": "Canada",
+     "price": 25.68,
+     "freight": 0.44,
+     "rate": 10.21,
+     "rate_from": "latest month",
+     "share": 7.1,
+     "units_m": 7.35,
+     "value_bn": 0.19
+    },
+    {
+     "country": "Italy",
+     "price": 23.3,
+     "freight": 1.4,
+     "rate": 11.26,
+     "rate_from": "latest month",
+     "share": 5.7,
+     "units_m": 6.49,
+     "value_bn": 0.15
+    },
+    {
+     "country": "Mexico",
+     "price": 63.86,
+     "freight": 0.56,
+     "rate": 9.49,
+     "rate_from": "latest month",
+     "share": 5.1,
+     "units_m": 2.15,
+     "value_bn": 0.14
+    },
+    {
+     "country": "Indonesia",
+     "price": 82.49,
+     "freight": 9.31,
+     "rate": 9.8,
+     "rate_from": "latest month",
+     "share": 4.8,
+     "units_m": 1.56,
+     "value_bn": 0.13
+    },
+    {
+     "country": "Malaysia",
+     "price": 17.59,
+     "freight": 3.28,
+     "rate": 10.11,
+     "rate_from": "latest month",
+     "share": 4.7,
+     "units_m": 7.15,
+     "value_bn": 0.13
+    },
+    {
+     "country": "India",
+     "price": 46.55,
+     "freight": 6.48,
+     "rate": 10.68,
+     "rate_from": "latest month",
+     "share": 4.4,
+     "units_m": 2.54,
+     "value_bn": 0.12
+    },
+    {
+     "country": "Thailand",
+     "price": 12.32,
+     "freight": 1.6,
+     "rate": 13.71,
+     "rate_from": "latest month",
+     "share": 2.0,
+     "units_m": 4.4,
+     "value_bn": 0.05
+    },
+    {
+     "country": "Germany",
+     "price": 25.3,
+     "freight": 2.31,
+     "rate": 10.83,
+     "rate_from": "latest month",
+     "share": 1.2,
+     "units_m": 1.25,
+     "value_bn": 0.03
+    },
+    {
+     "country": "France",
+     "price": 14.27,
+     "freight": 0.62,
+     "rate": 13.39,
+     "rate_from": "latest month",
+     "share": 1.1,
+     "units_m": 2.11,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Cambodia",
+     "price": 18.19,
+     "freight": 2.92,
+     "rate": 14.5,
+     "rate_from": "latest month",
+     "share": 0.9,
+     "units_m": 1.26,
+     "value_bn": 0.02
+    },
+    {
+     "country": "Brazil",
+     "price": 28.06,
+     "freight": 2.82,
+     "rate": 32.94,
+     "rate_from": "latest month",
+     "share": 0.8,
+     "units_m": 0.73,
+     "value_bn": 0.02
+    }
+   ]
+  },
+  {
+   "hs10": "9506910030",
+   "name": "Exercise equipment",
+   "per": "item",
+   "us_value_bn": 1.17,
+   "countries": [
+    {
+     "country": "China",
+     "price": 7.47,
+     "freight": 1.1,
+     "rate": 24.24,
+     "rate_from": "latest month",
+     "share": 61.5,
+     "units_m": 96.57,
+     "value_bn": 0.72
+    },
+    {
+     "country": "Taiwan",
+     "price": 14.99,
+     "freight": 0.73,
+     "rate": 9.52,
+     "rate_from": "latest month",
+     "share": 14.0,
+     "units_m": 10.96,
+     "value_bn": 0.16
+    },
+    {
+     "country": "Vietnam",
+     "price": 25.71,
+     "freight": 2.35,
+     "rate": 16.84,
+     "rate_from": "latest month",
+     "share": 9.4,
+     "units_m": 4.3,
+     "value_bn": 0.11
+    },
+    {
+     "country": "Mexico",
+     "price": 29.38,
+     "freight": 0.04,
+     "rate": 0.0,
+     "rate_from": "latest month",
+     "share": 3.7,
+     "units_m": 1.48,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Italy",
+     "price": 77.61,
+     "freight": 4.22,
+     "rate": 10.0,
+     "rate_from": "latest month",
+     "share": 2.3,
+     "units_m": 0.35,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "9503000073",
+   "name": "Toys (ages 3\u201312)",
+   "per": "toy",
+   "us_value_bn": 5.37,
+   "countries": [
+    {
+     "country": "China",
+     "price": 1.48,
+     "freight": 0.1,
+     "rate": 12.0,
+     "rate_from": "latest month",
+     "share": 63.3,
+     "units_m": 2294.89,
+     "value_bn": 3.4
+    },
+    {
+     "country": "Vietnam",
+     "price": 2.96,
+     "freight": 0.16,
+     "rate": 11.82,
+     "rate_from": "latest month",
+     "share": 16.8,
+     "units_m": 304.02,
+     "value_bn": 0.9
+    },
+    {
+     "country": "Mexico",
+     "price": 1.33,
+     "freight": 0.01,
+     "rate": 0.01,
+     "rate_from": "latest month",
+     "share": 8.8,
+     "units_m": 354.96,
+     "value_bn": 0.47
+    },
+    {
+     "country": "Indonesia",
+     "price": 1.19,
+     "freight": 0.05,
+     "rate": 9.77,
+     "rate_from": "latest month",
+     "share": 4.9,
+     "units_m": 220.41,
+     "value_bn": 0.26
+    },
+    {
+     "country": "Thailand",
+     "price": 1.33,
+     "freight": 0.06,
+     "rate": 11.41,
+     "rate_from": "latest month",
+     "share": 1.6,
+     "units_m": 65.56,
+     "value_bn": 0.09
+    },
+    {
+     "country": "India",
+     "price": 1.49,
+     "freight": 0.16,
+     "rate": 9.74,
+     "rate_from": "latest month",
+     "share": 1.0,
+     "units_m": 35.81,
+     "value_bn": 0.05
+    },
+    {
+     "country": "Malaysia",
+     "price": 0.37,
+     "freight": 0.01,
+     "rate": 9.48,
+     "rate_from": "latest month",
+     "share": 0.8,
+     "units_m": 111.8,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Cambodia",
+     "price": 1.93,
+     "freight": 0.15,
+     "rate": 12.3,
+     "rate_from": "year so far",
+     "share": 0.7,
+     "units_m": 19.94,
+     "value_bn": 0.04
+    }
+   ]
+  },
+  {
+   "hs10": "3924104000",
+   "name": "Plastic kitchenware",
+   "per": "item",
+   "us_value_bn": 2.05,
+   "countries": [
+    {
+     "country": "China",
+     "price": 0.05,
+     "freight": 0.01,
+     "rate": 15.43,
+     "rate_from": "latest month",
+     "share": 70.6,
+     "units_m": 30327.08,
+     "value_bn": 1.45
+    },
+    {
+     "country": "Vietnam",
+     "price": 0.02,
+     "freight": 0.0,
+     "rate": 15.31,
+     "rate_from": "latest month",
+     "share": 9.2,
+     "units_m": 11013.36,
+     "value_bn": 0.19
+    },
+    {
+     "country": "Thailand",
+     "price": 0.02,
+     "freight": 0.0,
+     "rate": 15.44,
+     "rate_from": "latest month",
+     "share": 4.3,
+     "units_m": 3720.69,
+     "value_bn": 0.09
+    },
+    {
+     "country": "Mexico",
+     "price": 0.09,
+     "freight": 0.0,
+     "rate": 0.56,
+     "rate_from": "latest month",
+     "share": 3.1,
+     "units_m": 694.65,
+     "value_bn": 0.06
+    },
+    {
+     "country": "Taiwan",
+     "price": 0.08,
+     "freight": 0.01,
+     "rate": 9.88,
+     "rate_from": "latest month",
+     "share": 2.8,
+     "units_m": 710.62,
+     "value_bn": 0.06
+    },
+    {
+     "country": "Indonesia",
+     "price": 0.02,
+     "freight": 0.0,
+     "rate": 12.96,
+     "rate_from": "latest month",
+     "share": 1.9,
+     "units_m": 2574.87,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Canada",
+     "price": 0.13,
+     "freight": 0.0,
+     "rate": 3.69,
+     "rate_from": "latest month",
+     "share": 1.5,
+     "units_m": 240.4,
+     "value_bn": 0.03
+    },
+    {
+     "country": "Malaysia",
+     "price": 0.03,
+     "freight": 0.0,
+     "rate": 11.9,
+     "rate_from": "latest month",
+     "share": 1.1,
+     "units_m": 696.94,
+     "value_bn": 0.02
+    }
+   ]
+  },
+  {
+   "hs10": "4202923120",
+   "name": "Backpacks",
+   "per": "backpack",
+   "us_value_bn": 0.67,
+   "countries": [
+    {
+     "country": "Indonesia",
+     "price": 11.42,
+     "freight": 0.54,
+     "rate": 27.4,
+     "rate_from": "latest month",
+     "share": 26.5,
+     "units_m": 15.51,
+     "value_bn": 0.18
+    },
+    {
+     "country": "Cambodia",
+     "price": 8.92,
+     "freight": 0.45,
+     "rate": 27.29,
+     "rate_from": "latest month",
+     "share": 23.4,
+     "units_m": 17.58,
+     "value_bn": 0.16
+    },
+    {
+     "country": "Vietnam",
+     "price": 13.09,
+     "freight": 0.55,
+     "rate": 29.56,
+     "rate_from": "latest month",
+     "share": 18.9,
+     "units_m": 9.63,
+     "value_bn": 0.13
+    },
+    {
+     "country": "China",
+     "price": 2.93,
+     "freight": 0.29,
+     "rate": 44.61,
+     "rate_from": "latest month",
+     "share": 18.4,
+     "units_m": 41.94,
+     "value_bn": 0.12
+    },
+    {
+     "country": "Philippines",
+     "price": 20.21,
+     "freight": 0.56,
+     "rate": 29.75,
+     "rate_from": "latest month",
+     "share": 4.6,
+     "units_m": 1.52,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "6109100012",
+   "name": "Men's cotton T-shirts",
+   "per": "dozen",
+   "us_value_bn": 1.36,
+   "countries": [
+    {
+     "country": "Bangladesh",
+     "price": 17.25,
+     "freight": 0.66,
+     "rate": 25.54,
+     "rate_from": "latest month",
+     "share": 15.0,
+     "units_m": 11.78,
+     "value_bn": 0.2
+    },
+    {
+     "country": "Mexico",
+     "price": 29.24,
+     "freight": 0.19,
+     "rate": 0.08,
+     "rate_from": "latest month",
+     "share": 10.9,
+     "units_m": 5.07,
+     "value_bn": 0.15
+    },
+    {
+     "country": "India",
+     "price": 20.62,
+     "freight": 1.49,
+     "rate": 26.43,
+     "rate_from": "latest month",
+     "share": 6.7,
+     "units_m": 4.39,
+     "value_bn": 0.09
+    },
+    {
+     "country": "Vietnam",
+     "price": 39.23,
+     "freight": 1.17,
+     "rate": 27.03,
+     "rate_from": "latest month",
+     "share": 6.1,
+     "units_m": 2.11,
+     "value_bn": 0.08
+    },
+    {
+     "country": "China",
+     "price": 18.8,
+     "freight": 1.71,
+     "rate": 36.15,
+     "rate_from": "latest month",
+     "share": 3.1,
+     "units_m": 2.25,
+     "value_bn": 0.04
+    }
+   ]
+  },
+  {
+   "hs10": "6204628011",
+   "name": "Women's denim jeans",
+   "per": "dozen",
+   "us_value_bn": 0.98,
+   "countries": [
+    {
+     "country": "Bangladesh",
+     "price": 96.58,
+     "freight": 4.83,
+     "rate": 26.29,
+     "rate_from": "latest month",
+     "share": 23.3,
+     "units_m": 2.37,
+     "value_bn": 0.23
+    },
+    {
+     "country": "Vietnam",
+     "price": 130.54,
+     "freight": 2.65,
+     "rate": 28.48,
+     "rate_from": "latest month",
+     "share": 21.7,
+     "units_m": 1.63,
+     "value_bn": 0.21
+    },
+    {
+     "country": "Cambodia",
+     "price": 99.38,
+     "freight": 2.65,
+     "rate": 26.03,
+     "rate_from": "latest month",
+     "share": 9.9,
+     "units_m": 0.98,
+     "value_bn": 0.1
+    },
+    {
+     "country": "Mexico",
+     "price": 279.67,
+     "freight": 1.34,
+     "rate": 1.03,
+     "rate_from": "latest month",
+     "share": 5.4,
+     "units_m": 0.19,
+     "value_bn": 0.05
+    },
+    {
+     "country": "China",
+     "price": 58.7,
+     "freight": 3.08,
+     "rate": 36.57,
+     "rate_from": "latest month",
+     "share": 5.0,
+     "units_m": 0.83,
+     "value_bn": 0.05
+    }
+   ]
+  },
+  {
+   "hs10": "6403999065",
+   "name": "Women's leather shoes",
+   "per": "pair",
+   "us_value_bn": 1.31,
+   "countries": [
+    {
+     "country": "Vietnam",
+     "price": 19.57,
+     "freight": 0.59,
+     "rate": 21.38,
+     "rate_from": "latest month",
+     "share": 30.8,
+     "units_m": 20.61,
+     "value_bn": 0.4
+    },
+    {
+     "country": "Italy",
+     "price": 102.0,
+     "freight": 2.61,
+     "rate": 10.07,
+     "rate_from": "latest month",
+     "share": 15.7,
+     "units_m": 2.01,
+     "value_bn": 0.2
+    },
+    {
+     "country": "Germany",
+     "price": 43.77,
+     "freight": 0.7,
+     "rate": 10.0,
+     "rate_from": "latest month",
+     "share": 12.7,
+     "units_m": 3.78,
+     "value_bn": 0.17
+    },
+    {
+     "country": "China",
+     "price": 13.49,
+     "freight": 0.52,
+     "rate": 29.06,
+     "rate_from": "latest month",
+     "share": 12.7,
+     "units_m": 12.34,
+     "value_bn": 0.17
+    },
+    {
+     "country": "Cambodia",
+     "price": 16.22,
+     "freight": 0.46,
+     "rate": 19.34,
+     "rate_from": "latest month",
+     "share": 6.3,
+     "units_m": 5.11,
+     "value_bn": 0.08
+    },
+    {
+     "country": "Indonesia",
+     "price": 18.54,
+     "freight": 0.57,
+     "rate": 19.61,
+     "rate_from": "latest month",
+     "share": 3.3,
+     "units_m": 2.34,
+     "value_bn": 0.04
+    },
+    {
+     "country": "Brazil",
+     "price": 19.67,
+     "freight": 0.84,
+     "rate": 47.21,
+     "rate_from": "latest month",
+     "share": 3.0,
+     "units_m": 2.01,
+     "value_bn": 0.04
+    },
+    {
+     "country": "India",
+     "price": 18.02,
+     "freight": 0.7,
+     "rate": 19.25,
+     "rate_from": "latest month",
+     "share": 1.9,
+     "units_m": 1.39,
+     "value_bn": 0.03
+    }
+   ]
+  },
+  {
+   "hs10": "9505102500",
+   "name": "Christmas ornaments",
+   "per": "ornament",
+   "us_value_bn": 1.11,
+   "countries": [
+    {
+     "country": "China",
+     "price": 2.48,
+     "freight": 0.28,
+     "rate": 12.18,
+     "rate_from": "latest month",
+     "share": 70.1,
+     "units_m": 314.99,
+     "value_bn": 0.78
+    },
+    {
+     "country": "Cambodia",
+     "price": 5.11,
+     "freight": 0.46,
+     "rate": 9.35,
+     "rate_from": "latest month",
+     "share": 16.0,
+     "units_m": 34.85,
+     "value_bn": 0.18
+    },
+    {
+     "country": "Vietnam",
+     "price": 3.7,
+     "freight": 0.19,
+     "rate": 11.89,
+     "rate_from": "latest month",
+     "share": 4.9,
+     "units_m": 14.79,
+     "value_bn": 0.05
+    },
+    {
+     "country": "Indonesia",
+     "price": 7.03,
+     "freight": 0.69,
+     "rate": 9.82,
+     "rate_from": "latest month",
+     "share": 4.6,
+     "units_m": 7.22,
+     "value_bn": 0.05
+    }
+   ]
+  }
+ ]
+}

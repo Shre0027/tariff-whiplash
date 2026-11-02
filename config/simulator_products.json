@@ -1,0 +1,24 @@
+{
+ "note": "Products offered in the sourcing simulator: everyday goods with a per-unit quantity in the Census data, at least $0.5 billion of US imports a year, and at least three countries besides China selling them to the US. Names are plain-English labels for the HTS 10-digit codes.",
+ "products": [
+  {"hs10": "8517130000", "name": "Smartphones", "per": "phone"},
+  {"hs10": "8471300100", "name": "Laptops", "per": "laptop"},
+  {"hs10": "8528520000", "name": "Computer monitors", "per": "monitor"},
+  {"hs10": "8518302000", "name": "Headphones and earbuds", "per": "set"},
+  {"hs10": "9504500000", "name": "Video game consoles", "per": "console"},
+  {"hs10": "8518220000", "name": "Speakers", "per": "speaker"},
+  {"hs10": "8508110000", "name": "Vacuum cleaners", "per": "vacuum"},
+  {"hs10": "8516710020", "name": "Coffee makers", "per": "coffee maker"},
+  {"hs10": "8507600090", "name": "Lithium-ion batteries", "per": "battery"},
+  {"hs10": "9401616011", "name": "Upholstered chairs and sofas", "per": "seat"},
+  {"hs10": "9403608093", "name": "Wooden furniture", "per": "piece"},
+  {"hs10": "9506910030", "name": "Exercise equipment", "per": "item"},
+  {"hs10": "9503000073", "name": "Toys (ages 3–12)", "per": "toy"},
+  {"hs10": "3924104000", "name": "Plastic kitchenware", "per": "item"},
+  {"hs10": "4202923120", "name": "Backpacks", "per": "backpack"},
+  {"hs10": "6109100012", "name": "Men's cotton T-shirts", "per": "dozen"},
+  {"hs10": "6204628011", "name": "Women's denim jeans", "per": "dozen"},
+  {"hs10": "6403999065", "name": "Women's leather shoes", "per": "pair"},
+  {"hs10": "9505102500", "name": "Christmas ornaments", "per": "ornament"}
+ ]
+}

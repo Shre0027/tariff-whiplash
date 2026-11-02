@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tariff Whiplash: what US tariffs actually cost, 2025–2026</title>
+<meta name="description" content="The tariff rate US importers actually paid quadrupled in 2025, then the Supreme Court struck most of it down. Where imports moved and what it cost, from official Census trade data.">
+<meta property="og:title" content="Tariff Whiplash">
+<meta property="og:description" content="What US tariffs actually cost, and where imports moved, 2025–2026. Built from official Census trade data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2318222f'/%3E%3Cpath d='M5 22 L11 22 L14 9 L18 25 L21 14 L27 14' fill='none' stroke='%23f08c3a' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f5f2ea; --panel: #fffdf8; --ink: #17202c; --muted: #545d69; --faint: #8a919b; --line: #dcd5c8; --grid: #e7e1d6;
+  --tariff: #c4410c; --tariff-soft: #f6d9c8; --refund: #0b6e62; --refund-soft: #cfe8e3; --accent: #c4410c;
+  --s-all: #17202c; --s-china: #c4410c; --s-india: #1f63b8; --s-vietnam: #227a3a; --s-mexico: #6d43c9; --s-canada: #7b838d;
+  --up: #227a3a; --down: #c4410c;
+  --serif: "Instrument Serif", Georgia, serif; --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f141b; --panel: #161d27; --ink: #ebe7df; --muted: #a7afb9; --faint: #7d8691; --line: #2b3441; --grid: #222b37;
+    --tariff: #ff8a4c; --tariff-soft: #4a2a1a; --refund: #3fc1ad; --refund-soft: #173a36; --accent: #ff8a4c;
+    --s-all: #ebe7df; --s-china: #ff8a4c; --s-india: #6aa8ff; --s-vietnam: #5cc97a; --s-mexico: #b197ff; --s-canada: #9aa3ad;
+    --up: #5cc97a; --down: #ff8a4c;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 680px; }
+.kicker { font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; margin: 0; }
+h2 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.05; margin: 8px 0 14px; text-wrap: balance; }
+p { margin: 0 0 14px; }
+.lede { font-size: 19px; color: var(--ink); }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+b, strong { font-weight: 600; }
+
+/* top bar */
+.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 48px; gap: 12px; }
+.brand { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.brand svg { width: 20px; height: 20px; }
+.top nav { display: flex; gap: 16px; font-size: 14px; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+.top nav a.cta { color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) { .top nav a.hide-s { display: none; } }
+
+/* hero */
+.hero { padding: 64px 0 40px; position: relative; overflow: hidden; }
+.hero h1 { font-size: clamp(54px, 10vw, 128px); line-height: .92; letter-spacing: -.02em; }
+.hero h1 em { color: var(--tariff); font-style: italic; }
+.hero .deck { font-size: clamp(19px, 2.3vw, 24px); line-height: 1.4; max-width: 720px; margin: 22px 0 0; text-wrap: pretty; }
+.meter { margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ink); }
+.meter > div { padding: 16px 16px 0 0; }
+.meter > div + div { border-left: 1px solid var(--line); padding-left: 16px; }
+.meter .big { font: 400 clamp(46px, 8vw, 92px)/1 var(--serif); font-variant-numeric: tabular-nums; }
+.meter .peak .big { color: var(--tariff); }
+.meter .cap { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+.meter .when { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+@media (max-width: 640px) {
+  .meter { grid-template-columns: 1fr; }
+  .meter > div + div { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .meter > div { padding: 14px 0; display: grid; grid-template-columns: 6.6em 1fr; column-gap: 14px; align-items: center; }
+  .meter .when { grid-column: 1 / -1; margin-bottom: 2px; }
+  .meter .big { font-size: 44px; white-space: nowrap; }
+  .meter .cap { margin-top: 0; }
+}
+.ticker { margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; white-space: nowrap; font: 500 12px/36px var(--mono); color: var(--muted); letter-spacing: .04em; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.ticker .track { display: inline-block; animation: tick 90s linear infinite; }
+.ticker span { margin-right: 36px; }
+.ticker b { color: var(--ink); font-weight: 500; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* sections */
+section.block { padding: 72px 0; border-top: 1px solid var(--line); }
+.cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+@media (max-width: 880px) { .cols { grid-template-columns: 1fr; gap: 24px; } }
+.figure { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 18px 12px; }
+.figure .ftitle { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.figure .fsub { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.figure .src { font-size: 12px; color: var(--faint); margin-top: 8px; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--sans); fill: var(--muted); font-size: 12px; }
+svg .t-ink { fill: var(--ink); }
+svg .t-mono { font-family: var(--mono); }
+.callout { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 18px 0; }
+.callout.ok { border-color: var(--refund); }
+
+/* scrolly */
+.scrolly { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 48px; position: relative; }
+.scrolly .steps { padding: 20vh 0 30vh; }
+.step { min-height: 72vh; display: flex; align-items: center; }
+.step > div { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 0 var(--line); }
+.step .date { font: 500 12px var(--mono); color: var(--accent); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+.step p:last-child { margin-bottom: 0; }
+.scrolly .stage { position: sticky; top: 64px; height: calc(100vh - 80px); display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 880px) {
+  .scrolly { grid-template-columns: 1fr; gap: 0; }
+  .scrolly .stage { grid-row: 1; top: 48px; height: auto; min-height: 0; z-index: 2; background: var(--paper); padding: 8px 0; }
+  .scrolly .steps { grid-row: 2; padding: 4vh 0 20vh; }
+  .step { min-height: 65vh; align-items: flex-start; padding-top: 4vh; }
+}
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; transition: opacity .4s; }
+.legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.legend span.off { opacity: .25; }
+
+/* lists of rows (dumbbells etc.) */
+.rows { display: grid; gap: 10px; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; box-shadow: 0 6px 24px rgb(0 0 0 / .12); white-space: nowrap; z-index: 5; }
+.tip .d { color: var(--muted); font-size: 12px; margin-bottom: 2px; }
+.tip .r { display: flex; gap: 6px; align-items: center; font-variant-numeric: tabular-nums; }
+.tip .sw { width: 10px; height: 3px; border-radius: 2px; }
+
+/* refund checker */
+.checker { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.checker form { padding: 22px; border-right: 1px solid var(--line); display: grid; gap: 14px; align-content: start; }
+.checker .out { padding: 22px; }
+@media (max-width: 760px) { .checker { grid-template-columns: 1fr; } .checker form { border-right: 0; border-bottom: 1px solid var(--line); } }
+[hidden] { display: none !important; }
+.f { display: grid; gap: 5px; font-size: 14px; font-weight: 500; }
+.checker input[type=date], .checker select { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); min-height: 40px; }
+.checker input:focus-visible, .checker select:focus-visible, .seg button:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chk { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; }
+.chk input { margin-top: 4px; accent-color: var(--accent); width: 16px; height: 16px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.seg button { font: inherit; font-size: 14px; padding: 7px 12px; border: 0; background: var(--paper); color: var(--muted); cursor: pointer; min-height: 38px; }
+.seg button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.out .route { font: 400 32px/1.1 var(--serif); margin: 6px 0 12px; }
+.out ol { margin: 0 0 12px; padding-left: 20px; }
+.out li { margin-bottom: 6px; }
+.out .warn { background: var(--tariff-soft); border-radius: 8px; padding: 8px 12px; font-size: 14px; margin-top: 8px; }
+.out .rule { font: 500 12px var(--mono); color: var(--muted); }
+.badge { display: inline-block; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 99px; background: var(--refund-soft); color: var(--refund); }
+.badge.court { background: var(--tariff-soft); color: var(--tariff); }
+
+/* CTA */
+.cta-band { background: var(--ink); color: var(--paper); border-radius: 14px; padding: 36px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+.cta-band h2 { color: var(--paper); margin: 0 0 8px; }
+.cta-band p { color: color-mix(in srgb, var(--paper) 80%, var(--ink)); margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 12px 18px; border-radius: 9px; white-space: nowrap; }
+.btn:hover { color: #fff; filter: brightness(1.08); }
+@media (prefers-color-scheme: dark) { .btn, .btn:hover { color: #17202c; } }
+@media (max-width: 640px) { .cta-band { grid-template-columns: 1fr; padding: 26px; } }
+
+footer { padding: 48px 0 64px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+footer h3 { font: 600 14px var(--sans); color: var(--ink); margin: 0 0 8px; }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .ticker .track { animation: none; }
+  * { transition-duration: 0s !important; animation-duration: 0s !important; }
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="currentColor"/><path d="M5 22 L11 22 L14 9 L18 25 L21 14 L27 14" fill="none" stroke="#f08c3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg>Tariff Whiplash</a>
+    <nav aria-label="Sections">
+      <a class="hide-s" href="#moved">Where imports went</a>
+      <a class="hide-s" href="#refunds">Refunds</a>
+      <a class="cta" href="simulator.html">Cost simulator →</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">US imports · January 2022 to <span data-k="latestLong"></span></div>
+    <h1>Tariff<br><em>whiplash</em></h1>
+    <p class="deck">In 2025 the tariff rate US importers actually paid more than quadrupled. In 2026 the Supreme Court struck most of it down. Here is what changed, what it cost, and where the buying went, from the Census Bureau's own trade data.</p>
+    <div class="meter" aria-label="Effective US tariff rate">
+      <div><div class="when">January 2025</div><div class="big num" data-count="rateJan25">—</div><div class="cap">Duty charged as a share of all imports, before the new tariffs</div></div>
+      <div class="peak"><div class="when" data-k="peakLong"></div><div class="big num" data-count="ratePeak">—</div><div class="cap">The peak, with most "reciprocal" tariffs in force</div></div>
+      <div><div class="when" data-k="latestLong"></div><div class="big num" data-count="rateLatest">—</div><div class="cap">After the court ruling and the July 2026 tariffs</div></div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
+</div>
+
+<section class="block" style="border-top:0;padding-top:24px" aria-labelledby="h-rate">
+  <div class="wrap">
+    <div class="narrow">
+      <div class="kicker">01 · The real rate</div>
+      <h2 id="h-rate">Headline tariffs said 145%. The border said something else.</h2>
+      <p class="lede">A tariff announcement names a rate. What importers pay depends on which goods it covers, the exemptions and how it stacks with other duties. This chart shows the rate actually charged: duty divided by the value of everything imported, month by month.</p>
+    </div>
+    <div class="scrolly">
+      <div class="steps">
+        <div class="step" data-step="0"><div><div class="date">2022 – 2024</div><p>For years the overall rate barely moved, at about <b class="num" data-k="rate2024">—</b>. Goods from China paid more, around <b class="num" data-k="china2024">—</b>, because of tariffs from 2018–19 that are still in place.</p></div></div>
+        <div class="step" data-step="1"><div><div class="date">February – April 2025</div><p>New tariffs under an emergency-powers law (IEEPA): first on China, Canada and Mexico, then a 10% "baseline" on almost every country from 5 April. By <span data-k="m2504"></span> the overall rate was <b class="num" data-k="rate2504">—</b>, <span data-k="mult2504"></span> January's.</p></div></div>
+        <div class="step" data-step="2"><div><div class="date">April – May 2025</div><p>China's headline tariff hit 145%. The rate actually charged on goods from China peaked at <b class="num" data-k="chinaPeak">—</b> in <span data-k="chinaPeakMonth"></span>: high, but a third of the headline, because phones, laptops and many other goods were exempt.</p></div></div>
+        <div class="step" data-step="3"><div><div class="date">August – October 2025</div><p>Country-specific rates took effect in August, and India's doubled to 50% over Russian oil purchases. India's effective rate went from <b class="num" data-k="india2024">—</b> in 2024 to <b class="num" data-k="indiaPeak">—</b>. The overall rate peaked at <b class="num" data-k="ratePeak2">—</b>.</p></div></div>
+        <div class="step" data-step="4"><div><div class="date">20 February 2026</div><p>The Supreme Court ruled that the emergency-powers law does not allow tariffs. Collections stopped on 24 February. A temporary 150-day surcharge replaced some of it, and the overall rate fell to <b class="num" data-k="rate2603">—</b> in March.</p></div></div>
+        <div class="step" data-step="5"><div><div class="date">July – August 2026</div><p>On 24 July new Section 301 tariffs of 10–12.5% hit 60 economies. In <span data-k="latestLong"></span>, the latest month, the rate was <b class="num" data-k="rateLatest2">—</b>: still almost three times the 2024 level. Steel, aluminum and car tariffs (Section 232) were never part of the ruling.</p></div></div>
+      </div>
+      <div class="stage">
+        <div class="figure">
+          <div class="ftitle">Effective tariff rate, by month</div>
+          <div class="fsub">Calculated duty ÷ value of imports for consumption</div>
+          <div class="chart" id="rateChart"></div>
+          <div class="legend" id="rateLegend"></div>
+          <div class="src">Source: US Census Bureau, international trade data (imports by HS code)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="h-bill">
+  <div class="wrap cols">
+    <div>
+      <div class="kicker">02 · The bill</div>
+      <h2 id="h-bill">Three times the duty, in a year that bought more</h2>
+      <p>US importers were charged <b class="num" data-k="duty2024">—</b> in duties in January–August 2024. In the same months of 2025 it was <b class="num" data-k="duty2025">—</b>, and in 2026 <b class="num" data-k="duty2026">—</b>, even after the ruling, because new tariffs replaced part of the old ones.</p>
+      <p>Imports didn't fall: they rose <b class="num" data-k="importsGrowth">—</b> from 2024 to 2026. Companies kept buying; they bought from different places, and paid more for it.</p>
+      <div class="callout ok"><b>Checking the method.</b> While the struck-down tariffs were in force (February 2025 to February 2026), the data shows <b class="num" data-k="extraIeepa">—</b> of extra duty in goods mainly hit by them, compared with each product group's 2024 rate. CBP reports that about <b class="num" data-k="collected">—</b> of those tariffs was collected. Close, from a completely different source.</div>
+    </div>
+    <div class="figure reveal">
+      <div class="ftitle">Duty charged on US imports, January–August</div>
+      <div class="fsub">Billions of dollars</div>
+      <div class="chart" id="dutyChart"></div>
+      <div class="src">Source: US Census Bureau. Calculated duty at entry; later refunds not subtracted.</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="moved" aria-labelledby="h-moved">
+  <div class="wrap cols">
+    <div>
+      <div class="kicker">03 · Where the buying went</div>
+      <h2 id="h-moved">China lost a third of its US sales. Taiwan, Vietnam and Mexico took them.</h2>
+      <p>From January–August 2024 to the same months of 2026, imports from China fell <b class="num" data-k="chinaChange">—</b>. Its share of everything the US imports dropped from <b class="num" data-k="chinaShare24">—</b> to <b class="num" data-k="chinaShare26">—</b>.</p>
+      <p>The share didn't come home. The biggest gainers were <span data-k="gainers"></span>. Imports from Vietnam roughly doubled; from Taiwan they rose <b class="num" data-k="taiwanChange">—</b>.</p>
+      <p class="muted" style="font-size:15px">A gain is not proof that goods were rerouted from China. Demand changed too: most of Taiwan's growth is computers and servers (up <b class="num" data-k="taiwan84">—</b> in that product group alone), the equipment behind the AI data-center boom.</p>
+    </div>
+    <div class="figure reveal">
+      <div class="ftitle">Change in share of US imports, Jan–Aug 2024 to Jan–Aug 2026</div>
+      <div class="fsub">Percentage points; main suppliers</div>
+      <div class="chart" id="shareChart"></div>
+      <div class="src">Source: US Census Bureau, imports for consumption</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="h-products">
+  <div class="wrap">
+    <div class="narrow">
+      <div class="kicker">04 · Product by product</div>
+      <h2 id="h-products">Laptops left China in a year. Toys mostly stayed.</h2>
+      <p>At the level of individual products, some supply chains moved astonishingly fast. Two in three laptops the US imported in 2024 came from China; by 2026 it was <b class="num" data-k="laptopShare26">—</b>, with Vietnam taking over. India now supplies <b class="num" data-k="phoneIndia">—</b> of US smartphones. Toys, Christmas decorations and kitchenware moved far less: those factories are hard to replace.</p>
+    </div>
+    <div class="figure reveal" style="margin-top:22px">
+      <div class="ftitle">China's share of US imports, January–August 2024 → 2026</div>
+      <div class="fsub">Products with the biggest dollar drop from China; the country that gained the most</div>
+      <div class="chart" id="productChart"></div>
+      <div class="src">Source: US Census Bureau, HS 6-digit products. Shares of all US imports of each product.</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="h-phones">
+  <div class="wrap cols">
+    <div>
+      <div class="kicker">05 · One product, up close</div>
+      <h2 id="h-phones">The smartphone switch</h2>
+      <p>Smartphones are one of the largest consumer products the US imports: <b class="num" data-k="phoneBn">—</b> in the first half of 2026 alone. In the first half of 2024, <b class="num" data-k="phoneChina24">—</b> came from China and <b class="num" data-k="phoneIndia24">—</b> from India.</p>
+      <p>Phones were exempted from the April 2025 "reciprocal" tariffs, and they pay almost no tariff today. The move to India had started before 2025, and it sped up anyway: by the first half of 2026, India supplied <b class="num" data-k="phoneIndia">—</b> and China <b class="num" data-k="phoneChina26">—</b>.</p>
+    </div>
+    <div class="figure reveal">
+      <div class="ftitle">Where US smartphone imports come from</div>
+      <div class="fsub">Share of US imports (HS 8517.13), by half-year</div>
+      <div class="chart" id="phoneChart"></div>
+      <div class="legend" id="phoneLegend"></div>
+      <div class="src">Source: US Census Bureau. Latest half-year is partial.</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="h-now">
+  <div class="wrap cols">
+    <div>
+      <div class="kicker">06 · What it costs now</div>
+      <h2 id="h-now">Steel and clothing carry the heaviest tariffs today</h2>
+      <p>After the ruling, the highest rates are on goods covered by laws the court didn't touch. Steel products now pay <b class="num" data-k="steelNow">—</b>, up from <b class="num" data-k="steel2024">—</b> in 2024, because of Section 232.</p>
+      <p>Clothing and shoes already paid some of the highest US tariffs before 2025. With the new Section 301 tariffs on top, knitted clothing now pays <b class="num" data-k="knitNow">—</b>.</p>
+      <p>By country, goods from <span data-k="topCountry"></span> pay the most (<b class="num" data-k="topCountryRate">—</b>); goods from Mexico and Canada pay about <b class="num" data-k="mxRate">—</b>, because goods that qualify under the USMCA trade agreement are exempt from most of the new tariffs.</p>
+    </div>
+    <div class="figure reveal">
+      <div class="ftitle">Effective tariff rate, 2024 → <span data-k="latestLong"></span></div>
+      <div class="fsub">Product groups with at least $1 billion of imports a month</div>
+      <div class="chart" id="chapterRateChart"></div>
+      <div class="src">Source: US Census Bureau, HS 2-digit chapters</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="refunds" aria-labelledby="h-ref">
+  <div class="wrap">
+    <div class="cols" style="margin-bottom:28px">
+      <div>
+        <div class="kicker">07 · Getting the money back</div>
+        <h2 id="h-ref">A $166 billion refund, one shipment at a time</h2>
+        <p>Because the emergency tariffs were unlawful, importers can get them back. Customs (CBP) built a new tool, CAPE, to process refunds in bulk. By 2 October 2026 about <b class="num" data-k="refundSent">—</b> had been sent for payment.</p>
+        <p>But each shipment ("entry") has its own route, depending on whether customs has finalized ("liquidated") its duty and how long ago. Miss a deadline and the money may need a lawsuit. <a href="https://github.com/Shre0027/tariff-whiplash/blob/main/docs/process-maps.md">See the full process map.</a></p>
+      </div>
+      <div class="figure reveal">
+        <div class="ftitle">IEEPA tariff refunds sent for payment</div>
+        <div class="fsub">Billions of dollars, of about $166 billion collected</div>
+        <div class="chart" id="refundChart"></div>
+        <div class="src">Source: CBP court declarations, as reported (see research notes)</div>
+      </div>
+    </div>
+    <div class="checker reveal" id="checker">
+      <form id="refundForm" onsubmit="return false" aria-label="Refund route checker">
+        <div class="kicker">Refund route checker</div>
+        <label class="f">When did the goods enter the US?<input type="date" id="rEntry" value="2025-06-10" min="2024-01-01"></label>
+        <div class="f"><span style="font-size:14px;font-weight:500">Type of entry</span>
+          <div class="seg" role="group" aria-label="Type of entry">
+            <button type="button" data-v="regular" aria-pressed="true">Regular</button>
+            <button type="button" data-v="reconciliation" aria-pressed="false">Reconciliation</button>
+            <button type="button" data-v="adcvd" aria-pressed="false">AD/CVD</button>
+          </div>
+        </div>
+        <label class="chk"><input type="checkbox" id="rLiq"> Customs has liquidated (finalized) this entry</label>
+        <label class="f" id="rLiqWrap" hidden>Liquidation date<input type="date" id="rLiqDate" value="2026-04-01"></label>
+        <label class="chk" id="rCourtWrap" hidden><input type="checkbox" id="rCourt"> We have a court order to reliquidate it</label>
+        <label class="chk"><input type="checkbox" id="rAch" checked> We're enrolled in ACH refunds</label>
+      </form>
+      <div class="out" aria-live="polite" id="refundOut"></div>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:10px">General information based on CBP's published process as of November 2026, not legal advice. The rules and their tests are in the <a href="https://github.com/Shre0027/tariff-whiplash/tree/main/tests">project repository</a>.</p>
+  </div>
+</section>
+
+<section class="block" aria-label="Sourcing simulator">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Where would you buy from today?</h2>
+        <p>Pick a product, from laptops to T-shirts, and compare what it costs to land the same $100 of goods from each country, with today's tariffs and real shipping costs. Then change China's tariff and watch the answer move.</p>
+      </div>
+      <a class="btn" href="simulator.html">Open the cost simulator →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fgrid">
+    <div><h3>Data</h3><p>US Census Bureau, international trade API (imports by HS code): imports for consumption, calculated duty, and freight and insurance charges, January 2022 to <span data-k="latestLong"></span>. Updated monthly; last downloaded <span data-k="fetched"></span>.</p></div>
+    <div><h3>Method</h3><p>Effective rate = calculated duty ÷ imports for consumption. Calculated duty is assessed at entry; refunds paid later are not subtracted. Every number on this page comes from the same <a href="https://github.com/Shre0027/tariff-whiplash/tree/main/sql">SQL queries</a> as the <a href="https://github.com/Shre0027/tariff-whiplash/blob/main/analysis/README.md">analysis</a>.</p></div>
+    <div><h3>About</h3><p>A portfolio project by Shreyas Tayde, built with Claude. Facts only: no view on whether the tariffs are good policy. <a href="https://github.com/Shre0027/tariff-whiplash">Code, documents and decision log on GitHub</a>.</p></div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" hidden></div>
+<script>/*__RULES__*/</script>
+<script>
+const D = /*__DATA__*/null;
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const NS = "http://www.w3.org/2000/svg";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pct = (v, d = 1) => v == null ? "—" : (+v).toFixed(d) + "%";
+const bn = v => "$" + (v >= 100 ? Math.round(v) : (+v).toFixed(1)) + " billion";
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const longMonth = m => MONTHS[+m.slice(5, 7) - 1] + " " + m.slice(0, 4);
+function el(tag, attrs = {}, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function text(parent, x, y, s, attrs = {}) {
+  const { fill, ...rest } = attrs;
+  const t = el("text", { x, y, ...rest }, parent);
+  if (fill) t.style.fill = fill;   // inline style, so the page's default text color doesn't override it
+  t.textContent = s; return t;
+}
+function svgFor(container, w, h) {
+  container.replaceChildren();
+  return el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img" }, container);
+}
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+/* ---------- facts used in the text (all from the data) ---------- */
+const M = D.months, R = D.rates, idx = m => M.indexOf(m);
+const at = (s, m) => R[s][idx(m)];
+const maxOf = s => { let b = -1, bi = 0; R[s].forEach((v, i) => { if (v != null && v > b) { b = v; bi = i; } }); return [b, M[bi]]; };
+const avg = (s, y) => { const v = M.map((m, i) => m.startsWith(y) ? R[s][i] : null).filter(x => x != null); return v.reduce((a, b) => a + b, 0) / v.length; };
+const latest = D.latest_month;
+const [peak, peakM] = maxOf("All countries");
+const [cPeak, cPeakM] = maxOf("China");
+const [iPeak] = maxOf("India");
+const duty = Object.fromEntries(D.duty_by_year.map(r => [r.year, r]));
+const share = Object.fromEntries(D.shares.map(r => [r.country, r]));
+const prod = Object.fromEntries(D.products_china.map(r => [r.hs6, r]));
+const halves = D.smartphones;
+const h26 = halves.find(h => h.half_year === "2026 H1"), h24 = halves.find(h => h.half_year === "2024 H1");
+const chap = Object.fromEntries(D.rate_by_chapter.map(r => [r.hs2, r]));
+const byCountry = D.rate_by_country.filter(r => r.country !== "All countries");
+const topC = byCountry[0];
+const extra = D.extra_duty.find(r => r.main_tariff === "Mostly IEEPA");
+const sent = D.refunds.progress[D.refunds.progress.length - 1];
+const F = {
+  latestLong: longMonth(latest), peakLong: longMonth(peakM), fetched: D.fetched,
+  rateJan25: at("All countries", "2025-01"), ratePeak: peak, rateLatest: at("All countries", latest),
+  rate2024: pct(avg("All countries", "2024")), china2024: pct(avg("China", "2024"), 0),
+  m2504: longMonth("2025-05"), rate2504: pct(at("All countries", "2025-05")),
+  mult2504: (() => { const k = at("All countries", "2025-05") / at("All countries", "2025-01"); return k >= 3.8 ? "about four times" : k >= 2.8 ? "about three times" : "about twice"; })(),
+  chinaPeak: pct(cPeak), chinaPeakMonth: longMonth(cPeakM),
+  india2024: pct(avg("India", "2024")), indiaPeak: pct(iPeak), ratePeak2: pct(peak),
+  rate2603: pct(at("All countries", "2026-03")), rateLatest2: pct(at("All countries", latest)),
+  duty2024: bn(duty["2024"].duty_jan_aug_bn), duty2025: bn(duty["2025"].duty_jan_aug_bn), duty2026: bn(duty["2026"].duty_jan_aug_bn),
+  importsGrowth: pct(100 * (duty["2026"].imports_jan_aug_bn / duty["2024"].imports_jan_aug_bn - 1), 0),
+  extraIeepa: bn(extra.extra_duty_bn), collected: bn(D.refunds.collected_bn),
+  chinaChange: pct(-share["China"].change_pct, 0).replace("%", "%"), chinaShare24: pct(share["China"].share_2024_pct), chinaShare26: pct(share["China"].share_2026_pct),
+  laptopShare26: pct(prod["847130"].china_share_2026_pct, 0),
+  phoneIndia: pct(h26.india_pct, 0), phoneChina26: pct(h26.china_pct, 0), phoneChina24: pct(h24.china_pct, 0), phoneIndia24: pct(h24.india_pct, 0),
+  phoneBn: bn(h26.us_imports_bn),
+  steelNow: pct(chap["73"].rate_latest_pct, 0), steel2024: pct(chap["73"].rate_2024_pct, 0), knitNow: pct(chap["61"].rate_latest_pct, 0),
+  topCountry: topC.country, topCountryRate: pct(topC.rate_latest_pct, 0),
+  mxRate: pct((byCountry.find(r => r.country === "Mexico").rate_latest_pct + byCountry.find(r => r.country === "Canada").rate_latest_pct) / 2, 0),
+  refundSent: bn(sent.sent_bn),
+  gainers: (() => { const g = D.shares.filter(r => r.country !== "All countries").sort((a, b) => b.share_change_pts - a.share_change_pts).slice(0, 4).map(r => `${r.country} (+${r.share_change_pts.toFixed(1)} points)`); return g.slice(0, -1).join(", ") + " and " + g[g.length - 1]; })(),
+  taiwanChange: pct(share["Taiwan"].change_pct, 0),
+  taiwan84: bn(D.chapters_china.find(r => r.hs2 === "84").top_gainer_change_bn),
+};
+$$("[data-k]").forEach(e => { const v = F[e.dataset.k]; e.textContent = typeof v === "number" ? pct(v) : v; });
+
+/* hero counters */
+function countUp(e, target) {
+  if (reduce) { e.textContent = pct(target); return; }
+  const t0 = performance.now(), dur = 1400;
+  const f = t => { const p = Math.min(1, (t - t0) / dur), k = 1 - Math.pow(1 - p, 3); e.textContent = pct(target * k); if (p < 1) requestAnimationFrame(f); };
+  requestAnimationFrame(f);
+}
+$$("[data-count]").forEach((e, i) => setTimeout(() => countUp(e, F[e.dataset.count]), 200 + i * 350));
+
+/* ticker of real facts */
+(function () {
+  const items = [
+    ["Laptops from China", pct(prod["847130"].china_share_2024_pct, 0) + " → " + pct(prod["847130"].china_share_2026_pct, 0)],
+    ["Smartphones from India", pct(h24.india_pct, 0) + " → " + pct(h26.india_pct, 0)],
+    ["Duty, Jan–Aug 2026", bn(duty["2026"].duty_jan_aug_bn)],
+    ["Imports from Mexico", (share["Mexico"].change_pct > 0 ? "+" : "") + pct(share["Mexico"].change_pct, 0)],
+    ["Steel products tariff", pct(chap["73"].rate_latest_pct, 0)],
+    ["Refunds sent", bn(sent.sent_bn)],
+    ["China's share of US imports", pct(share["China"].share_2024_pct) + " → " + pct(share["China"].share_2026_pct)],
+    ["Video game consoles from China", pct(prod["950450"].china_share_2024_pct, 0) + " → " + pct(prod["950450"].china_share_2026_pct, 0)],
+  ];
+  const html = items.map(([a, b]) => `<span>${a} <b>${b}</b></span>`).join("");
+  $("#ticker").innerHTML = html + html;
+})();
+
+/* ---------- rate chart (scrolly) ---------- */
+const SER = [["All countries", "--s-all"], ["China", "--s-china"], ["India", "--s-india"], ["Vietnam", "--s-vietnam"], ["Mexico", "--s-mexico"], ["Canada", "--s-canada"]];
+const STEPS = [
+  { upto: "2024-12", show: ["All countries", "China"], focus: "All countries", note: null },
+  { upto: "2025-05", show: ["All countries"], focus: "All countries", note: { m: "2025-05", s: "All countries" } },
+  { upto: "2025-07", show: ["All countries", "China"], focus: "China", note: { m: null, s: "China", peak: true } },
+  { upto: "2025-12", show: ["All countries", "China", "India"], focus: "India", note: { m: null, s: "India", peak: true } },
+  { upto: "2026-04", show: ["All countries", "China", "India"], focus: "All countries", note: { m: "2026-03", s: "All countries" } },
+  { upto: latest, show: SER.map(s => s[0]), focus: "All countries", note: { m: latest, s: "All countries" } },
+];
+let rateState = { step: 0 };
+function drawRate() {
+  const box = $("#rateChart"), W = Math.max(320, box.clientWidth), narrow = W < 560;
+  const H = narrow ? Math.min(300, Math.round(W * .78)) : 380;
+  const svg = svgFor(box, W, H);
+  svg.setAttribute("aria-label", "Line chart of the effective US tariff rate by month, 2022 to " + latest);
+  const m = { t: 18, r: narrow ? 14 : 112, b: 26, l: 34 };
+  const x = i => m.l + (W - m.l - m.r) * i / (M.length - 1);
+  const ymax = 50, y = v => m.t + (H - m.t - m.b) * (1 - v / ymax);
+  const g = el("g", {}, svg);
+  for (let v = 0; v <= ymax; v += 10) {
+    el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: css("--grid") }, g);
+    text(g, m.l - 6, y(v) + 4, v + "%", { "text-anchor": "end" });
+  }
+  M.forEach((mm, i) => { if (mm.endsWith("-01")) text(g, x(i), H - 6, mm.slice(0, 4), { "text-anchor": "middle" }); });
+  // events (major ones on narrow screens)
+  const evG = el("g", {}, svg);
+  const major = new Set(["2025-04-05", "2025-04-10", "2025-08-27", "2026-02-20", "2026-07-24"]);
+  D.events.filter(e => !narrow || major.has(e.date)).forEach(e => {
+    const mi = idx(e.date.slice(0, 7)); if (mi < 0) return;
+    const px = x(mi + (+e.date.slice(8, 10) - 1) / 30);
+    el("line", { x1: px, x2: px, y1: m.t, y2: H - m.b, stroke: css("--line"), "stroke-dasharray": "2 3", class: "ev", "data-m": e.date.slice(0, 7) }, evG);
+  });
+  const clipId = "rc" + Math.random().toString(36).slice(2, 7);
+  const clip = el("clipPath", { id: clipId }, el("defs", {}, svg));
+  const cr = el("rect", { x: 0, y: 0, width: x(idx(STEPS[rateState.step].upto)) + 2, height: H }, clip);
+  cr.style.transition = "width 1.1s cubic-bezier(.4,0,.2,1)";
+  const lines = el("g", { "clip-path": `url(#${clipId})` }, svg);
+  const paths = {};
+  SER.slice().reverse().forEach(([s, c]) => {
+    const d = R[s].map((v, i) => v == null ? "" : (i && R[s][i - 1] != null ? "L" : "M") + x(i).toFixed(1) + " " + y(Math.min(v, ymax)).toFixed(1)).join("");
+    const p = el("path", { d, fill: "none", stroke: css(c), "stroke-width": s === "All countries" ? 3.2 : 2.2, "stroke-linejoin": "round", "stroke-linecap": "round" }, lines);
+    p.style.transition = "opacity .5s";
+    paths[s] = p;
+  });
+  const labels = el("g", {}, svg);
+  const noteG = el("g", {}, svg);
+  function apply(step) {
+    const st = STEPS[step], ui = idx(st.upto);
+    cr.setAttribute("width", x(ui) + 2);
+    for (const [s] of SER) paths[s].style.opacity = st.show.includes(s) ? (s === st.focus || s === "All countries" ? 1 : .55) : 0;
+    $$(".legend span", $("#rateLegend")).forEach(sp => sp.classList.toggle("off", !st.show.includes(sp.dataset.s)));
+    $$(".ev", evG).forEach(l => l.style.opacity = l.dataset.m <= st.upto ? 1 : 0);
+    labels.replaceChildren(); noteG.replaceChildren();
+    if (!narrow) {
+      const ls = st.show.map(s => ({ s, v: R[s][ui], c: SER.find(z => z[0] === s)[1] })).filter(o => o.v != null).sort((a, b) => y(a.v) - y(b.v));
+      let last = -99; ls.forEach(o => { let yy = Math.max(y(o.v) + 4, last + 14); last = yy; const t = text(labels, x(ui) + 8, yy, `${o.s} ${pct(o.v)}`, { fill: css(o.c), "font-weight": o.s === st.focus ? 600 : 400 }); });
+    }
+    if (st.note) {
+      let mi, v;
+      if (st.note.peak) { R[st.note.s].forEach((vv, i) => { if (i <= ui && vv != null && (v == null || vv > v)) { v = vv; mi = i; } }); }
+      else { mi = idx(st.note.m); v = R[st.note.s][mi]; }
+      const c = css(SER.find(z => z[0] === st.note.s)[1]);
+      el("circle", { cx: x(mi), cy: y(v), r: 5, fill: css("--panel"), stroke: c, "stroke-width": 2.5 }, noteG);
+      const lab = `${pct(v)} · ${longMonth(M[mi]).replace(/ (\d{4})$/, " $1")}`;
+      const tx = Math.min(Math.max(x(mi), m.l + 70), W - m.r - 70);
+      const yy = y(v) - 12 < m.t + 10 ? y(v) + 22 : y(v) - 12;
+      text(noteG, tx, yy, lab, { "text-anchor": "middle", class: "t-ink", "font-weight": 600, "paint-order": "stroke", stroke: css("--panel"), "stroke-width": 4 });
+    }
+  }
+  rateState.apply = apply;
+  apply(rateState.step);
+  // tooltip
+  const tip = $("#tip");
+  const ov = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+  ov.addEventListener("pointermove", ev => {
+    const r = svg.getBoundingClientRect(), sx = (ev.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(M.length - 1, Math.round((sx - m.l) / (W - m.l - m.r) * (M.length - 1))));
+    if (i > idx(STEPS[rateState.step].upto)) { tip.hidden = true; return; }
+    const st = STEPS[rateState.step];
+    tip.innerHTML = `<div class="d">${longMonth(M[i])}</div>` + st.show.map(s => `<div class="r"><span class="sw" style="background:${css(SER.find(z => z[0] === s)[1])}"></span>${s}: ${pct(R[s][i])}</div>`).join("");
+    tip.hidden = false;
+    const tx = Math.min(ev.clientX + 14, innerWidth - tip.offsetWidth - 8);
+    tip.style.left = tx + scrollX + "px"; tip.style.top = ev.clientY + scrollY - tip.offsetHeight - 12 + "px";
+  });
+  ov.addEventListener("pointerleave", () => tip.hidden = true);
+}
+$("#rateLegend").innerHTML = SER.map(([s, c]) => `<span data-s="${s}"><i style="background:var(${c})"></i>${s}</span>`).join("");
+const stepObs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { rateState.step = +e.target.dataset.step; rateState.apply && rateState.apply(rateState.step); }
+}), { rootMargin: "-45% 0px -45% 0px" });
+$$(".step").forEach(s => stepObs.observe(s));
+
+/* ---------- duty bars ---------- */
+function drawDuty() {
+  const box = $("#dutyChart"), W = Math.max(300, box.clientWidth), H = 260;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "Bar chart of duty charged January to August by year");
+  const rows = D.duty_by_year, m = { t: 26, b: 28, l: 4, r: 4 };
+  const bw = (W - m.l - m.r) / rows.length, max = Math.max(...rows.map(r => r.duty_jan_aug_bn));
+  rows.forEach((r, i) => {
+    const h = (H - m.t - m.b) * r.duty_jan_aug_bn / max, x0 = m.l + i * bw + bw * .18, w = bw * .64;
+    const hot = +r.year >= 2025;
+    const rect = el("rect", { x: x0, y: H - m.b, width: w, height: 0, rx: 3, fill: hot ? css("--tariff") : css("--faint") }, svg);
+    rect.dataset.y = H - m.b - h; rect.dataset.h = h;
+    text(svg, x0 + w / 2, H - m.b - h - 8, "$" + Math.round(r.duty_jan_aug_bn) + "B", { "text-anchor": "middle", class: "t-ink", "font-weight": 600 });
+    text(svg, x0 + w / 2, H - 8, r.year, { "text-anchor": "middle" });
+  });
+  grow(box);
+}
+function grow(box) {
+  const go = () => $$("rect[data-h]", box).forEach((r, i) => {
+    r.style.transition = reduce ? "none" : `y .9s cubic-bezier(.3,.7,.2,1) ${i * 90}ms, height .9s cubic-bezier(.3,.7,.2,1) ${i * 90}ms`;
+    r.setAttribute("y", r.dataset.y); r.setAttribute("height", r.dataset.h);
+  });
+  if (box.dataset.seen) return go();
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { box.dataset.seen = 1; requestAnimationFrame(() => requestAnimationFrame(go)); o.disconnect(); } }), { threshold: .3 }).observe(box);
+}
+
+/* ---------- share change (diverging) ---------- */
+function drawShares() {
+  const box = $("#shareChart"), W = Math.max(300, box.clientWidth);
+  const rows = D.shares.filter(r => r.country !== "All countries" && Math.abs(r.share_change_pts) >= .25).sort((a, b) => a.share_change_pts - b.share_change_pts);
+  const rh = 26, H = rows.length * rh + 8, lab = 112;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "Change in share of US imports by country");
+  const ext = Math.max(...rows.map(r => Math.abs(r.share_change_pts)));
+  const cx = lab + (W - lab - 52) * ext / (2 * ext) , sc = (W - lab - 104) / (2 * ext);
+  el("line", { x1: cx, x2: cx, y1: 0, y2: H, stroke: css("--line") }, svg);
+  rows.forEach((r, i) => {
+    const yy = 4 + i * rh, v = r.share_change_pts, w = Math.abs(v) * sc;
+    text(svg, 0, yy + 15, r.country, { class: "t-ink" });
+    const rect = el("rect", { x: v < 0 ? cx - w : cx, y: yy + 4, width: w, height: rh - 10, rx: 2, fill: v < 0 ? css("--down") : css("--up") }, svg);
+    text(svg, v < 0 ? cx - w - 6 : cx + w + 6, yy + 15, (v > 0 ? "+" : "") + v.toFixed(1), { "text-anchor": v < 0 ? "end" : "start", class: "num" });
+    if (!reduce) { rect.style.transformBox = "fill-box"; rect.style.transformOrigin = v < 0 ? "right" : "left"; rect.style.transform = "scaleX(0)"; rect.style.transition = `transform .8s cubic-bezier(.3,.7,.2,1) ${i * 50}ms`; rect.classList.add("sx"); }
+  });
+  scaleIn(box);
+}
+function scaleIn(box) {
+  const go = () => $$(".sx", box).forEach(r => r.style.transform = "scaleX(1)");
+  if (box.dataset.seen) return go();
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { box.dataset.seen = 1; requestAnimationFrame(() => requestAnimationFrame(go)); o.disconnect(); } }), { threshold: .3 }).observe(box);
+}
+
+/* ---------- products: China share 2024 -> 2026 ---------- */
+const PNAMES = { "847130": "Laptops", "851713": "Smartphones", "850760": "Lithium-ion batteries", "851762": "Routers and network gear", "950300": "Toys (wheeled, dolls, etc.)", "852852": "Computer monitors", "950450": "Video game consoles", "851830": "Headphones", "940161": "Upholstered wooden chairs", "391810": "Vinyl flooring", "940320": "Metal furniture", "640419": "Fabric-upper shoes", "732393": "Stainless steel kitchenware", "940179": "Metal-frame seats", "640299": "Rubber and plastic shoes", "852589": "Cameras", "630790": "Textile goods", "852872": "TVs", "300490": "Medicines" };
+function drawProducts() {
+  const box = $("#productChart"), W = Math.max(300, box.clientWidth), narrow = W < 620;
+  const rows = D.products_china.filter(r => PNAMES[r.hs6] && r.hs6 !== "300490" && r.hs6 !== "847330").slice(0, narrow ? 9 : 12);
+  const rh = narrow ? 44 : 34, lab = narrow ? 0 : 210, right = narrow ? 0 : 150, H = rows.length * rh + 26;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "China's share of US imports of each product, 2024 and 2026");
+  const x0 = lab + 8, x1 = W - right - 10, sx = v => x0 + (x1 - x0) * v / 100;
+  [0, 25, 50, 75, 100].forEach(v => { el("line", { x1: sx(v), x2: sx(v), y1: 14, y2: H, stroke: css("--grid") }, svg); text(svg, sx(v), 10, v + "%", { "text-anchor": "middle" }); });
+  rows.forEach((r, i) => {
+    const yy = 22 + i * rh + (narrow ? 26 : rh / 2);
+    const name = PNAMES[r.hs6];
+    if (narrow) text(svg, 0, yy - 13, `${name} · ${r.top_gainer} +$${(+r.top_gainer_change_bn).toFixed(1)}B`, { class: "t-ink", "font-size": 12.5 });
+    else {
+      text(svg, 0, yy + 4, name, { class: "t-ink" });
+      text(svg, W, yy + 4, `${r.top_gainer} +$${(+r.top_gainer_change_bn).toFixed(1)}B`, { "text-anchor": "end", fill: css("--up") });
+    }
+    const a = sx(r.china_share_2024_pct), b = sx(r.china_share_2026_pct);
+    const ln = el("line", { x1: a, x2: a, y1: yy, y2: yy, stroke: css("--tariff"), "stroke-width": 3, "stroke-linecap": "round", opacity: .35 }, svg);
+    el("circle", { cx: a, cy: yy, r: 4.5, fill: css("--faint") }, svg);
+    const dot = el("circle", { cx: a, cy: yy, r: 6, fill: css("--tariff") }, svg);
+    text(svg, a + (a > b ? 9 : -9), yy + 4, pct(r.china_share_2024_pct, 0), { "text-anchor": a > b ? "start" : "end", "font-size": 11 });
+    const lb = text(svg, b + (a > b ? -10 : 10), yy + 4, pct(r.china_share_2026_pct, 0), { "text-anchor": a > b ? "end" : "start", class: "t-ink", "font-weight": 600, "font-size": 12, opacity: 0 });
+    const go = () => {
+      if (reduce) { ln.setAttribute("x2", b); dot.setAttribute("cx", b); lb.setAttribute("opacity", 1); return; }
+      const t0 = performance.now() + i * 70, dur = 1100;
+      const f = t => { const p = Math.max(0, Math.min(1, (t - t0) / dur)), k = 1 - Math.pow(1 - p, 3), xx = a + (b - a) * k; ln.setAttribute("x2", xx); dot.setAttribute("cx", xx); lb.setAttribute("opacity", p); if (p < 1) requestAnimationFrame(f); };
+      requestAnimationFrame(f);
+    };
+    dot._go = go;
+  });
+  const legendY = H - 2;
+  const goAll = () => $$("circle", box).forEach(c => c._go && c._go());
+  if (box.dataset.seen) goAll();
+  else new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { box.dataset.seen = 1; goAll(); o.disconnect(); } }), { threshold: .25 }).observe(box);
+}
+
+/* ---------- smartphones stacked bars ---------- */
+function drawPhones() {
+  const box = $("#phoneChart"), W = Math.max(300, box.clientWidth);
+  const rows = D.smartphones, rh = 34, lab = 74, H = rows.length * rh + 4;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "Share of US smartphone imports by country and half-year");
+  const parts = [["India", "india_pct", "--s-india"], ["China", "china_pct", "--s-china"], ["Vietnam", "vietnam_pct", "--s-vietnam"]];
+  const sx = v => lab + (W - lab) * v / 100;
+  rows.forEach((r, i) => {
+    const yy = i * rh;
+    text(svg, 0, yy + 20, r.half_year + (r.months_of_data < 6 ? "*" : ""), { class: "t-ink" });
+    let acc = 0;
+    parts.forEach(([n, k, c]) => {
+      const v = r[k] || 0, xa = sx(acc), w = sx(acc + v) - xa;
+      el("rect", { x: xa, y: yy + 4, width: Math.max(0, w - 1.5), height: rh - 10, fill: css(c) }, svg);
+      if (w > 34) text(svg, xa + 6, yy + 20, Math.round(v) + "%", { fill: css("--panel"), "font-weight": 600 });
+      acc += v;
+    });
+    el("rect", { x: sx(acc), y: yy + 4, width: Math.max(0, sx(100) - sx(acc)), height: rh - 10, fill: css("--grid") }, svg);
+  });
+  $("#phoneLegend").innerHTML = parts.map(([n, , c]) => `<span><i style="background:var(${c});height:10px"></i>${n}</span>`).join("") + `<span><i style="background:var(--grid);height:10px"></i>Other</span><span>* ${rows[rows.length - 1].months_of_data} months</span>`;
+}
+
+/* ---------- tariff rate by chapter: 2024 -> now ---------- */
+function drawChapterRates() {
+  const box = $("#chapterRateChart"), W = Math.max(300, box.clientWidth);
+  const NAMES = { "61": "Clothing, knitted", "62": "Clothing, woven", "64": "Footwear", "73": "Steel products", "76": "Aluminum", "72": "Iron and steel", "42": "Bags and luggage", "63": "Home textiles", "94": "Furniture and lighting", "87": "Cars and parts", "95": "Toys and sports goods", "39": "Plastics", "83": "Metal hardware", "82": "Tools", "40": "Rubber", "44": "Wood", "33": "Cosmetics", "29": "Organic chemicals", "03": "Seafood", "48": "Paper" };
+  const rows = D.rate_by_chapter.slice(0, 12);
+  const rh = 28, lab = W < 420 ? 128 : 160, H = rows.length * rh + 22;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "Effective tariff rate by product group, 2024 and latest month");
+  const max = Math.ceil(Math.max(...rows.map(r => r.rate_latest_pct)) / 10) * 10;
+  const sx = v => lab + (W - lab - 40) * v / max;
+  for (let v = 0; v <= max; v += 10) { el("line", { x1: sx(v), x2: sx(v), y1: 14, y2: H, stroke: css("--grid") }, svg); text(svg, sx(v), 10, v + "%", { "text-anchor": "middle" }); }
+  rows.forEach((r, i) => {
+    const yy = 22 + i * rh + rh / 2 - 4;
+    text(svg, 0, yy + 4, NAMES[r.hs2] || r.chapter, { class: "t-ink" });
+    el("line", { x1: sx(r.rate_2024_pct), x2: sx(r.rate_latest_pct), y1: yy, y2: yy, stroke: css("--tariff"), "stroke-width": 2.5, opacity: .4 }, svg);
+    el("circle", { cx: sx(r.rate_2024_pct), cy: yy, r: 4.5, fill: css("--faint") }, svg);
+    el("circle", { cx: sx(r.rate_latest_pct), cy: yy, r: 6, fill: css("--tariff") }, svg);
+    text(svg, sx(r.rate_latest_pct) + 10, yy + 4, pct(r.rate_latest_pct, 0), { class: "t-ink", "font-weight": 600 });
+  });
+}
+
+/* ---------- refunds progress ---------- */
+function drawRefunds() {
+  const box = $("#refundChart"), W = Math.max(300, box.clientWidth);
+  const rows = D.refunds.progress, total = D.refunds.collected_bn, rh = 34, lab = 64, H = rows.length * rh + 30;
+  const svg = svgFor(box, W, H); svg.setAttribute("aria-label", "IEEPA tariff refunds sent for payment over time");
+  const sx = v => lab + (W - lab - 8) * v / total;
+  rows.forEach((r, i) => {
+    const yy = i * rh, d = new Date(r.date + "T00:00:00Z");
+    text(svg, 0, yy + 20, d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }), { class: "t-ink" });
+    el("rect", { x: lab, y: yy + 5, width: sx(total) - lab, height: rh - 12, rx: 3, fill: css("--grid") }, svg);
+    const bar = el("rect", { x: lab, y: yy + 5, width: sx(r.sent_bn) - lab, height: rh - 12, rx: 3, fill: css("--refund") }, svg);
+    if (!reduce) { bar.style.transformBox = "fill-box"; bar.style.transformOrigin = "left"; bar.style.transform = "scaleX(0)"; bar.style.transition = `transform .9s cubic-bezier(.3,.7,.2,1) ${i * 120}ms`; bar.classList.add("sx"); }
+    text(svg, sx(r.sent_bn) - 8, yy + 21, "$" + r.sent_bn + "B", { "text-anchor": "end", fill: css("--panel"), "font-weight": 600 });
+  });
+  text(svg, sx(total), H - 6, "$" + total + "B collected", { "text-anchor": "end" });
+  scaleIn(box);
+}
+
+/* ---------- refund checker ---------- */
+(function () {
+  let type = "regular";
+  const out = $("#refundOut");
+  $$(".seg button").forEach(b => b.addEventListener("click", () => { type = b.dataset.v; $$(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b)); run(); }));
+  ["rEntry", "rLiq", "rLiqDate", "rCourt", "rAch"].forEach(id => $("#" + id).addEventListener("input", run));
+  $("#rLiq").addEventListener("change", run);
+  function run() {
+    const liq = $("#rLiq").checked;
+    $("#rLiqWrap").hidden = !liq;
+    const today = new Date().toISOString().slice(0, 10);
+    const since = liq && $("#rLiqDate").value ? RefundRules.days($("#rLiqDate").value, today) : 0;
+    $("#rCourtWrap").hidden = !(liq && since > 180);
+    const r = RefundRules.refundRoute({ entryDate: $("#rEntry").value, entryType: type, liquidated: liq, liquidationDate: $("#rLiqDate").value, courtOrder: $("#rCourt").checked, achEnrolled: $("#rAch").checked, today });
+    const badge = r.route === "cape" ? `<span class="badge">CAPE Phase ${r.phase}</span>` : r.route === "protest" ? `<span class="badge court">Protest</span>` : r.route === "court" ? `<span class="badge court">Court</span>` : r.route === "not_ieepa" ? `<span class="badge court">Not eligible</span>` : "";
+    out.replaceChildren();
+    const wrap = document.createElement("div");
+    wrap.innerHTML = badge;
+    const h = document.createElement("div"); h.className = "route"; h.textContent = r.title; wrap.appendChild(h);
+    if (r.steps.length) { const ol = document.createElement("ol"); r.steps.forEach(s => { const li = document.createElement("li"); li.textContent = s; ol.appendChild(li); }); wrap.appendChild(ol); }
+    r.warnings.forEach(w => { const d = document.createElement("div"); d.className = "warn"; d.textContent = w; wrap.appendChild(d); });
+    if (r.rule) { const d = document.createElement("div"); d.className = "rule"; d.style.marginTop = "12px"; d.textContent = "Business rule " + r.rule + " · see process map"; wrap.appendChild(d); }
+    out.appendChild(wrap);
+  }
+  run();
+})();
+
+/* ---------- reveal + responsive redraw ---------- */
+const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } }), { threshold: .12 });
+$$(".reveal").forEach(e => rv.observe(e));
+function drawAll() { drawRate(); drawDuty(); drawShares(); drawProducts(); drawPhones(); drawChapterRates(); drawRefunds(); }
+drawAll();
+let lastW = innerWidth;
+addEventListener("resize", () => { if (Math.abs(innerWidth - lastW) < 24) return; lastW = innerWidth; clearTimeout(window._rt); window._rt = setTimeout(drawAll, 150); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+</script>
+</body>
+</html>

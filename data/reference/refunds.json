@@ -1,0 +1,13 @@
+{
+ "note": "IEEPA tariff refunds through CBP's CAPE system, as reported. Amounts are 'sent to the Treasury for payment' (CBP's measure), including interest. Second-hand reports of CBP court declarations; CBP's own refunds page is the primary source.",
+ "collected_bn": 166,
+ "collected_note": "IEEPA duties collected from 330,000+ importers (CBP, 6 March 2026, as reported)",
+ "progress": [
+  {"date": "2026-07-10", "sent_bn": 86.3, "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"},
+  {"date": "2026-08-21", "sent_bn": 106.6, "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"},
+  {"date": "2026-09-11", "sent_bn": 122.0, "source": "https://tariffrefundfinder.com/guides/ieepa-tariff-refund-status"},
+  {"date": "2026-10-02", "sent_bn": 126.0, "source": "https://www.cbh.com/insights/alerts/ieepa-tariff-refund-update-cape-phase-iii-open/"}
+ ],
+ "pending_ach_bn": 1.1,
+ "pending_ach_note": "Waiting because the importer's bank (ACH) details are missing or unvalidated (CBP, 2 October 2026, as reported)"
+}
