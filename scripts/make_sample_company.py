@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 rng = random.Random(20260224)
 
 COMPANY = {"name": "Harborline Home & Goods", "importer_of_record": "XX-0000000 (sample)", "sample": True,
-           "margin_threshold_pct": 35,
+           "margin_threshold_pct": 40,
            "note": "Invented company for demonstrating the tracker. Product codes, countries, cost levels and all tariff rules are real; names, prices and shipments are made up."}
 
 # SKU templates: (product hs10, sku name, countries to source from, [count per country])
@@ -45,13 +45,14 @@ CATALOG = [
     ("9505102500", "Glass ornament set", ["China", "Cambodia"]),
     ("3924104000", "Plastic storage set", ["China", "Thailand"]),
     ("8516710020", "Drip coffee maker", ["China", "Thailand", "Malaysia"]),
-    ("8508110000", "Cordless stick vacuum", ["China", "Vietnam", "Malaysia"]),
+    ("8508110000", "Cordless stick vacuum", ["Vietnam", "Malaysia"]),   # not from China: steel/aluminum content tariff not modeled
     ("8518302000", "Wireless earbuds", ["China", "Vietnam"]),
     ("8518220000", "Bookshelf speaker pair", ["China", "Vietnam"]),
     ("8528520000", "27-inch monitor", ["China", "Vietnam", "Mexico"]),
-    ("9506910030", "Adjustable dumbbell", ["China", "Vietnam"]),
 ]
-MARKUP = (1.9, 2.8)                 # wholesale price = landed cost before 2025 x this
+ISO = {"China": "CN", "Vietnam": "VN", "Cambodia": "KH", "Mexico": "MX", "Indonesia": "ID", "Bangladesh": "BD", "Thailand": "TH",
+       "Malaysia": "MY", "India": "IN"}
+MARKUP = (1.7, 2.6)                 # wholesale price = landed cost before 2025 x this
 START, END = date(2025, 1, 6), date(2026, 10, 30)
 TODAY = date(2026, 11, 2)
 
@@ -98,7 +99,7 @@ def main():
             landed0 = unit * (1 + freight_share + base_rate / 100)
             skus.append({
                 "sku": f"HL-{n:03d}", "name": label, "hs10": hs10, "product": names[hs10]["name"], "per": names[hs10]["per"],
-                "country": country, "supplier": f"Supplier {country[:2].upper()}-{rng.randint(10, 99)}",
+                "country": country, "supplier": f"Supplier {ISO[country]}-{rng.randint(10, 99)}",
                 "usmca": country == "Mexico" and rng.random() < 0.85,
                 "unit_cost": round(unit, 2), "freight_per_unit": round(unit * freight_share, 2),
                 "base_rate": round(base_rate, 2),
@@ -120,7 +121,8 @@ def main():
             liq_days = rng.choice([314] * 6 + [rng.randint(280, 360), rng.randint(90, 200)])
             liq = d + timedelta(days=liq_days)
             entries.append({
-                "entry": f"SMP-{e:07d}-{rng.randint(0, 9)}"[:11],
+                # 11 characters like a real entry number: 3-character filer code + 7 digits + check digit (filer "HLB" is invented)
+                "entry": f"HLB{e * 7919 % 10_000_000:07d}{rng.randint(0, 9)}",
                 "date": d.isoformat(), "country": country, "type": etype,
                 "liquidated": liq <= TODAY, "liquidation_date": liq.isoformat() if liq <= TODAY else None,
                 "lines": [{"sku": s["sku"], "units": int(s["units_per_month"] * rng.uniform(0.7, 1.6))} for s in lines],

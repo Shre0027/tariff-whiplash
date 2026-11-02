@@ -18,6 +18,7 @@ const ROOT = path.resolve(__dirname, "..");
 const { create } = require(path.join(ROOT, "templates/tariff_engine.js"));
 
 const MIN_VALUE = 2e6;
+const TRANSIT = [7, 42];   // goods are assumed to be loaded 1 to 6 weeks before entry (ocean freight)
 const engine = create(JSON.parse(fs.readFileSync(path.join(ROOT, "config/tariff_rules.json"))));
 const products = JSON.parse(fs.readFileSync(path.join(ROOT, "config/simulator_products.json"))).products;
 const pname = Object.fromEntries(products.map(p => [p.hs10, p.name]));
@@ -52,7 +53,7 @@ for (const r of rows) {
   if (!b || b.v < 5e6) continue;                       // no reliable 2024 base
   const country = cname[r.cty_code];
   const baseRate = 100 * b.d / b.v;
-  const args = { month: r.month, hs10: r.hs10, country, baseRate };
+  const args = { month: r.month, hs10: r.hs10, country, baseRate, transitDays: TRANSIT };
   const predicted = engine.monthAverage({ ...args, usmca: false });
   const predictedUsmca = engine.monthAverage({ ...args, usmca: true });
   const actual = 100 * r.duty / r.value;
@@ -92,7 +93,7 @@ const md = `# Rule validation: do the tariff rules reproduce what was actually c
 
 **Why this check exists:** the tracker calculates duty from rules typed in from legal summaries. If a rule is missing, wrong or dated wrongly, every cost in the tracker is wrong. Census records the duty actually charged, so it can test the rules: for each product, country and month, the rules' prediction should match the rate Census recorded.
 
-**Method:** ${products.length} tracked products (HTS 10-digit) × countries × months from January 2025, where the month had at least $2 million of imports. Predicted rate = the product's 2024 rate from that country (normal duty, including the 2018–19 tariffs on China) + the additional tariffs in force, averaged over the days of the month. Error = actual − predicted, in percentage points.
+**Method:** ${products.length} tracked products (HTS 10-digit) × countries × months from January 2025, where the month had at least $2 million of imports. Predicted rate = the product's 2024 rate from that country (normal duty, including the 2018–19 tariffs on China) + the additional tariffs in force, averaged over the days of the month. Goods are assumed to be loaded 1–6 weeks before they enter, so in-transit exemptions apply to some of them. Error = actual − predicted, in percentage points.
 
 ## Result
 
@@ -113,6 +114,11 @@ Census doesn't say which shipments qualified for USMCA (exempt from most of the 
 ### Largest gaps
 ${table(worst.map(o => [o.product, o.country, o.month, "$" + f1(o.value_m) + "M", f1(o.base) + "%", f1(o.predicted) + "%", f1(o.actual) + "%", (o.error >= 0 ? "+" : "") + f1(o.error)]),
   ["Product", "Country", "Month", "Imports", "2024 rate", "Predicted", "Actual", "Gap"])}
+
+## Known gaps (not modeled)
+- **Steel and aluminum content (Section 232 "derivative" products).** Some products pay a tariff on the value of the steel or aluminum they contain. Census doesn't report metal content, so the rules can't apply it. This is why goods from China such as exercise equipment and vacuum cleaners show actual rates above the prediction from mid-2025.
+- **Product mix inside one code.** HTS 9401.61.6011 (upholstered seats with wooden frames) is under the Section 232 furniture tariff, but goods from China in it run about 3 points below the prediction, consistent with part of the trade being entered under exclusions.
+- **Exclusions and annex products.** Each tariff program exempts lists of products (annexes). The rules include the electronics exclusion and Section 232 goods; smaller annexes are not modeled.
 
 ## Reading the gaps
 - **Mixed months** (February and July 2026, and months when a rule starts mid-month) are averaged by day, but shipments aren't spread evenly across a month, so some gap is expected.
