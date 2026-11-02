@@ -9,7 +9,10 @@ Writes, in data/raw/:
   chapter_month.csv.gz    HS 2-digit chapter x focus country x month from Jan 2022 (value and calculated duty)
   product_ytd.csv.gz      HS 6-digit product x focus country, January-August of 2024, 2025 and 2026
                           (value, calculated duty, quantity), plus the latest single month for the simulator
-  products.csv            HS 6-digit codes with the Census short description and unit of quantity
+  products.csv            HS 6-digit codes with the Census short description
+  hs10_latest.csv.gz      HS 10-digit product x focus country for the latest year (January to latest month, and the
+                          latest month alone), with quantities: the only level where quantities are reported
+  products_hs10.csv.gz    HS 10-digit codes with description and unit of quantity
   smartphones.csv         smartphone imports (HS 851713) by country and month, from Jan 2024
 
 Things learned from the API (see docs/decision-log.md):
@@ -134,6 +137,27 @@ def products(latest):
               sorted([d["I_COMMODITY"], d["I_COMMODITY_SDESC"], d["UNIT_QY1"]] for d in rows))
 
 
+def hs10_latest(latest):
+    """HS 10-digit x focus country for the latest year: quantities exist only at this level (HS6 totals mix units),
+    so per-unit prices for the sourcing simulator come from here."""
+    year, mm = latest.split("-")
+    out = []
+    for c in FOCUS:
+        rows = get({"get": "CTY_CODE,I_COMMODITY,UNIT_QY1,CON_VAL_YR,CAL_DUT_YR,CON_CHA_YR,CON_QY1_YR,CON_VAL_MO,CAL_DUT_MO,CON_CHA_MO,CON_QY1_MO",
+                    "time": latest, "COMM_LVL": "HS10", "CTY_CODE": c["code"]})
+        for d in rows:
+            if num(d["CON_VAL_YR"]) > 0:
+                out.append([int(year), int(mm), d["CTY_CODE"], d["I_COMMODITY"], d["UNIT_QY1"], d["CON_VAL_YR"], d["CAL_DUT_YR"],
+                            d["CON_CHA_YR"], d["CON_QY1_YR"], d["CON_VAL_MO"], d["CAL_DUT_MO"], d["CON_CHA_MO"], d["CON_QY1_MO"]])
+        print(f"{c['name']}: {len(rows)} HS10 products")
+    out.sort(key=lambda r: (r[2], r[3]))
+    write_csv(RAW / "hs10_latest.csv.gz", ["year", "through_month", "cty_code", "hs10", "unit", "ytd_value", "ytd_duty", "ytd_charges",
+                                           "ytd_quantity", "month_value", "month_duty", "month_charges", "month_quantity"], out, gz=True)
+    names = get({"get": "I_COMMODITY,I_COMMODITY_SDESC,UNIT_QY1", "time": latest, "COMM_LVL": "HS10", "CTY_CODE": "-"})
+    write_csv(RAW / "products_hs10.csv.gz", ["hs10", "description", "unit"],
+              sorted([d["I_COMMODITY"], d["I_COMMODITY_SDESC"], d["UNIT_QY1"]] for d in names), gz=True)
+
+
 def smartphones():
     rows = get({"get": "CTY_CODE,CON_VAL_MO,CAL_DUT_MO,CON_QY1_MO", "time": "from 2024-01", "COMM_LVL": "HS6", "I_COMMODITY": "851713"})
     write_csv(RAW / "smartphones.csv", ["month", "cty_code", "consumption_imports", "calculated_duty", "units"],
@@ -146,6 +170,7 @@ def main():
     chapter_month()
     product_ytd(latest)
     products(latest)
+    hs10_latest(latest)
     smartphones()
     (RAW / "fetched.json").write_text(json.dumps({"fetched_on": time.strftime("%Y-%m-%d", time.gmtime()),
                                                   "latest_month": latest, "source": BASE}, indent=1))
