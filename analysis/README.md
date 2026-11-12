@@ -1,6 +1,6 @@
 # SQL analysis
 
-Standard SQL run with DuckDB directly on the Census trade files in `data/raw/` (2022-01 to 2026-08). Shared views are defined in [`sql/00_setup.sql`](../sql/00_setup.sql). Re-run everything with `python scripts/run_sql.py`; full results are in [`analysis/results/`](results/).
+Standard SQL run with DuckDB directly on the Census trade files in `data/raw/` (2022-01 to 2026-09). Shared views are defined in [`sql/00_setup.sql`](../sql/00_setup.sql). Re-run everything with `python scripts/run_sql.py`; full results are in [`analysis/results/`](results/).
 
 Effective tariff rate = calculated duty / imports for consumption. Calculated duty is the duty assessed when goods enter the US; refunds paid later (for the struck-down IEEPA tariffs) are not subtracted.
 
@@ -16,6 +16,7 @@ Query: [`sql/01_effective_tariff_rate_by_month.sql`](../sql/01_effective_tariff_
 
 | month | all_countries_pct | china_pct | india_pct | vietnam_pct | mexico_pct | canada_pct |
 |---|---|---|---|---|---|---|
+| 2026-09 | 6.49 | 19.87 | 8.87 | 6.85 | 3.11 | 4.17 |
 | 2026-08 | 6.87 | 22.77 | 8.22 | 7.07 | 3.2 | 3.18 |
 | 2026-07 | 6.45 | 21.4 | 8.15 | 6.18 | 2.9 | 2.82 |
 | 2026-06 | 6.81 | 21.69 | 9.06 | 6.44 | 3.43 | 2.85 |
@@ -35,9 +36,8 @@ Query: [`sql/01_effective_tariff_rate_by_month.sql`](../sql/01_effective_tariff_
 | 2025-04 | 7.18 | 38.74 | 3.77 | 4.57 | 4.22 | 2.98 |
 | 2025-03 | 3.72 | 26.43 | 2.31 | 3.37 | 3.18 | 1.6 |
 | 2025-02 | 2.33 | 13.07 | 2.06 | 3.19 | 0.27 | 0.11 |
-| 2025-01 | 2.22 | 11.11 | 2.26 | 3.52 | 0.27 | 0.11 |
 
-*Showing 20 of 56 rows; see the CSV for all.*
+*Showing 20 of 57 rows; see the CSV for all.*
 
 ## 02. Duty collected by year
 
@@ -51,11 +51,11 @@ Query: [`sql/02_duty_collected_by_year.sql`](../sql/02_duty_collected_by_year.sq
 
 | year | imports_jan_aug_bn | duty_jan_aug_bn | effective_rate_pct | above_2024_rate_bn |
 |---|---|---|---|---|
-| 2022 | 2,162 | 62.3 | 2.88 | 11.4 |
-| 2023 | 2,032 | 48.5 | 2.39 | 0.6 |
-| 2024 | 2,121 | 50 | 2.36 | 0 |
-| 2025 | 2,306 | 150 | 6.48 | 95.1 |
-| 2026 | 2,383 | 174 | 7.29 | 117 |
+| 2022 | 2,437 | 69.9 | 2.87 | 12.3 |
+| 2023 | 2,292 | 54.6 | 2.38 | 0.5 |
+| 2024 | 2,404 | 56.8 | 2.36 | 0 |
+| 2025 | 2,582 | 178 | 6.91 | 118 |
+| 2026 | 2,736 | 196 | 7.18 | 132 |
 
 ## 03. Duty above baseline ieepa period
 
@@ -85,26 +85,26 @@ Query: [`sql/04_where_imports_moved.sql`](../sql/04_where_imports_moved.sql)
 
 | country | jan_aug_2024_bn | jan_aug_2026_bn | change_pct | share_2024_pct | share_2026_pct | share_change_pts |
 |---|---|---|---|---|---|---|
-| China | 273 | 176 | -35.8 | 12.9 | 7.4 | -5.52 |
-| Canada | 274 | 269 | -1.7 | 12.9 | 11.3 | -1.62 |
-| Ireland | 61.5 | 37.6 | -38.8 | 2.9 | 1.6 | -1.32 |
-| Germany | 107 | 100 | -6.9 | 5.1 | 4.2 | -0.87 |
-| Japan | 99.8 | 96.3 | -3.5 | 4.7 | 4 | -0.67 |
-| Singapore | 29.1 | 22.2 | -23.7 | 1.4 | 0.9 | -0.44 |
-| Brazil | 28.3 | 24 | -15.2 | 1.3 | 1 | -0.33 |
-| United Kingdom | 45 | 43.8 | -2.7 | 2.1 | 1.8 | -0.28 |
-| Italy | 51.3 | 51 | -0.6 | 2.4 | 2.1 | -0.28 |
-| Switzerland | 32.9 | 33.6 | 2.1 | 1.6 | 1.4 | -0.14 |
-| All countries | 2,121 | 2,383 | 12.4 | 100 | 100 | 0 |
-| Bangladesh | 5.4 | 6.5 | 19.3 | 0.3 | 0.3 | 0.02 |
-| France | 39.7 | 45.4 | 14.2 | 1.9 | 1.9 | 0.03 |
-| India | 58.5 | 66.6 | 13.9 | 2.8 | 2.8 | 0.04 |
-| Indonesia | 17.6 | 21.9 | 24.3 | 0.8 | 0.9 | 0.09 |
-| Cambodia | 7.9 | 12 | 50.9 | 0.4 | 0.5 | 0.13 |
-| Philippines | 8.6 | 17.3 | 99.9 | 0.4 | 0.7 | 0.32 |
-| South Korea | 87.9 | 109 | 23.5 | 4.1 | 4.6 | 0.41 |
-| Malaysia | 32.1 | 53.4 | 66.5 | 1.5 | 2.2 | 0.73 |
-| Mexico | 332 | 417 | 25.8 | 15.6 | 17.5 | 1.87 |
+| China | 316 | 206 | -34.6 | 13.1 | 7.5 | -5.58 |
+| Canada | 308 | 304 | -1.4 | 12.8 | 11.1 | -1.71 |
+| Ireland | 71.7 | 42.9 | -40.2 | 3 | 1.6 | -1.42 |
+| Germany | 120 | 114 | -4.9 | 5 | 4.2 | -0.82 |
+| Japan | 112 | 108 | -2.9 | 4.6 | 4 | -0.68 |
+| Singapore | 32 | 25.4 | -20.6 | 1.3 | 0.9 | -0.4 |
+| Brazil | 31.7 | 27.7 | -12.7 | 1.3 | 1 | -0.31 |
+| United Kingdom | 50.5 | 49.4 | -2 | 2.1 | 1.8 | -0.29 |
+| Italy | 56.7 | 58.8 | 3.7 | 2.4 | 2.1 | -0.21 |
+| Switzerland | 37.4 | 37.9 | 1.4 | 1.6 | 1.4 | -0.17 |
+| All countries | 2,404 | 2,736 | 13.8 | 100 | 100 | 0 |
+| France | 44.4 | 50.8 | 14.5 | 1.8 | 1.9 | 0.01 |
+| Bangladesh | 6.2 | 7.4 | 18.3 | 0.3 | 0.3 | 0.01 |
+| India | 65.5 | 75.8 | 15.8 | 2.7 | 2.8 | 0.05 |
+| Indonesia | 20.2 | 24.8 | 22.9 | 0.8 | 0.9 | 0.07 |
+| Cambodia | 9.5 | 14 | 47.5 | 0.4 | 0.5 | 0.12 |
+| Philippines | 10.1 | 20.1 | 98.3 | 0.4 | 0.7 | 0.31 |
+| South Korea | 98.9 | 128 | 29.3 | 4.1 | 4.7 | 0.56 |
+| Malaysia | 37 | 62 | 67.4 | 1.5 | 2.3 | 0.72 |
+| Mexico | 375 | 479 | 27.7 | 15.6 | 17.5 | 1.91 |
 
 *Showing 20 of 23 rows; see the CSV for all.*
 
@@ -120,28 +120,28 @@ Query: [`sql/05_china_share_by_chapter.sql`](../sql/05_china_share_by_chapter.sq
 
 | hs2 | chapter | us_imports_2024_bn | china_share_2024_pct | china_share_2026_pct | china_change_bn | top_gainer | top_gainer_change_bn |
 |---|---|---|---|---|---|---|---|
-| 85 | Electrical and electronics | 298 | 23.9 | 9.6 | -33 | Vietnam | 32.1 |
-| 84 | Machinery, computers | 336 | 15.6 | 4.5 | -25.9 | Taiwan | 88.3 |
-| 95 | Toys, games, sports equipment | 23.1 | 71.4 | 50.7 | -5.9 | Vietnam | 2.3 |
-| 94 | Furniture, lighting, bedding | 44.4 | 28.9 | 18.6 | -5.7 | Cambodia | 0.6 |
-| 39 | Plastics | 48.6 | 26.4 | 19.3 | -3.8 | Vietnam | 1 |
-| 87 | Vehicles and parts | 260 | 4.2 | 3.3 | -3.8 | Vietnam | 0.5 |
-| 73 | Iron and steel articles | 32.8 | 23.6 | 18.2 | -3.3 | Vietnam | 0.3 |
-| 64 | Footwear | 18 | 37.1 | 20.6 | -3 | Vietnam | 1 |
-| 61 | Clothing, knitted | 28.8 | 21.7 | 12.3 | -2.9 | Vietnam | 0.8 |
-| 62 | Clothing, not knitted | 23.7 | 20.8 | 11.7 | -2.3 | Bangladesh | 0.4 |
-| 63 | Other textile articles | 10.8 | 50.6 | 39.7 | -1.7 | Vietnam | 0.3 |
-| 90 | Medical, optical, measuring instruments | 80.1 | 9.4 | 7.6 | -1.4 | Ireland | 0.9 |
-| 42 | Handbags, luggage, leather goods | 8.8 | 22.6 | 12.7 | -0.9 | Vietnam | 0.2 |
-| 48 | Paper and paperboard | 12.6 | 14 | 7 | -0.9 | Thailand | 0.2 |
-| 83 | Misc. metal articles | 10.1 | 33.9 | 27 | -0.8 | Vietnam | 0.2 |
-| 40 | Rubber | 22.6 | 7.5 | 4.4 | -0.7 | Cambodia | 0.5 |
-| 82 | Tools and cutlery | 7.4 | 27.2 | 19.2 | -0.6 | Vietnam | 0.3 |
-| 96 | Misc. manufactured articles | 5.8 | 53.8 | 44.6 | -0.6 | Vietnam | 0.2 |
-| 44 | Wood | 15.4 | 8.3 | 6 | -0.5 | Malaysia | 0.1 |
-| 38 | Other chemical products | 16.3 | 6.6 | 5 | -0.4 | Indonesia | 0.5 |
+| 85 | Electrical and electronics | 343 | 24.6 | 10.3 | -36.9 | Vietnam | 38.1 |
+| 84 | Machinery, computers | 381 | 15.5 | 4.5 | -27.6 | Taiwan | 103 |
+| 95 | Toys, games, sports equipment | 28.7 | 72.8 | 51.8 | -8.3 | Vietnam | 2.5 |
+| 94 | Furniture, lighting, bedding | 50.2 | 28.5 | 18.8 | -6.2 | Cambodia | 0.6 |
+| 39 | Plastics | 54.8 | 26.4 | 19.5 | -4.1 | Vietnam | 1.1 |
+| 87 | Vehicles and parts | 292 | 4.2 | 3.3 | -4.1 | Vietnam | 0.5 |
+| 73 | Iron and steel articles | 36.9 | 23.9 | 18.3 | -3.7 | Vietnam | 0.3 |
+| 64 | Footwear | 20.6 | 37 | 21 | -3.4 | Vietnam | 1.1 |
+| 61 | Clothing, knitted | 33.7 | 22 | 12.8 | -3.3 | Vietnam | 1 |
+| 62 | Clothing, not knitted | 26.9 | 21 | 12.1 | -2.6 | Bangladesh | 0.4 |
+| 63 | Other textile articles | 12.4 | 51.1 | 40.4 | -1.9 | Vietnam | 0.3 |
+| 90 | Medical, optical, measuring instruments | 90.6 | 9.5 | 7.7 | -1.6 | Ireland | 1 |
+| 42 | Handbags, luggage, leather goods | 10 | 22.8 | 12.8 | -1 | Vietnam | 0.3 |
+| 48 | Paper and paperboard | 14.4 | 14.1 | 7.3 | -1 | Thailand | 0.3 |
+| 83 | Misc. metal articles | 11.4 | 34.1 | 27.3 | -0.9 | Vietnam | 0.2 |
+| 96 | Misc. manufactured articles | 6.5 | 54.3 | 44.9 | -0.8 | Vietnam | 0.3 |
+| 40 | Rubber | 25.5 | 7.4 | 4.4 | -0.8 | Cambodia | 0.5 |
+| 44 | Wood | 17.2 | 8.4 | 6.1 | -0.6 | Malaysia | 0.1 |
+| 82 | Tools and cutlery | 8.3 | 27.6 | 19.3 | -0.6 | Vietnam | 0.3 |
+| 76 | Aluminum | 19.8 | 10.8 | 7.1 | -0.5 | South Korea | 0.9 |
 
-*Showing 20 of 46 rows; see the CSV for all.*
+*Showing 20 of 50 rows; see the CSV for all.*
 
 ## 06. Products that left china
 
@@ -155,26 +155,26 @@ Query: [`sql/06_products_that_left_china.sql`](../sql/06_products_that_left_chin
 
 | hs6 | description | us_imports_2024_bn | china_share_2024_pct | china_share_2026_pct | china_change_bn | top_gainer | top_gainer_change_bn |
 |---|---|---|---|---|---|---|---|
-| 847130 | PORT DIGTL AUTOMATIC DATA PROCESS MACH NOT > 10 KG | 31.79 | 66.9 | 7.1 | -18.65 | Vietnam | 16.96 |
-| 851713 | SMARTPHONES | 31.92 | 67.9 | 22.2 | -13.47 | India | 13.2 |
-| 850760 | LITHIUM ION BATTERIES | 12.68 | 72 | 39.5 | -4.8 | Japan | 1.16 |
-| 300490 | MEDICAMENTS NESOI, MEASURED DOSES, RETAIL PK NESOI | 55.63 | 6.7 | 2.3 | -2.74 | France | 1.1 |
-| 851762 | MACH FOR RECP/CONVR/TRANS/REGN OF VOICE/IMAGE/DATA | 34.34 | 14.3 | 2.8 | -2.51 | Vietnam | 18.46 |
-| 950300 | TRICYCLE, SCOOTR, PEDAL CAR & SIM WHEELED TYS; ETC | 9.7 | 76 | 63.6 | -2.02 | Vietnam | 0.4 |
-| 852852 | OTHER MONITORS CAPABLE OF DIRECT CONNECT TO ADP | 4.11 | 79.1 | 31.9 | -1.93 | Vietnam | 1.11 |
-| 950450 | VIDEO GAME CONSOLES & MACH, EXC OF SUBHEAD 9504.30 | 2.8 | 79.8 | 15 | -1.86 | Vietnam | 1.26 |
-| 851830 | HEAD-EAR-PHONES & COMBINED MICROPHONE/SPEAKER SETS | 4.22 | 48 | 22.4 | -1.28 | Vietnam | 0.26 |
-| 940161 | SEATS W WOODEN FRAMES, UPHOLSTERED, NESOI | 4.69 | 27.3 | 7.8 | -1.01 | Vietnam | 0.16 |
-| 391810 | FLOOR, WALL, ETC COVERS, VINYL CHLORIDE POLYMERS | 2.8 | 37 | 3.8 | -0.95 | Thailand | 0.38 |
-| 940320 | METAL FURNITURE NESOI | 4.22 | 42.6 | 29.3 | -0.9 | Thailand | 0.19 |
-| 847330 | PARTS & ACCESSORIES FOR ADP MACHINES & UNITS | 31.4 | 9.4 | 2.1 | -0.85 | Vietnam | 23.3 |
-| 640419 | FOOTWEAR, OUT SOLE RUB OR PLAST & TEXT UPPER NESOI | 2.56 | 56.5 | 32 | -0.75 | Cambodia | 0.17 |
-| 852872 | RECEPTION APPARATUS FOR TELEVISION, COLOR, NESOI | 6.98 | 10.5 | 0.2 | -0.72 | Mexico | 0.94 |
-| 732393 | TABLE, KITCHEN ETC ARTICLES & PTS, STAINLESS STEEL | 1.51 | 85.2 | 70 | -0.71 | Italy | 0.02 |
-| 940179 | SEATS WITH METAL FRAMES, EXCEPT UPHOLSTERED NESOI | 1.55 | 73.8 | 34 | -0.7 | Vietnam | 0.29 |
-| 640299 | FOOTWEAR, OUTER SOLE & UPPER RUBBER OR PLAST NESOI | 3.32 | 56 | 33.5 | -0.69 | Vietnam | 0.39 |
-| 852589 | TV, DIGITAL, VIDEO CAMERAS, NESOI | 5.47 | 17.4 | 5.6 | -0.64 | Vietnam | 0.53 |
-| 630790 | MADE-UP TEXTILE ARTICLES, NESOI | 3.09 | 65.9 | 51.1 | -0.63 | Vietnam | 0.14 |
+| 847130 | PORT DIGTL AUTOMATIC DATA PROCESS MACH NOT > 10 KG | 35.79 | 66.8 | 8.3 | -20.41 | Vietnam | 19.29 |
+| 851713 | SMARTPHONES | 37.95 | 70.7 | 28.4 | -14.14 | India | 14.6 |
+| 850760 | LITHIUM ION BATTERIES | 15.13 | 72.1 | 39 | -6.05 | Japan | 1.25 |
+| 300490 | MEDICAMENTS NESOI, MEASURED DOSES, RETAIL PK NESOI | 62.31 | 7 | 2.2 | -3.21 | France | 1.38 |
+| 950450 | VIDEO GAME CONSOLES & MACH, EXC OF SUBHEAD 9504.30 | 3.96 | 82.4 | 14.7 | -2.83 | Vietnam | 1.43 |
+| 851762 | MACH FOR RECP/CONVR/TRANS/REGN OF VOICE/IMAGE/DATA | 39.66 | 13.9 | 2.7 | -2.77 | Vietnam | 21.65 |
+| 950300 | TRICYCLE, SCOOTR, PEDAL CAR & SIM WHEELED TYS; ETC | 12.04 | 76.5 | 64.7 | -2.74 | Vietnam | 0.35 |
+| 852852 | OTHER MONITORS CAPABLE OF DIRECT CONNECT TO ADP | 4.71 | 79.1 | 32.8 | -2.16 | Vietnam | 1.25 |
+| 851830 | HEAD-EAR-PHONES & COMBINED MICROPHONE/SPEAKER SETS | 5.01 | 48.9 | 22.4 | -1.55 | Vietnam | 0.41 |
+| 940161 | SEATS W WOODEN FRAMES, UPHOLSTERED, NESOI | 5.26 | 26.9 | 8 | -1.1 | Vietnam | 0.12 |
+| 391810 | FLOOR, WALL, ETC COVERS, VINYL CHLORIDE POLYMERS | 3.1 | 36.1 | 3.9 | -1.02 | Thailand | 0.42 |
+| 940320 | METAL FURNITURE NESOI | 4.75 | 41.7 | 29.7 | -0.96 | Thailand | 0.2 |
+| 950510 | ART F CHRISTMAS FESTIVITIES AND PTS & ACCESSORIES | 2.71 | 88.2 | 70.8 | -0.93 | Cambodia | 0.12 |
+| 852872 | RECEPTION APPARATUS FOR TELEVISION, COLOR, NESOI | 8.35 | 10.5 | 0.2 | -0.86 | Mexico | 1.26 |
+| 732393 | TABLE, KITCHEN ETC ARTICLES & PTS, STAINLESS STEEL | 1.77 | 85.7 | 70.1 | -0.86 | Italy | 0.02 |
+| 640419 | FOOTWEAR, OUT SOLE RUB OR PLAST & TEXT UPPER NESOI | 2.92 | 56.8 | 33.2 | -0.83 | Cambodia | 0.19 |
+| 854370 | ELEC MACH AND APP, HAVING INDIV FUNCTIONS, NESOI | 10.04 | 13.6 | 5.9 | -0.79 | Mexico | 0.83 |
+| 847330 | PARTS & ACCESSORIES FOR ADP MACHINES & UNITS | 35.82 | 9.2 | 2.1 | -0.77 | Vietnam | 28.35 |
+| 940179 | SEATS WITH METAL FRAMES, EXCEPT UPHOLSTERED NESOI | 1.65 | 73.2 | 34.3 | -0.74 | Vietnam | 0.3 |
+| 640299 | FOOTWEAR, OUTER SOLE & UPPER RUBBER OR PLAST NESOI | 3.65 | 54.8 | 33 | -0.73 | Vietnam | 0.42 |
 
 *Showing 20 of 25 rows; see the CSV for all.*
 
@@ -190,26 +190,26 @@ Query: [`sql/07_current_rate_by_country.sql`](../sql/07_current_rate_by_country.
 
 | country | rate_2024_pct | rate_oct_2025_pct | rate_latest_pct | imports_latest_month_bn |
 |---|---|---|---|---|
-| Bangladesh | 15.06 | 33.45 | 24.18 | 0.9 |
-| China | 10.93 | 37.82 | 22.77 | 26.3 |
-| Cambodia | 7.02 | 28.84 | 19.8 | 2 |
-| Indonesia | 4.88 | 22.06 | 13.94 | 3 |
-| Brazil | 1.28 | 22.33 | 12.09 | 3.5 |
-| Japan | 1.52 | 14.62 | 10.85 | 11.9 |
-| Germany | 1.38 | 10.94 | 9.02 | 12.9 |
-| India | 2.41 | 22.03 | 8.22 | 9.3 |
-| South Korea | 0.19 | 14.12 | 7.6 | 15.2 |
-| Italy | 2.23 | 11.23 | 7.41 | 7.5 |
-| Vietnam | 3.81 | 12.4 | 7.07 | 26.5 |
-| All countries | 2.36 | 10.84 | 6.87 | 331 |
-| United Kingdom | 0.95 | 5.72 | 6.33 | 5.4 |
-| Thailand | 1.63 | 8.94 | 5.85 | 11.8 |
-| France | 1.17 | 6.26 | 5.03 | 5.9 |
-| Philippines | 1.35 | 14.43 | 4.46 | 3.1 |
-| Malaysia | 0.69 | 9.41 | 3.35 | 8 |
-| Switzerland | 0.59 | 8.95 | 3.21 | 5.2 |
-| Mexico | 0.24 | 4.35 | 3.2 | 60.3 |
-| Canada | 0.1 | 3.8 | 3.18 | 35.7 |
+| Bangladesh | 15.06 | 33.45 | 24.33 | 0.9 |
+| Cambodia | 7.02 | 28.84 | 20.67 | 2 |
+| China | 10.93 | 37.82 | 19.87 | 30.8 |
+| Indonesia | 4.88 | 22.06 | 14.18 | 3 |
+| Japan | 1.52 | 14.62 | 10.25 | 12.1 |
+| Brazil | 1.28 | 22.33 | 10.02 | 3.7 |
+| India | 2.41 | 22.03 | 8.87 | 9.2 |
+| Germany | 1.38 | 10.94 | 7.48 | 14.5 |
+| Vietnam | 3.81 | 12.4 | 6.85 | 29.2 |
+| All countries | 2.36 | 10.84 | 6.49 | 354 |
+| Italy | 2.23 | 11.23 | 6.44 | 7.8 |
+| South Korea | 0.19 | 14.12 | 5.85 | 19.2 |
+| United Kingdom | 0.95 | 5.72 | 5.72 | 5.7 |
+| France | 1.17 | 6.26 | 5.02 | 5.4 |
+| Thailand | 1.63 | 8.94 | 4.66 | 14.2 |
+| Philippines | 1.35 | 14.43 | 4.46 | 2.9 |
+| Canada | 0.1 | 3.8 | 4.17 | 35 |
+| Switzerland | 0.59 | 8.95 | 4.06 | 4.4 |
+| Malaysia | 0.69 | 9.41 | 3.79 | 8.5 |
+| Mexico | 0.24 | 4.35 | 3.11 | 62.3 |
 
 *Showing 20 of 23 rows; see the CSV for all.*
 
@@ -225,26 +225,26 @@ Query: [`sql/08_rate_by_chapter_latest.sql`](../sql/08_rate_by_chapter_latest.sq
 
 | hs2 | chapter | group | rate_2024_pct | rate_latest_pct | imports_latest_bn |
 |---|---|---|---|---|---|
-| 73 | Iron and steel articles | Metals and building materials | 5.6 | 42.8 | 3.2 |
-| 76 | Aluminum | Metals and building materials | 3.7 | 37.3 | 2.8 |
-| 72 | Iron and steel | Metals and building materials | 2.6 | 26.1 | 2.3 |
-| 61 | Clothing, knitted | Clothing and footwear | 14.9 | 23.1 | 4.3 |
-| 42 | Handbags, luggage, leather goods | Clothing and footwear | 13 | 22.2 | 1.2 |
-| 62 | Clothing, not knitted | Clothing and footwear | 14.3 | 22.2 | 3 |
-| 64 | Footwear | Clothing and footwear | 12.2 | 21.4 | 2.4 |
-| 63 | Other textile articles | Clothing and footwear | 8.7 | 17.5 | 1.4 |
-| 83 | Misc. metal articles | Metals and building materials | 6.8 | 16.7 | 1.3 |
-| 82 | Tools and cutlery | Metals and building materials | 8.4 | 16.2 | 1 |
-| 94 | Furniture, lighting, bedding | Other manufactured goods | 5.6 | 13.9 | 5.2 |
-| 40 | Rubber | Chemicals and plastics | 3.1 | 13.4 | 2.9 |
-| 87 | Vehicles and parts | Vehicles and transport | 2 | 12.7 | 28.1 |
-| 95 | Toys, games, sports equipment | Other manufactured goods | 1.2 | 11.8 | 3.8 |
-| 39 | Plastics | Chemicals and plastics | 5.3 | 11.4 | 6.4 |
-| 33 | Cosmetics, perfume | Chemicals and plastics | 1.3 | 10.2 | 1.8 |
-| 44 | Wood | Wood and paper | 2.1 | 10.1 | 1.7 |
-| 29 | Organic chemicals | Chemicals and plastics | 2.4 | 8.6 | 3.2 |
-| 03 | Fish and seafood | Food and farm | 0.8 | 8.2 | 1.8 |
-| 48 | Paper and paperboard | Wood and paper | 2.8 | 8.1 | 1.7 |
+| 73 | Iron and steel articles | Metals and building materials | 5.6 | 41.7 | 3.2 |
+| 76 | Aluminum | Metals and building materials | 3.7 | 38.8 | 2.5 |
+| 72 | Iron and steel | Metals and building materials | 2.6 | 26.8 | 2.3 |
+| 61 | Clothing, knitted | Clothing and footwear | 14.9 | 24.2 | 4.6 |
+| 42 | Handbags, luggage, leather goods | Clothing and footwear | 13 | 22.4 | 1.2 |
+| 62 | Clothing, not knitted | Clothing and footwear | 14.3 | 22.3 | 3.1 |
+| 64 | Footwear | Clothing and footwear | 12.2 | 22.2 | 2.6 |
+| 63 | Other textile articles | Clothing and footwear | 8.7 | 18.1 | 1.4 |
+| 83 | Misc. metal articles | Metals and building materials | 6.8 | 17 | 1.3 |
+| 82 | Tools and cutlery | Metals and building materials | 8.4 | 16.8 | 1.1 |
+| 94 | Furniture, lighting, bedding | Other manufactured goods | 5.6 | 15.3 | 4.9 |
+| 40 | Rubber | Chemicals and plastics | 3.1 | 13.2 | 2.9 |
+| 39 | Plastics | Chemicals and plastics | 5.3 | 12.6 | 6.2 |
+| 87 | Vehicles and parts | Vehicles and transport | 2 | 12.4 | 26.5 |
+| 95 | Toys, games, sports equipment | Other manufactured goods | 1.2 | 12.2 | 3.6 |
+| 33 | Cosmetics, perfume | Chemicals and plastics | 1.3 | 11.7 | 1.6 |
+| 44 | Wood | Wood and paper | 2.1 | 11.4 | 1.5 |
+| 48 | Paper and paperboard | Wood and paper | 2.8 | 9.6 | 1.6 |
+| 03 | Fish and seafood | Food and farm | 0.8 | 8.7 | 1.6 |
+| 29 | Organic chemicals | Chemicals and plastics | 2.4 | 8.7 | 3 |
 
 ## 09. Smartphones
 
@@ -263,4 +263,4 @@ Query: [`sql/09_smartphones.sql`](../sql/09_smartphones.sql)
 | 2025 H1 | 29.9 | 38.1 | 39.3 | 20.2 | 6 |
 | 2025 H2 | 28.9 | 40.1 | 40.6 | 16.4 | 6 |
 | 2026 H1 | 27.4 | 49.3 | 23.3 | 20.7 | 6 |
-| 2026 H2 | 9.7 | 46.6 | 18.8 | 30.5 | 2 |
+| 2026 H2 | 17.3 | 36.1 | 36.5 | 23.3 | 3 |
